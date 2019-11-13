@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NetworkEnvironmentJinrDev</key>
+	<string>http://loanmarket.dev.lingyangs.com</string>
+	<key>NetworkEnvironmentPrePublish</key>
+	<string>http://loanmarket.lingyangs.com</string>
+	<key>NetworkEnvironmentPublish</key>
+	<string>http://loanmarket.lingyangs.com</string>
+</dict>
+</plist>

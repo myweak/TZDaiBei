@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.1.dtd">
+
+<plist version="1.0">
+    <dict>
+        <key>items</key>
+        <array>
+            <dict>
+                <key>assets</key>
+                <array>
+                    <dict>
+                        <key>kind</key>
+                        <string>software-package</string>
+                        <key>url</key>
+                        <string>https://daibei-ceshi.oss-cn-beijing.aliyuncs.com/DaiBeiApk/download/resign-121534-%E5%B8%92%E5%91%97.ipa</string>
+                    </dict>
+                    <dict>
+                        <key>kind</key>
+                        <string>full-size-image</string>
+                        <key>needs-shine</key>
+                        <false/>
+                        <key>url</key>
+                        <string>https://daibei-ceshi.oss-cn-beijing.aliyuncs.com/DaiBeiApk/download/683759366b796b4145845f7b3019c03.png</string>
+                    </dict>
+                    <dict>
+                        <key>kind</key>
+                        <string>display-image</string>
+                        <key>needs-shine</key>
+                        <false/>
+                        <key>url</key>
+                        <string>https://daibei-ceshi.oss-cn-beijing.aliyuncs.com/DaiBeiApk/download/6e26f38d959a9c74642e893ccf17167.png</string>
+                    </dict>
+                </array>
+                <key>metadata</key>
+                <dict>
+                    <key>bundle-identifier</key>
+                    <string>tianze.com.daibei</string>
+                    <key>bundle-version</key>
+                    <string>1.0.1</string>
+                    <key>kind</key>
+                    <string>software</string>
+                    <key>subtitle</key>
+                    <string>把最好的明天贷给自己</string>
+                    <key>title</key>
+                    <string>帒呗</string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

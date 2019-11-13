@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TZProductLinebackBankSpeedItemView">
+            <rect key="frame" x="0.0" y="0.0" width="191" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RX-Nu-9EL">
+                    <rect key="frame" x="0.0" y="0.0" width="191" height="74"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="98W-Ya-SG9">
+                            <rect key="frame" x="0.0" y="0.0" width="191" height="74"/>
+                            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pro_card_on" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-0I-fCY">
+                            <rect key="frame" x="-28" y="0.0" width="214" height="74"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线上极速贷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ok2-Mv-2H2">
+                            <rect key="frame" x="15" y="15" width="62" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最快1小时下款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hj5-aT-RPy">
+                            <rect key="frame" x="15" y="37" width="67" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="98W-Ya-SG9" secondAttribute="bottom" id="A0P-Hc-FQ2"/>
+                        <constraint firstItem="MfE-0I-fCY" firstAttribute="top" secondItem="3RX-Nu-9EL" secondAttribute="top" id="A3J-tV-Mmc"/>
+                        <constraint firstAttribute="trailing" secondItem="98W-Ya-SG9" secondAttribute="trailing" id="AWR-ka-F7w"/>
+                        <constraint firstItem="Ok2-Mv-2H2" firstAttribute="top" secondItem="3RX-Nu-9EL" secondAttribute="top" constant="15" id="L2W-DP-Pov"/>
+                        <constraint firstItem="98W-Ya-SG9" firstAttribute="leading" secondItem="3RX-Nu-9EL" secondAttribute="leading" id="UBV-Sd-Wk0"/>
+                        <constraint firstItem="Hj5-aT-RPy" firstAttribute="leading" secondItem="Ok2-Mv-2H2" secondAttribute="leading" id="cDE-mN-vB6"/>
+                        <constraint firstAttribute="trailing" secondItem="MfE-0I-fCY" secondAttribute="trailing" constant="5" id="dQ5-jt-TF1"/>
+                        <constraint firstItem="98W-Ya-SG9" firstAttribute="top" secondItem="3RX-Nu-9EL" secondAttribute="top" id="iTP-6a-jNx"/>
+                        <constraint firstItem="Hj5-aT-RPy" firstAttribute="top" secondItem="Ok2-Mv-2H2" secondAttribute="bottom" constant="7" id="jwN-cr-IlT"/>
+                        <constraint firstItem="Ok2-Mv-2H2" firstAttribute="leading" secondItem="3RX-Nu-9EL" secondAttribute="leading" constant="15" id="rh3-Bc-3Di"/>
+                        <constraint firstAttribute="bottom" secondItem="MfE-0I-fCY" secondAttribute="bottom" id="srq-yl-hIg"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.masksToBounds">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3RX-Nu-9EL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R7e-aH-xdX"/>
+                <constraint firstAttribute="bottom" secondItem="3RX-Nu-9EL" secondAttribute="bottom" id="RnE-lB-XxJ"/>
+                <constraint firstAttribute="trailing" secondItem="3RX-Nu-9EL" secondAttribute="trailing" id="dS9-RX-Tx9"/>
+                <constraint firstItem="3RX-Nu-9EL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qbx-wB-y4f"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageViewBg" destination="98W-Ya-SG9" id="fJ4-mA-1fH"/>
+                <outlet property="rightImageView" destination="MfE-0I-fCY" id="RV4-Xf-8tY"/>
+                <outlet property="subTitleLabel" destination="Hj5-aT-RPy" id="3xh-dg-Si8"/>
+                <outlet property="titleLabel" destination="Ok2-Mv-2H2" id="mCU-e7-JOw"/>
+            </connections>
+            <point key="canvasLocation" x="-81" y="-13"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pro_card_on" width="107" height="95"/>
+    </resources>
+</document>

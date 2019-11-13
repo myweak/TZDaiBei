@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TZShowWeiXinAndQQView">
+            <rect key="frame" x="0.0" y="0.0" width="279" height="321"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEZ-S3-ZP2">
+                    <rect key="frame" x="0.0" y="0.0" width="279" height="152"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pqU-as-AII">
+                            <rect key="frame" x="109.5" y="25" width="60" height="60"/>
+                            <color key="backgroundColor" red="0.22352941176470587" green="0.72941176470588232" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="Kq8-38-m0W"/>
+                                <constraint firstAttribute="width" constant="60" id="O1w-57-zQI"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帒呗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0N-JS-yct">
+                            <rect key="frame" x="121" y="95" width="37" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信号：daibeiwechat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPx-AU-yiW">
+                            <rect key="frame" x="68" y="127" width="143" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="By4-Gh-HKe">
+                            <rect key="frame" x="221" y="124.5" width="50" height="22"/>
+                            <color key="backgroundColor" red="0.22352941176470587" green="0.72941176470588232" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="1SD-70-hSh"/>
+                                <constraint firstAttribute="width" constant="50" id="Xuh-ZO-tNy"/>
+                            </constraints>
+                            <state key="normal" title="复制">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="11"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="numCopyBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Pr-2h-jTW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pqU-as-AII" firstAttribute="centerX" secondItem="PEZ-S3-ZP2" secondAttribute="centerX" id="71z-IV-EVu"/>
+                        <constraint firstItem="By4-Gh-HKe" firstAttribute="leading" secondItem="HPx-AU-yiW" secondAttribute="trailing" constant="10" id="Ofc-YF-sGI"/>
+                        <constraint firstItem="pqU-as-AII" firstAttribute="top" secondItem="PEZ-S3-ZP2" secondAttribute="top" constant="25" id="RLI-Hi-E7i"/>
+                        <constraint firstItem="A0N-JS-yct" firstAttribute="centerX" secondItem="pqU-as-AII" secondAttribute="centerX" id="Tge-iw-D49"/>
+                        <constraint firstItem="A0N-JS-yct" firstAttribute="top" secondItem="pqU-as-AII" secondAttribute="bottom" constant="10" id="a2z-uF-jJF"/>
+                        <constraint firstItem="HPx-AU-yiW" firstAttribute="top" secondItem="A0N-JS-yct" secondAttribute="bottom" constant="10" id="ahh-Qh-55H"/>
+                        <constraint firstItem="HPx-AU-yiW" firstAttribute="centerX" secondItem="pqU-as-AII" secondAttribute="centerX" id="nbJ-Vm-Zxu"/>
+                        <constraint firstAttribute="height" constant="152" id="wU8-au-Ay6"/>
+                        <constraint firstItem="By4-Gh-HKe" firstAttribute="centerY" secondItem="HPx-AU-yiW" secondAttribute="centerY" id="zHO-L7-bWq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyT-Qe-9AT">
+                    <rect key="frame" x="15" y="152" width="249" height="109"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操作指引：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-9a-VBt">
+                            <rect key="frame" x="26" y="16" width="72" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVy-kz-9pC">
+                            <rect key="frame" x="26" y="45" width="217.5" height="43"/>
+                            <string key="text">1.点击“复制”按钮复制官方微信号
+2.打开微信App，并点击搜索框粘贴搜索
+3.选择点击“帒呗”，并关注公众号即可</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="109" id="Epg-Nx-XC5"/>
+                        <constraint firstItem="LVy-kz-9pC" firstAttribute="leading" secondItem="1nJ-9a-VBt" secondAttribute="leading" id="OBH-r1-7st"/>
+                        <constraint firstItem="1nJ-9a-VBt" firstAttribute="top" secondItem="LyT-Qe-9AT" secondAttribute="top" constant="16" id="aB4-oa-crJ"/>
+                        <constraint firstItem="1nJ-9a-VBt" firstAttribute="leading" secondItem="LyT-Qe-9AT" secondAttribute="leading" constant="26" id="lif-JT-g3T"/>
+                        <constraint firstItem="LVy-kz-9pC" firstAttribute="top" secondItem="1nJ-9a-VBt" secondAttribute="bottom" constant="12" id="wqo-iz-d6J"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUj-b4-ZxU">
+                    <rect key="frame" x="0.0" y="277" width="279" height="44"/>
+                    <color key="backgroundColor" red="0.22352941176470587" green="0.72941176470588232" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="E0A-m6-nd4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="关闭">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="closeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="a1F-Da-Fjd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="LyT-Qe-9AT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="44Y-zn-h60"/>
+                <constraint firstItem="PEZ-S3-ZP2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5lg-Ss-EH0"/>
+                <constraint firstItem="PEZ-S3-ZP2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9EW-II-2JV"/>
+                <constraint firstItem="eUj-b4-ZxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9UH-rt-jla"/>
+                <constraint firstAttribute="trailing" secondItem="eUj-b4-ZxU" secondAttribute="trailing" id="TJL-uN-R9d"/>
+                <constraint firstAttribute="bottom" secondItem="eUj-b4-ZxU" secondAttribute="bottom" id="Vlb-5i-yal"/>
+                <constraint firstItem="LyT-Qe-9AT" firstAttribute="top" secondItem="PEZ-S3-ZP2" secondAttribute="bottom" id="fKF-fc-n5H"/>
+                <constraint firstAttribute="trailing" secondItem="PEZ-S3-ZP2" secondAttribute="trailing" id="jeL-kV-wRy"/>
+                <constraint firstAttribute="trailing" secondItem="LyT-Qe-9AT" secondAttribute="trailing" constant="15" id="nIf-4b-8I6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="appImageView" destination="pqU-as-AII" id="Fm2-OD-UaY"/>
+                <outlet property="appNameLabel" destination="A0N-JS-yct" id="hLI-kM-uOO"/>
+                <outlet property="closeBtn" destination="eUj-b4-ZxU" id="gAE-sO-kGK"/>
+                <outlet property="contentLabel" destination="LVy-kz-9pC" id="mws-n4-wdZ"/>
+                <outlet property="m_CopyBtn" destination="By4-Gh-HKe" id="4LT-ne-2p5"/>
+                <outlet property="numberLabel" destination="HPx-AU-yiW" id="wJp-9R-wbC"/>
+            </connections>
+            <point key="canvasLocation" x="-328.80000000000001" y="4.9475262368815596"/>
+        </view>
+    </objects>
+</document>
