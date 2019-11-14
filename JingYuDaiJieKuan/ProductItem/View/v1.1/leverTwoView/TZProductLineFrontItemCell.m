@@ -35,7 +35,7 @@
     self.timeLable.text = [NSString stringWithFormat:@"%@%@放款",model.recvMoneyTime,model.recvMoneyType_str];
     self.yearLabel.text = [NSString stringWithFormat:@"%@：%@%@",model.rateType_str,model.rate,@"%"];
     self.monthLabel.text = [NSString stringWithFormat:@"贷款期限%@",model.period];
-    self.applyBtn.enabled = model.productType.integerValue == 1;
+    self.applyBtn.enabled = model.productType.integerValue != 2;
 }
 
 

@@ -201,7 +201,7 @@
         TZHomeBodyCell *cell = [tableView dequeueReusableCellWithIdentifier:TZHomeBodyCellID forIndexPath:indexPath];
         if (self.m_HomeBodyModel.bannerNavigation.count>0) {
             TZBannerNavigationModel *model = self.m_HomeBodyModel.bannerNavigation[indexPath.row];
-            [cell.imageViewBg sd_setImageWithURL: [NSURL URLWithString:model.photoIphonex] placeholderImage:Kimage_placeholder];
+            [cell.imageViewBg sd_setImageWithURL: [NSURL URLWithString:model.photoIphonex]];
         }
         
         return cell;
@@ -225,6 +225,7 @@
         TZBannerNavigationModel *model = self.m_HomeBodyModel.bannerNavigation[indexPath.row];
         if (model.referType.integerValue == 1) {
             TZProductCenterVC *centerVc = [TZProductCenterVC new];
+            centerVc.pageIndex = 1;
             [self.navigationController pushViewController:centerVc animated:YES];
         }else{
             if ([model.url containsString:HTML_creditRepair_api] || [model.title containsString:@"征信"]) {

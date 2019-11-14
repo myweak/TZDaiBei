@@ -62,7 +62,7 @@
     self.policyProtocolRange = NSMakeRange(14, 6);
     
     [super viewDidLoad];
-    msgMaxlength = 4;
+    msgMaxlength = 6;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationItem.title = @"登录";
     self.view.backgroundColor = UIColor.whiteColor;
@@ -156,10 +156,11 @@
     [btnAA sizeToFit];
     [btnBB sizeToFit];
     
-     btnA.frame = CGRectMake(19, 0, btnA.width, 11);
-    btnAA.frame = CGRectMake(btnA.right,btnA.top, btnAA.width, 11);
-    btnB.frame = CGRectMake(19, btnA.bottom+16, btnB.width, 11);
-    btnBB.frame = CGRectMake(btnB.right, btnB.top, btnBB.width, 11);
+    CGFloat btn_H = 30;
+    btnA.frame = CGRectMake(19, 0, btnA.width, btn_H);
+    btnAA.frame = CGRectMake(btnA.right,btnA.top, btnAA.width, btn_H);
+    btnB.frame = CGRectMake(19, btnA.bottom, btnB.width, btn_H);
+    btnBB.frame = CGRectMake(btnB.right, btnB.top, btnBB.width, btn_H);
 
 
     _btnRegisterWebBtn =btnA;
@@ -287,6 +288,7 @@
     [params setObject:self.m_passwordField.text forKey:@"smsCode"];
     [params setObject:pmodel forKey:@"pmodel"];
     [params setObject:identifierStr forKey:@"deviceNo"];
+
     [params setObject:[[SensorsAnalyticsSDK sharedInstance]anonymousId] forKey:@"distinctId"];
     [LoginKeyInputViewModel userLoginPath:userLogin params:params target:self success:^(LoginModel *model) {
         if (model.code == 200) {
@@ -330,6 +332,7 @@
         [[ZXAlertView shareView] showMessage:model.msg?:@""];
         
     } failure:^(NSError *error) {
+        [self stop];
         [[ZXAlertView shareView] showMessage:kloadfailedNotNetwork];
     }];
 }

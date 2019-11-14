@@ -9,7 +9,6 @@
 #import "TZProductLineFrontVC.h"
 #import "TZProductLineFrontItemCell.h"
 #import "ProductItemViewModel.h"
-
 @interface TZProductLineFrontVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong ,nonatomic) UITableView *m_tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -114,6 +113,14 @@
     TZProductBankModel *model = [self.dataArr objectAtIndex:indexPath.row];
     if (model.productType.integerValue == 2) {
         showMessage(@"申请人数已满，请申请其他产品");
+        return;
+    }else if(model.productType.integerValue == 3) {
+        NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+
+             NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=on%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+             NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",SERVER_URL,THTML_essentialInfo_api,strName];
+        [self PushToBaseWebViewControllerUrl:urlStr andTitle:model.name];
         return;
     }
     [self PushToBaseWebViewControllerUrl:model.url andTitle:model.name];

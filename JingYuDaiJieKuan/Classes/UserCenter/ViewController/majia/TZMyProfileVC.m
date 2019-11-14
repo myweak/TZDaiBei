@@ -66,8 +66,7 @@
     [LoginKeyInputViewModel userLoginPath:API_getPersonalInfo_path params:nil target:self success:^(LoginModel *model) {
             if (model.code == 200) {
                 ///为保持用户的实时数据更新，需要重新赋值缓存和内存
-                kUserMessageManager.toKen = model.token;
-                [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_TOKEN value:model.token];
+              
                 kUserMessageManager.userId = model.userId;
                 [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_ID value:model.userId];
                 [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EMail value:model.mailbox];

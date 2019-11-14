@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * merchartid;
 @property (nonatomic, copy) NSString * tags;
 @property (nonatomic, copy) NSString * recvMoneyTime; // 放款时间
-@property (nonatomic, copy) NSString * productType; // 1:立即申请 2:人数已满
+@property (nonatomic, copy) NSString * productType; // 1:立即申请 2:人数已满, 3:线下产品
 @property (nonatomic, copy) NSString * recvMoneyType; // 0:分；1:小时：2:天；3:月 recvMoneyTime
 @property (nonatomic, copy) NSString * recvMoneyType_str;//自定义
 @property (nonatomic, copy) NSString * period; // 贷款期限

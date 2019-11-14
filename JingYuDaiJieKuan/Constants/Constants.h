@@ -111,15 +111,6 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #   define ELog(err)
 #endif
 
-#pragma mark  API地址
-
-#ifdef ENABLE_TEST_MODE
-#define BASE_URL @"http://xdq.api.haodai.com/"  // host地址
-#define COMMON_DEVICE_KEY @"kow02kie9qJbMw21"   // 默认key
-#else
-#define BASE_URL @"http://api.xdq.haodai.com/"  // host地址
-#define COMMON_DEVICE_KEY @"Eb953db38ae22be0"   // 默认key
-#endif
 
 
 /***************************环境切换****************************/
@@ -159,6 +150,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 
 // 开发机
 #define SERVER_URL @"http://112.74.53.99:8005/"
+//本地地址@"http://192.168.1.135:8001/"
 //#define SERVER_URL @"https://marketapi-test.orangedai.com/" //。以前的 不用了
 #define HTTPS_type 1
 #define VERSION_URL @"1.0.0"

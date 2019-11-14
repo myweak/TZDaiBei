@@ -19,11 +19,10 @@
 
     UIImage *img = [UIImage imageNamed:@"icon_turn"];
     
-    self.imageA.image =  [UIImage imageWithCGImage:img.CGImage scale:2.0 orientation:UIImageOrientationDown];
-    self.imageB.image =  [UIImage imageWithCGImage:img.CGImage scale:2.0 orientation:UIImageOrientationDown];;
-    self.imageC.image =  [UIImage imageWithCGImage:img.CGImage scale:2.0 orientation:UIImageOrientationRight];;
+    self.imageA.image =  [UIImage imageWithCGImage:img.CGImage scale:img.scale  orientation:UIImageOrientationDown];
+    self.imageB.image =  [UIImage imageWithCGImage:img.CGImage scale:img.scale orientation:UIImageOrientationDown];;
+    self.imageC.image =  [UIImage imageWithCGImage:img.CGImage scale:img.scale orientation:UIImageOrientationRight];;
 
-    
 }
 
 

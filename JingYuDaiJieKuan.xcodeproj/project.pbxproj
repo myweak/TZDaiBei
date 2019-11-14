@@ -124,6 +124,8 @@
 		2641AFAB236A83D500209C06 /* TZShowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAA236A83D500209C06 /* TZShowAlertView.m */; };
 		2641AFAE236A87D700209C06 /* UIView+Tap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAD236A87D700209C06 /* UIView+Tap.m */; };
 		2641AFB1236A8A1C00209C06 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAF236A8A1B00209C06 /* ViewUtils.m */; };
+		26621797237D388100DC3A9F /* TZProductLinebackBankDevelopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */; };
+		26621799237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */; };
 		26659F2523743CC4008854C2 /* TZConditionMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26659F2423743CC4008854C2 /* TZConditionMoneyView.m */; };
 		26659F2723743CCB008854C2 /* TZConditionMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26659F2623743CCB008854C2 /* TZConditionMoneyView.xib */; };
 		26659F2A23755630008854C2 /* TZLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26659F2923755630008854C2 /* TZLaunchView.m */; };
@@ -770,6 +772,9 @@
 		2641AFAD236A87D700209C06 /* UIView+Tap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Tap.m"; sourceTree = "<group>"; };
 		2641AFAF236A8A1B00209C06 /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
 		2641AFB0236A8A1C00209C06 /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
+		26621795237D388100DC3A9F /* TZProductLinebackBankDevelopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankDevelopView.h; sourceTree = "<group>"; };
+		26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankDevelopView.m; sourceTree = "<group>"; };
+		26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankDevelopView.xib; sourceTree = "<group>"; };
 		26659F2323743CC4008854C2 /* TZConditionMoneyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZConditionMoneyView.h; sourceTree = "<group>"; };
 		26659F2423743CC4008854C2 /* TZConditionMoneyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZConditionMoneyView.m; sourceTree = "<group>"; };
 		26659F2623743CCB008854C2 /* TZConditionMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZConditionMoneyView.xib; sourceTree = "<group>"; };
@@ -1632,6 +1637,9 @@
 				26E76143236FB860003CCA28 /* TZProductLinebackBankFlowView.h */,
 				26E76144236FB860003CCA28 /* TZProductLinebackBankFlowView.m */,
 				26E76146236FB86B003CCA28 /* TZProductLinebackBankFlowView.xib */,
+				26621795237D388100DC3A9F /* TZProductLinebackBankDevelopView.h */,
+				26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */,
+				26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */,
 			);
 			path = leverTwoView;
 			sourceTree = "<group>";
@@ -2656,6 +2664,7 @@
 				26E7AD49236D6CE800264E87 /* TZProductLineFrontItemCell.xib in Resources */,
 				2641AF9B2369CA1F00209C06 /* TZMineRowCell.xib in Resources */,
 				26E7AD2B236C635300264E87 /* TZProductQualityItemView.xib in Resources */,
+				26621799237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib in Resources */,
 				5F5BAA1A206C827800B732F4 /* homepage_test.png in Resources */,
 				2676DA0F236802C500FDAAC2 /* TZHomeResultViewCell.xib in Resources */,
 				0A2042D822A754300055E2E0 /* 5.jpg in Resources */,
@@ -3001,6 +3010,7 @@
 				9CFCB11C22CDF78000DCBF54 /* AppUpdateAlertView.swift in Sources */,
 				5F2B9B332063718100524617 /* HttpManager.m in Sources */,
 				E99AFECD231E099200C663EA /* TheThirdHomePageCell.m in Sources */,
+				26621797237D388100DC3A9F /* TZProductLinebackBankDevelopView.m in Sources */,
 				E9A4106422DDD127002C5FA7 /* CustomeServiceAlertView.swift in Sources */,
 				5F54C9B6207F782500EC27F4 /* LnitialAPI.m in Sources */,
 				5F358632206F62E400857708 /* UIView+TYAutoLayout.m in Sources */,
@@ -3447,6 +3457,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FW4YF8XGYD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3467,6 +3478,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "JingYuDaiJieKuan/JingYuDaiJieKuan-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "JingYuDaiJieKuan-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3485,6 +3497,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FW4YF8XGYD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3505,6 +3518,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JingYuDaiJieKuan/JingYuDaiJieKuan-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "JingYuDaiJieKuan-Swift.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

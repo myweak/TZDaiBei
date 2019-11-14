@@ -144,16 +144,16 @@
         [model.bannerInfo enumerateObjectsUsingBlock:^(TZProductBannerInfoModel *infoModel, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:[NSString stringWithFormat:@"%@",infoModel.photoIphonex]];
         }];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @strongify(self)
-            self.m_cycleScrollView.imageURLStringsGroup = array;
-        });
 
         if (array.count == 0 && [self.dataViewArr containsObject:KBottom_scroll]) {
             [self.dataViewArr removeObject:KBottom_scroll];
         }else if (array.count > 0 && ![self.dataViewArr containsObject:KBottom_scroll]){
             [self.dataViewArr insertObject:KBottom_scroll atIndex:7];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self)
+            self.m_cycleScrollView.imageURLStringsGroup = array;
+        });
         [self.m_tableView.mj_header endRefreshing];
         [self.m_tableView reloadData];
     } failure:^(NSError * _Nonnull error) {

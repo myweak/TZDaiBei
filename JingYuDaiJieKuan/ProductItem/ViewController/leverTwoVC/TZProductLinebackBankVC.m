@@ -9,12 +9,15 @@
 #define KSpeed_cell      @"快速通道cell"
 #define KFlow_title      @"办理流程"
 #define KFlow_cell       @"办理流程cell"
+#define KDevelop_title      @"经营模式"
+#define KDevelop_cell       @"经营模式cell"
 #import "TZProductLinebackBankVC.h"
 #import "TZProductLinebackBankHeadView.h"
 #import "TZProductLinebackBankFlowView.h"
 #import "TZUserEditChooseCell.h"
 #import "TZProductLinebackBankSpeedItemView.h" // 快速通道 item
 #import "TZProductScreenConditionVC.h"  // 商品塞选页
+#import "TZProductLinebackBankDevelopView.h"
 
 
 @interface TZProductLinebackBankVC ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -22,6 +25,7 @@
 @property (strong ,nonatomic) UITableView *m_tableView;
 @property (nonatomic, strong) TZProductLinebackBankHeadView *headView;
 @property (nonatomic, strong) TZProductLinebackBankFlowView * flowView;
+@property (nonatomic, strong) TZProductLinebackBankDevelopView *developView;
 @property (nonatomic, strong) UIView *speedView; // 快速通道
 @property (nonatomic, strong) NSMutableArray *dataViewArr;
 @end
@@ -67,6 +71,9 @@
                            KSpeed_title,
                            KSpeed_cell,
                            m_blankCellReuseId,
+                           KDevelop_title,
+                           KDevelop_cell,
+                           m_blankCellReuseId,
                            KFlow_title,
                            KFlow_cell,
                            ];
@@ -92,13 +99,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     id titleV = [self.dataViewArr objectAtIndex:indexPath.row];
     if ([titleV isEqualToString:KSpeed_title] ||
-        [titleV isEqualToString:KFlow_title]
+        [titleV isEqualToString:KFlow_title] ||
+        [titleV isEqualToString:KDevelop_title]
         ) {
         return 44;
     }else if ([titleV isEqualToString:KSpeed_cell]) {
         return self.speedView.height;
     }else if ([titleV isEqualToString:KFlow_cell]) {
         return self.flowView.height;
+    }else if ([titleV isEqualToString:KDevelop_cell]) {
+        return self.developView.height;
     }
     return 10;
     
@@ -113,7 +123,8 @@
     NSString  *titleV = [self.dataViewArr objectAtIndex:indexPath.row];
     
     if ([titleV isEqualToString:KSpeed_title] ||
-        [titleV isEqualToString:KFlow_title]
+        [titleV isEqualToString:KFlow_title] ||
+        [titleV isEqualToString:KDevelop_title]
         ) {
         TZUserEditChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:TZUserEditChooseCell_ID forIndexPath:indexPath];
         cell.mainTitleLabel.text = titleV;
@@ -129,6 +140,10 @@
         UITableViewCell *cell = [UITableViewCell blankWhiteCellWithID:titleV];
         [cell.contentView addSubview:self.flowView];
         return cell;
+    }else if ([titleV isEqualToString:KDevelop_cell]) {
+        UITableViewCell *cell = [UITableViewCell blankWhiteCellWithID:titleV];
+        [cell.contentView addSubview:self.developView];
+        return cell;
     }
     
     
@@ -140,6 +155,15 @@
 
 
 #pragma mark - UI
+
+- (TZProductLinebackBankDevelopView *)developView{
+    if (!_developView) {
+        _developView = [[TZProductLinebackBankDevelopView alloc] init];
+        _developView.height = 100;
+    }
+    return _developView;
+}
+
 - (UIView *)speedView{
     if (!_speedView) {
         @weakify(self)

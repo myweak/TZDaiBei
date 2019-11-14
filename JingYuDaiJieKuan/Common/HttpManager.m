@@ -565,7 +565,14 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
     NSURLSessionDataTask *dataTask = [_sessionManager POST:requestUrl parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        // 请求-->头信息
+        NSDictionary *postHeder =[task.originalRequest allHTTPHeaderFields];
+        // 请求-->正文信息
+        NSString *body = [[NSString alloc] initWithData:[task.originalRequest HTTPBody] encoding:NSUTF8StringEncoding];
+        //响应-->头信息
+        NSDictionary * responHead = [(NSHTTPURLResponse *)task.response allHeaderFields];
+//        DLog(@"POST请求头--\nheader = %@\n",postHeder);
+
         DLog(@"POST方法名--\nmethod = %@\n",methodString);
         NSData *responseData;
         if ([api isEqualToString:@"img.verify.create"]) {
