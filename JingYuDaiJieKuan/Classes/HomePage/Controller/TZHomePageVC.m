@@ -181,7 +181,7 @@
     if(indexPath.section == 0){
         return 111;
     }
-    return 22;
+    return iPH(22);
 }
 
 //返回头分组标题高度
@@ -240,6 +240,8 @@
                 [self PushToBaseWebViewControllerUrl:model.url andTitle:model.title];
             }
         }
+    }else{
+        
     }
     
 }

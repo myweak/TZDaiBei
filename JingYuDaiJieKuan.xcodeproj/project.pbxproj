@@ -267,6 +267,7 @@
 		5F5BAA1A206C827800B732F4 /* homepage_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5BAA19206C827800B732F4 /* homepage_test.png */; };
 		5F9EE7C220623D17004013E2 /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EE7C120623D17004013E2 /* HomePageModel.m */; };
 		5FD14EC3207CA657003C1785 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD14EC2207CA656003C1785 /* RTLabel.m */; };
+		714B065A14CA80296191E27E /* libPods-JingYuDaiJieKuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B946B66BE6B7856A0D7F25 /* libPods-JingYuDaiJieKuan.a */; };
 		767895E5BCD4833B9651775D /* libPods-JingYuDaiJieKuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B946B66BE6B7856A0D7F25 /* libPods-JingYuDaiJieKuan.a */; };
 		9C3E0E2622CB4D35004D57A9 /* ProductItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E0E2522CB4D35004D57A9 /* ProductItemViewModel.m */; };
 		9C3E0E2C22CB687B004D57A9 /* ProductItemAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E0E2B22CB687B004D57A9 /* ProductItemAPI.m */; };
@@ -513,7 +514,6 @@
 		E9B2152B22F924DA004467E2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFF815C21533B2400534074 /* libz.tbd */; };
 		E9B2152C22F924DA004467E2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFF815621533B0000534074 /* CoreTelephony.framework */; };
 		E9B2152D22F924DA004467E2 /* JhtMarquee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB4A52922C354BA002A41DE /* JhtMarquee.framework */; };
-		E9B2152E22F924DA004467E2 /* libPods-JingYuDaiJieKuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B946B66BE6B7856A0D7F25 /* libPods-JingYuDaiJieKuan.a */; };
 		E9B2153022F924DA004467E2 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A2042C822A7542F0055E2E0 /* 12.jpg */; };
 		E9B2153122F924DA004467E2 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A2042C622A7542F0055E2E0 /* 8.jpg */; };
 		E9B2153222F924DA004467E2 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A2042CF22A7542F0055E2E0 /* 2.jpg */; };
@@ -846,10 +846,12 @@
 		26FB916D237A63F6002B9D3A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		26FB916E237A63F6002B9D3A /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		26FB916F237A63F6002B9D3A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3BD198AC8BC99946B8DBF60A /* Pods-JingYuDaiJieKuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingYuDaiJieKuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan.debug.xcconfig"; sourceTree = "<group>"; };
 		4509B6B52073605B00733F9F /* TransactionRecordsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionRecordsAPI.h; sourceTree = "<group>"; };
 		4509B6B62073605B00733F9F /* TransactionRecordsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordsAPI.m; sourceTree = "<group>"; };
 		454E0094207CA52700BC7DD0 /* CardVoucherAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardVoucherAPI.h; sourceTree = "<group>"; };
 		454E0095207CA52700BC7DD0 /* CardVoucherAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardVoucherAPI.m; sourceTree = "<group>"; };
+		5610991F7ACB66A0091BC225 /* Pods-JingYuDaiJieKuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingYuDaiJieKuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan.release.xcconfig"; sourceTree = "<group>"; };
 		5F1F550E2072080700644D69 /* AppGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGuideViewController.h; sourceTree = "<group>"; };
 		5F1F550F2072080700644D69 /* AppGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGuideViewController.m; sourceTree = "<group>"; };
 		5F1F551520720BE800644D69 /* UserMessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMessageManager.h; sourceTree = "<group>"; };
@@ -1052,7 +1054,6 @@
 		5FD14EC1207CA656003C1785 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		5FD14EC2207CA656003C1785 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		65B946B66BE6B7856A0D7F25 /* libPods-JingYuDaiJieKuan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JingYuDaiJieKuan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		66EDE5F66215FCA559328C96 /* Pods-JingYuDaiJieKuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingYuDaiJieKuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan.debug.xcconfig"; sourceTree = "<group>"; };
 		9C3E0E1E22CB4457004D57A9 /* JingYuDaiJieKuan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JingYuDaiJieKuan-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C3E0E2122CB4482004D57A9 /* ProductItemSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemSearchVC.swift; sourceTree = "<group>"; };
 		9C3E0E2422CB4D35004D57A9 /* ProductItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductItemViewModel.h; sourceTree = "<group>"; };
@@ -1115,7 +1116,6 @@
 		DAB4A52822C354BA002A41DE /* CMTPaoMaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTPaoMaView.h; sourceTree = "<group>"; };
 		DAB4A52922C354BA002A41DE /* JhtMarquee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JhtMarquee.framework; sourceTree = "<group>"; };
 		DAB4A52A22C354BA002A41DE /* CMTPaoMaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTPaoMaView.m; sourceTree = "<group>"; };
-		E64790514593E6F93B76AF04 /* Pods-JingYuDaiJieKuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingYuDaiJieKuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan.release.xcconfig"; sourceTree = "<group>"; };
 		E916DF6E2319304900D6DAA5 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		E916DF6F2319304900D6DAA5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E916DF722319307A00D6DAA5 /* BrowseHistory+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowseHistory+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1190,6 +1190,7 @@
 				0AFF815721533B0000534074 /* CoreTelephony.framework in Frameworks */,
 				DAB4A52B22C354BA002A41DE /* JhtMarquee.framework in Frameworks */,
 				767895E5BCD4833B9651775D /* libPods-JingYuDaiJieKuan.a in Frameworks */,
+				714B065A14CA80296191E27E /* libPods-JingYuDaiJieKuan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,7 +1205,6 @@
 				E9B2152B22F924DA004467E2 /* libz.tbd in Frameworks */,
 				E9B2152C22F924DA004467E2 /* CoreTelephony.framework in Frameworks */,
 				E9B2152D22F924DA004467E2 /* JhtMarquee.framework in Frameworks */,
-				E9B2152E22F924DA004467E2 /* libPods-JingYuDaiJieKuan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1669,8 +1669,8 @@
 		598FCC10092A3792E4454D4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				66EDE5F66215FCA559328C96 /* Pods-JingYuDaiJieKuan.debug.xcconfig */,
-				E64790514593E6F93B76AF04 /* Pods-JingYuDaiJieKuan.release.xcconfig */,
+				3BD198AC8BC99946B8DBF60A /* Pods-JingYuDaiJieKuan.debug.xcconfig */,
+				5610991F7ACB66A0091BC225 /* Pods-JingYuDaiJieKuan.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2585,11 +2585,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9B2154822F924DA004467E2 /* Build configuration list for PBXNativeTarget "FenQiLe" */;
 			buildPhases = (
-				E9B2145922F924DA004467E2 /* [CP] Check Pods Manifest.lock */,
 				E9B2145A22F924DA004467E2 /* Sources */,
 				E9B2152622F924DA004467E2 /* Frameworks */,
 				E9B2152F22F924DA004467E2 /* Resources */,
-				E9B2154722F924DA004467E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2743,23 +2741,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/KeyboardTextFieldDemo/IQKeyBoardManager/IQKeyboardManager.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/JSBadgeView/JSBadgeView.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
-				"${PODS_ROOT}/SensorsAnalyticsSDK/SensorsAnalyticsSDK/SensorsAnalyticsSDK.bundle",
-				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSBadgeView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SensorsAnalyticsSDK.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2782,52 +2769,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E9B2145922F924DA004467E2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JingYuDaiJieKuan-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E9B2154722F924DA004467E2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/KeyboardTextFieldDemo/IQKeyBoardManager/IQKeyboardManager.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/JSBadgeView/JSBadgeView.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
-				"${PODS_ROOT}/SensorsAnalyticsSDK/SensorsAnalyticsSDK/SensorsAnalyticsSDK.bundle",
-				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JSBadgeView.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SensorsAnalyticsSDK.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JingYuDaiJieKuan/Pods-JingYuDaiJieKuan-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3447,7 +3388,7 @@
 		};
 		5F323AA9205F582500995197 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66EDE5F66215FCA559328C96 /* Pods-JingYuDaiJieKuan.debug.xcconfig */;
+			baseConfigurationReference = 3BD198AC8BC99946B8DBF60A /* Pods-JingYuDaiJieKuan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3487,7 +3428,7 @@
 		};
 		5F323AAA205F582500995197 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64790514593E6F93B76AF04 /* Pods-JingYuDaiJieKuan.release.xcconfig */;
+			baseConfigurationReference = 5610991F7ACB66A0091BC225 /* Pods-JingYuDaiJieKuan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3526,7 +3467,6 @@
 		};
 		E9B2154922F924DA004467E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66EDE5F66215FCA559328C96 /* Pods-JingYuDaiJieKuan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3563,7 +3503,6 @@
 		};
 		E9B2154A22F924DA004467E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64790514593E6F93B76AF04 /* Pods-JingYuDaiJieKuan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
