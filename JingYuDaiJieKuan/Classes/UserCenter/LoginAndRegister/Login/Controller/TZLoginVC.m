@@ -394,7 +394,7 @@
 /// textFiled改变的通知
 - (void)textFiledEditChanged:(NSNotification *)obj
 {
-    self.m_nextBtn.effective = ([self.m_iphoneField.text length] == 11) && ([self.m_passwordField.text length] == msgMaxlength);
+    self.m_nextBtn.effective = ([self.m_iphoneField.text length] == 11) && ([self.m_passwordField.text length] >= 4);
 }
 
 - (BOOL)checkInfo
