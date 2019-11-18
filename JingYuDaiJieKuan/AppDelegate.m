@@ -33,6 +33,7 @@
 #import "HomePageModel.h"
 #import "BufferedNavigationController.h"
 #import "TZLoginVC.h"
+#import "LLDebug.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -73,7 +74,10 @@ void UncaughtExceptionHandler(NSException *exception){
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    #ifdef DEBUG
+         [[LLDebugTool sharedTool] startWorking];
+    #else
+    #endif
     //神策埋点初始化(涉及神策监听方法,所以一定要直接放在didFinishLaunchingWithOptions,不能放在回调中)
     NSString *userId = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_ID];
     [SensorsAnalyticsSDKHelper registerSensorsAnalyticsWithLaunchOptions:launchOptions distinctId:userId];

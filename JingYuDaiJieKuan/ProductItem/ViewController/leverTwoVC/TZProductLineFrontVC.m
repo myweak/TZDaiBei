@@ -119,7 +119,7 @@
 
              NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=on%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-             NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",SERVER_URL,THTML_essentialInfo_api,strName];
+             NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
         [self PushToBaseWebViewControllerUrl:urlStr andTitle:model.name];
         return;
     }

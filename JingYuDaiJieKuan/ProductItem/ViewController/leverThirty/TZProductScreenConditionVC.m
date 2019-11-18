@@ -234,9 +234,9 @@
     
     NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
     
-    NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@& productInfo=off%@",phone,model.proId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=off%@",phone,model.proId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",SERVER_URL,THTML_essentialInfo_api,strName];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
     
     [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"智能匹配"];
     

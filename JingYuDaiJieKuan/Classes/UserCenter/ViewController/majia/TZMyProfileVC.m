@@ -143,14 +143,14 @@
         
     }else  if ([title isEqualToString: @"邮箱地址"]) {
         NSString *eMail = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_EMail];
-        cell.rightSubLabel.text = eMail;
+        cell.rightSubLabel.text = checkStrEmty(eMail) ?@"填写QQ邮箱审批更快":eMail;
     }else  if ([title isEqualToString: @"性别"]) {
         NSString *gender = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_GENDER];
-        cell.rightSubLabel.text = gender;
+        cell.rightSubLabel.text = checkStrEmty(gender) ?@" 未填写":gender;
         
     }else  if ([title isEqualToString: @"教育程度"]) {
         NSString *edu = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_EDUCATION];
-        cell.rightSubLabel.text = edu;
+        cell.rightSubLabel.text = checkStrEmty(edu) ?@" 未填写":edu;
     }
     return cell;
     
@@ -159,7 +159,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *title = self.titleArr[indexPath.row] ;
     if ([title isEqualToString: @"个人手机"]) {
-        
     }else  if ([title isEqualToString: @"邮箱地址"]) {
         TZEditUserTextFiedldVC *editVc = [TZEditUserTextFiedldVC new];
         editVc.title = @"邮箱设置";

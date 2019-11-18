@@ -181,7 +181,7 @@
             break;
         case 11: // 协议
         {
-            NSString *urlStr = [NSString stringWithFormat:@"%@%@",SERVER_URL,userServiceProtocol];
+            NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,userServiceProtocol];
             BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
             targetVC.url = urlStr;
             targetVC.title = @"注册协议";
@@ -195,7 +195,7 @@
             break;
         case 22: // 客户隐私 协议
         {
-            NSString *urlStr = [NSString stringWithFormat:@"%@%@",SERVER_URL,customerPrivacyPolicy];
+            NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,customerPrivacyPolicy];
 
             BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
             targetVC.url = urlStr;

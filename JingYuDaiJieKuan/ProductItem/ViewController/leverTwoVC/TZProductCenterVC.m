@@ -34,8 +34,24 @@
     [self addChilPageVC];
 }
 - (void)bindSignal{
+    [self showUserMessageView];
     self.scrollView.contentOffset = CGPointMake(kScreenWidth *self.pageIndex, 0);
+}
+
+// 提示骚扰弹框
+- (void)showUserMessageView{
     
+    NSString *idKey = [NSString stringWithFormat:@"message_%@",kUserMessageManager.phone];
+    BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
+    // 随10 的 机数概率判断
+    BOOL numb = (arc4random() % 10) == 5;
+    
+    if ((!hadSave && self.pageIndex == 0) ||
+        (numb && self.pageIndex == 0)) {
+        [[[TZShowAlertView alloc] initWithAlerTitle:@"温馨提示" Content:@"建议申请5个以上产品，成功率提升95%！" buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {
+            [TZUserDefaults saveBoolValueInUD:YES forKey:idKey];
+        }] show];
+    }
 }
 
 - (void)addChilPageVC{
@@ -73,14 +89,14 @@
     }
     UIViewController *vc = [self.pageChildVCArr objectAtIndex:1];
     [(TZProductLinebackBankVC *)vc resignTextFieldFirstResponder];
-    
+    [self showUserMessageView];
 }
 
 - (void)addTopSegmentedBtnViewWithIndex:(NSInteger) index{
     
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, KTopSegmentedView_H)];
     topView.userInteractionEnabled = YES;
-   
+    
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.frame = CGRectMake(0, 0, kScreenWidth/2.0f, KTopSegmentedView_H);
@@ -118,7 +134,7 @@
     
     
     self.topSegmentBtnArr = @[leftBtn,rightBtn];
-
+    
     [leftBtn addLine_bottom];
     [rightBtn addLine_bottom];
     

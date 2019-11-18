@@ -471,7 +471,7 @@
         @weakify(self)
         _m_selectView.backFilterClickBlock = ^(NSInteger tags, TZProductScreenConditionDateModel *model, TZLoanDataModel *workModel, TZLoanDataModel *typeModel) {
             @strongify(self)
-            self.condiTionListModel = model;
+            self.condiTionListModel = [model mutableCopy];
             self.m_selectView.hidden = YES;
             [self choseSort:@[workModel,typeModel] andIndex:0];
         };

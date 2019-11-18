@@ -176,6 +176,96 @@ typedef enum : NSUInteger
 //时间戳 得到的时间戳是毫秒
 #define INTERVAL_STRING [NSString stringWithFormat:@"%lf",[[NSDate date] timeIntervalSince1970] * 1000]
 
+
+
+/**
+runtime实现通用copy
+*/
+#define tz_CopyWithZone \
+- (id)copyWithZone:(NSZone *)zone {\
+    id obj = [[[self class] allocWithZone:zone] init];\
+    Class class = [self class];\
+    while (class != [NSObject class]) {\
+        unsigned int count;\
+        Ivar *ivar = class_copyIvarList(class, &count);\
+        for (int i = 0; i < count; i++) {\
+            Ivar iv = ivar[i];\
+            const char *name = ivar_getName(iv);\
+            NSString *strName = [NSString stringWithUTF8String:name];\
+            id value = [[self valueForKey:strName] copy];\
+            [obj setValue:value forKey:strName];\
+        }\
+        free(ivar);\
+        class = class_getSuperclass(class);\
+    }\
+    return obj;\
+}\
+\
+-(id)mutableCopyWithZone:(NSZone *)zone{\
+    id obj = [[[self class] allocWithZone:zone] init];\
+    Class class = [self class];\
+    while (class != [NSObject class]) {\
+        unsigned int count;\
+        Ivar *ivar = class_copyIvarList(class, &count);\
+        for (int i = 0; i < count; i++) {\
+            Ivar iv = ivar[i];\
+            const char *name = ivar_getName(iv);\
+            NSString *strName = [NSString stringWithUTF8String:name];\
+            id value = [[self valueForKey:strName] copy];\
+            [obj setValue:value forKey:strName];\
+        }\
+        free(ivar);\
+        class = class_getSuperclass(class);\
+    }\
+    return obj;\
+}\
+\
+
+/**
+ 二、runtime实现通用
+ 归档的实现
+ */
+
+#define tz_CodingImplementation \
+- (void)encodeWithCoder:(NSCoder *)aCoder \
+{ \
+unsigned int outCount = 0; \
+Ivar * vars = class_copyIvarList([self class], &outCount); \
+for (int i = 0; i < outCount; i++) { \
+    Ivar var = vars[i]; \
+    const char * name = ivar_getName(var); \
+    NSString * key = [NSString stringWithUTF8String:name]; \
+    id value = [self valueForKey:key]; \
+    if (value) { \
+        [aCoder encodeObject:value forKey:key]; \
+    } \
+} \
+} \
+\
+- (instancetype)initWithCoder:(NSCoder *)aDecoder \
+{ \
+    if (self = [super init]) { \
+        unsigned int outCount = 0; \
+        Ivar * vars = class_copyIvarList([self class], &outCount); \
+        for (int i = 0; i < outCount; i++) { \
+            Ivar var = vars[i]; \
+            const char * name = ivar_getName(var); \
+            NSString * key = [NSString stringWithUTF8String:name]; \
+            id value = [aDecoder decodeObjectForKey:key]; \
+            if (value) { \
+                [self setValue:value forKey:key]; \
+            } \
+        } \
+    } \
+    return self; \
+}
+
+
+
+
+
+
+
 CG_INLINE CGFloat
 AutoCGRectGetMinX(CGRect rect)
 {

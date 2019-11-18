@@ -44,7 +44,7 @@ pod 'UMCShare/UI'
 
 pod 'SnapKit'
 pod 'SensorsAnalyticsSDK'
-
+pod 'LLDebugTool' , '1.3.6' #,:configurations => ['Debug']
 # new
 #pod'SDCycleScrollView
 

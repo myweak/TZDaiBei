@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Jincaishen. All rights reserved.
 //
 
+#define KJSToAPP_POPVC @"jsToAppPop" // 退出web 标识 与H5同步
+
 #import "BaseWebViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "AssetsNoDataView.h"
@@ -58,6 +60,7 @@
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
+    
     NSString * urlStr = self.url;
     
     ///判断是自己的网址才需要拼接token
@@ -119,6 +122,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.webView.configuration.userContentController addScriptMessageHandler:self name:KJSToAPP_POPVC];
+
     [self.webView.configuration.userContentController addScriptMessageHandler:self name:@"getToken"];
     [self.webView.configuration.userContentController addScriptMessageHandler:self name:@"getBasicParams"];
     [self.webView.configuration.userContentController addScriptMessageHandler:self name:@"pushNewWebPage"];
@@ -142,7 +147,9 @@
     //        [self.webView stopLoading];
     //        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     //    }
-    
+//    doOk()
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:KJSToAPP_POPVC];
+
     [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"getToken"];
     [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"getBasicParams"];
     [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"pushNewWebPage"];
@@ -166,6 +173,7 @@
 //解决白屏的方法二: wkwebview白屏时有概率会调用这个方法
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{
     NSLog(@"白屏啦");
+    [SVProgressHUD dismiss];
     [self.webView loadRequest:self.URLRequest];
 }
 
@@ -258,6 +266,12 @@
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     
     kSelfWeak;
+    if ([message.name isEqualToString:KJSToAPP_POPVC]) {
+        NSLog(@"%@ -- %@", message.name, message.body);
+        [SVProgressHUD dismiss];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     //网页内部跳转  //getBasicParams
     if ([message.name isEqualToString:@"getToken"]) {
         NSString *token = [NSString stringWithFormat:@"getToken('%@')",[kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN]];

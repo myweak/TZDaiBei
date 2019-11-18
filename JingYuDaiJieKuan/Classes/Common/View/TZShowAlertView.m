@@ -11,7 +11,7 @@
 #define KSelfAlert_W (self.width-KContent_X*2)
 #define KAnimateDuration     0.25   //  弹框动画时间
 #define Kbutton_H            49.f  //buttonArrays 按钮高度
-#define SPACE                25.0f // 左边间隙
+#define SPACE                15.0f // 左边间隙
 
 #import "TZShowAlertView.h"
 #import "TZNotNetworkView.h" // 无网络View
@@ -79,14 +79,16 @@
             [button setTitle:buttonArrays[i] forState:UIControlStateNormal];
             [button.titleLabel setFont:kFontSize17];
             [button setTag:i];
-            button.layer.cornerRadius = 5.0f;
+//            button.layer.cornerRadius = 5.0f;
             button.userInteractionEnabled =YES;
             [button addTarget:self action:@selector(buttonClickedAction:) forControlEvents:UIControlEventTouchUpInside];
             
             UIColor *titleColor = nil;
             if (i == buttonIndex) {
-                titleColor = [UIColor blueColor] ;
+                titleColor = [UIColor whiteColor] ;
+                button.backgroundColor = Bg_Btn_Colorblue;
             } else {
+                button.backgroundColor = [UIColor whiteColor];
                 titleColor =  CP_ColorMBlack ;
             }
             [button setTitleColor:titleColor forState:UIControlStateNormal];
@@ -189,8 +191,8 @@
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.alertView.width, 44)];
-        _titleLabel.font = kFontSize17;
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.font = kFontSize15;
+        _titleLabel.textColor = CP_ColorMBlack;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.numberOfLines = 1;
     }
@@ -198,17 +200,17 @@
 }
 -(UILabel *)contentLabel{
     if (!_contentLabel) {
-        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(SPACE,self.titleLabel.bottom+SPACE,self.titleLabel.width-2*SPACE,20)];
-        _contentLabel.font = kFontSize16;
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(SPACE,self.titleLabel.bottom+SPACE,self.alertView.width-2*SPACE,20)];
+        _contentLabel.font = kFontSize12;
         _contentLabel.textColor = CP_ColorMBlack;
-        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.textAlignment = NSTextAlignmentCenter;
         _contentLabel.numberOfLines = 0;
     }
     return _contentLabel;
 }
 -(UIView *)alertView{
     if(!_alertView){
-        CGFloat alertView_W = kScreenWidth - 15*2;
+        CGFloat alertView_W = kScreenWidth - iPW(63)*2;
         CGFloat alertView_H = 216;
         _alertView = [[UIView alloc]init];
         _alertView.size = CGSizeMake(alertView_W, alertView_H);

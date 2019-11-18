@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -165,6 +165,7 @@
 		26E7C417236BDF58007EF5D4 /* TZUserEditChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E7C416236BDF58007EF5D4 /* TZUserEditChooseVC.m */; };
 		26E7C41E236BE0D0007EF5D4 /* TZUserEditChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E7C41C236BE0D0007EF5D4 /* TZUserEditChooseCell.m */; };
 		26E7C41F236BE0D0007EF5D4 /* TZUserEditChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E7C41D236BE0D0007EF5D4 /* TZUserEditChooseCell.xib */; };
+		26F38A0523824AC9003905CB /* TZUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F38A0423824AC9003905CB /* TZUserDefaults.m */; };
 		26FB9170237A63F6002B9D3A /* MZKeyboardDetectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB916C237A63F6002B9D3A /* MZKeyboardDetectManager.m */; };
 		26FB9171237A63F6002B9D3A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB916D237A63F6002B9D3A /* SVProgressHUD.m */; };
 		26FB9172237A63F6002B9D3A /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FB916E237A63F6002B9D3A /* SVIndefiniteAnimatedView.m */; };
@@ -839,6 +840,8 @@
 		26E7C41B236BE0D0007EF5D4 /* TZUserEditChooseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZUserEditChooseCell.h; sourceTree = "<group>"; };
 		26E7C41C236BE0D0007EF5D4 /* TZUserEditChooseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZUserEditChooseCell.m; sourceTree = "<group>"; };
 		26E7C41D236BE0D0007EF5D4 /* TZUserEditChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZUserEditChooseCell.xib; sourceTree = "<group>"; };
+		26F38A0323824AC9003905CB /* TZUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZUserDefaults.h; sourceTree = "<group>"; };
+		26F38A0423824AC9003905CB /* TZUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZUserDefaults.m; sourceTree = "<group>"; };
 		26FB9169237A63F6002B9D3A /* MZKeyboardDetectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZKeyboardDetectManager.h; sourceTree = "<group>"; };
 		26FB916A237A63F6002B9D3A /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		26FB916B237A63F6002B9D3A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -1893,6 +1896,8 @@
 				5F41B5B720902F4200D65A8A /* AssetsNoDataView.m */,
 				9CE7344A22CF2E4F0057AC96 /* AdWebViewController.h */,
 				9CE7344B22CF2E4F0057AC96 /* AdWebViewController.m */,
+				26F38A0323824AC9003905CB /* TZUserDefaults.h */,
+				26F38A0423824AC9003905CB /* TZUserDefaults.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2880,6 +2885,7 @@
 				2676DA092367FB4F00FDAAC2 /* TZHomeBodyCell.m in Sources */,
 				DA137A2122CB8312005A7AB0 /* RootCollectionCell.m in Sources */,
 				0A72C8BD207F5C5400FC9972 /* JZLocationConverter.m in Sources */,
+				26F38A0523824AC9003905CB /* TZUserDefaults.m in Sources */,
 				5F323B97205FC5DA00995197 /* CALayer+FSUI.m in Sources */,
 				26A4EA5523696EFF002A6AA6 /* TZLoginVC.m in Sources */,
 				5F323B37205F8BB400995197 /* NSDate+Category.m in Sources */,

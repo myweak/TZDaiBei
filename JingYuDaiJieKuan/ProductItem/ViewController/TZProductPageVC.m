@@ -409,7 +409,7 @@
                 
                 NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
                 NSString *strName =  [[NSString stringWithFormat:@"phone=%@",phone] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",SERVER_URL,HTML_creditRepair_api,strName];
+                NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,HTML_creditRepair_api,strName];
                 [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"征信修复咨询"];
             }
         };

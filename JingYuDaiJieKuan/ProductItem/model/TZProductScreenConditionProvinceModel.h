@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TZProductScreenConditionProvinceModel : BaseModel
+@interface TZProductScreenConditionProvinceModel : BaseModel<NSCopying,NSMutableCopying>
 @property (nonatomic, strong) NSArray * list;
 
 @end
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TZLoanDataModel :NSObject // 贷款日期
+@interface TZLoanDataModel :NSObject<NSCopying,NSMutableCopying> // 贷款日期
 @property (nonatomic, copy) NSString * ID;
 @property (nonatomic, copy) NSString * dictValue;
 @property (nonatomic, copy) NSString * dictKey;

@@ -170,7 +170,7 @@
         
     }else if ([title isEqualToString:@"隐私政策"]){
         
-        NSString *urlStr = [NSString stringWithFormat:@"%@%@",SERVER_URL,userPrivacyProPolicy];
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,userPrivacyProPolicy];
         
         BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
         targetVC.url = urlStr;

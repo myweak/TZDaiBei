@@ -70,7 +70,9 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import "UITableViewCell+NATools.h"
 #import "NSMutableArray+Additions.h"
 #import "SVProgressHUD.h"
-
+#import <objc/runtime.h>
+#import "TZShowAlertView.h"
+#import "TZUserDefaults.h"
 
 /***************************模块接口****************************/
 #import "HttpManager.h"
@@ -119,11 +121,13 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 ///app 模板id  1为橙色模板,2为蓝色模板
 #define kTemplateId 1
 /***************************环境切换****************************/
+#define Kwap_hot   1 // 0:本地
 
 
 
 //根据模板名取对应的宏
 #if kTemplateId == 1
+
 ///app模板名
 #define kTplKey @"orange"
 ///app渠道名
@@ -141,21 +145,24 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 
 // 正式机
 #define SERVER_URL @"http://112.74.53.99:8005/"
+//#define SERVER_URL @"http://192.168.1.135:8001/" //本地地址
+
 #define HTTPS_type 1
 #define VERSION_URL @"1.0.0"
 #define WAP_URL @"http://192.168.28.99:9013/report/2017/index.html"
-#define WAP_PHOTOURL   @"https://p2p.jingyubao.com/"
+#define WAP_PHONEURL  SERVER_URL
 
 #else
 
 // 开发机
 #define SERVER_URL @"http://112.74.53.99:8005/"
-//本地地址@"http://192.168.1.135:8001/"
-//#define SERVER_URL @"https://marketapi-test.orangedai.com/" //。以前的 不用了
+//#define SERVER_URL @"http://192.168.1.135:8001/" //本地地址
 #define HTTPS_type 1
 #define VERSION_URL @"1.0.0"
 #define WAP_URL @"http://192.168.28.99:9013/report/2017/index.html"
-#define WAP_PHOTOURL   @"http://p2p.jingyubao.com/"
+
+//#define WAP_PHONEURL   @"http://192.168.1.135:8001/" //本地地址
+#define WAP_PHONEURL   SERVER_URL
 
 #endif
 
