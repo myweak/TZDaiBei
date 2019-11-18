@@ -43,11 +43,14 @@
     
     NSString *idKey = [NSString stringWithFormat:@"message_%@",kUserMessageManager.phone];
     BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
-    // 随10 的 机数概率判断
-    BOOL numb = (arc4random() % 10) == 5;
+    // 随5 的 机数概率判断
+    BOOL numb =  (arc4random() % 5)== 4;
     
-    if ((!hadSave && self.pageIndex == 0) ||
-        (numb && self.pageIndex == 0)) {
+    // 神经体验
+    hadSave = YES;
+    numb = YES;
+    
+    if ((!hadSave || numb) && self.pageIndex == 0) {
         [[[TZShowAlertView alloc] initWithAlerTitle:@"温馨提示" Content:@"建议申请5个以上产品，成功率提升95%！" buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {
             [TZUserDefaults saveBoolValueInUD:YES forKey:idKey];
         }] show];

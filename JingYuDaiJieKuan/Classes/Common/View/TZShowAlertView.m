@@ -6,9 +6,8 @@
 //  Copyright © 2019 Jincaishen. All rights reserved.
 //
 #define KAlphaViewBgColor [UIColor colorWithWhite:0 alpha:.6]
-#define KContent_X   40.f
+#define KContent_X   iPW(63)
 #define Kcontent_Top 123
-#define KSelfAlert_W (self.width-KContent_X*2)
 #define KAnimateDuration     0.25   //  弹框动画时间
 #define Kbutton_H            49.f  //buttonArrays 按钮高度
 #define SPACE                15.0f // 左边间隙
@@ -191,7 +190,7 @@
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.alertView.width, 44)];
-        _titleLabel.font = kFontSize15;
+        _titleLabel.font = kFontSize18;
         _titleLabel.textColor = CP_ColorMBlack;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.numberOfLines = 1;
@@ -201,7 +200,7 @@
 -(UILabel *)contentLabel{
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(SPACE,self.titleLabel.bottom+SPACE,self.alertView.width-2*SPACE,20)];
-        _contentLabel.font = kFontSize12;
+        _contentLabel.font = kFontSize15;
         _contentLabel.textColor = CP_ColorMBlack;
         _contentLabel.textAlignment = NSTextAlignmentCenter;
         _contentLabel.numberOfLines = 0;
@@ -210,7 +209,7 @@
 }
 -(UIView *)alertView{
     if(!_alertView){
-        CGFloat alertView_W = kScreenWidth - iPW(63)*2;
+        CGFloat alertView_W = kScreenWidth -  KContent_X*2;
         CGFloat alertView_H = 216;
         _alertView = [[UIView alloc]init];
         _alertView.size = CGSizeMake(alertView_W, alertView_H);
