@@ -450,6 +450,9 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
         {
             NSString *json = [HttpManager jsonString:responseDistionary];
             DLog(@"json=%@",json);
+            if ([[responseDistionary valueForKey:@"code"]intValue] !=200) {
+                DLog(@"\n\n\nlaoxiao⚠️⚠️⚠️⚠️⚠️code:%@\n\n\n",[responseDistionary valueForKey:@"code"]);
+            }
             if ([[responseDistionary valueForKey:@"code"]intValue] == 105002 || [[responseDistionary valueForKey:@"code"]intValue] == 105001) {// 105001：token 错误 ； 105001：token失效
                 [kUserMessageManager removeDataWhenLogout];
                 
@@ -586,7 +589,7 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
         //        id dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //
         NSString *josn = [responseObject yy_modelToJSONString];
-        DLog(@"\nrequestUrl= %@ ,\n------>api= %@ ,\nparams=%@ ,\njson=%@",requestUrl,api,jsonStr,josn);
+        DLog(@"\nLAOXIAOrequestUrl= %@ ,\n------>api= %@ ,\nparams=%@ ,\njson=%@",requestUrl,api,jsonStr,josn);
         
         id dict = [HttpManager ensResponseData:responseData];
         if ([responseObject isKindOfClass:[NSError class]]) {

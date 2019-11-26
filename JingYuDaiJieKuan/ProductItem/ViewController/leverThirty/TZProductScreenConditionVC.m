@@ -15,6 +15,7 @@
 #import "QZConditionFilterView.h"
 #import "TZProductScreenConditionProvinceModel.h"
 
+
 @interface TZProductScreenConditionVC ()<UITableViewDelegate,UITableViewDataSource>
 // 顶部view
 @property (nonatomic, strong) QZConditionFilterView *conditionFilterView;
@@ -165,6 +166,25 @@
     }];
 }
 
+
+// 添加用户点击产品信息 统计
+- (void)postSaveProductClickUrlWithIndexModel:(TZProductOfflineInfoModel*)model{
+    @weakify(self)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setObject:model.proId forKey:@"pid"];//产品id
+    [params setObject:model.title forKey:@"pname"];//产品名
+    [params setObject:@(2) forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setObject:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+
+    
+    [ProductItemViewModel getOfflineInfoPath:API_saveProductClick_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
+        
+    } failure:^(NSError * _Nonnull error) {
+   
+        
+    }];
+}
 // 贷款周期筛选条件
 - (void)postConditonDateUrl{
     @weakify(self)
@@ -238,6 +258,7 @@
     
     NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
     
+    [self postSaveProductClickUrlWithIndexModel:model];
     [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"智能匹配"];
     
 }

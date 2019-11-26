@@ -5,10 +5,10 @@
 //  Created by TianZe on 2019/11/2.
 //  Copyright © 2019 Jincaishen. All rights reserved.
 //
-#define KSpeed_title     @"快速通道"
-#define KSpeed_cell      @"快速通道cell"
-#define KFlow_title      @"办理流程"
-#define KFlow_cell       @"办理流程cell"
+#define KSpeed_title        @"快速通道"
+#define KSpeed_cell         @"快速通道cell"
+#define KFlow_title         @"办理流程"
+#define KFlow_cell          @"办理流程cell"
 #define KDevelop_title      @"经营模式"
 #define KDevelop_cell       @"经营模式cell"
 #import "TZProductLinebackBankVC.h"

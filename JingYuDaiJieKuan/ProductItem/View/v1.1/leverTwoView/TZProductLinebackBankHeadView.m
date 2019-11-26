@@ -16,6 +16,7 @@
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.moneyTextField.placeholder attributes:@{NSForegroundColorAttributeName:UIColorRGBA(255, 255, 255, 0.5),NSFontAttributeName:self.moneyTextField.font}];
         self.moneyTextField.attributedPlaceholder = attrString;
     [self.moneyTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:(UIControlEventEditingChanged)];
+    self.moneyTextField.delegate = self;
     
 }
 -(void)textFieldChange:(UITextField *)textField{
@@ -25,6 +26,14 @@
         showMessage(@"最高可贷额度为100000000元");
     }
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (checkStrEmty(text)) {
+        return YES;
+    }
+    return [NSString JudgeWithdawalMoney:text];
+}
+
 - (IBAction)tapBtnAcion:(id)sender {
     !self.backBtnTapAction ?:self.backBtnTapAction((UIButton *)sender);
 }

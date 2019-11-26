@@ -43,7 +43,6 @@
     [self setNavBar];
     [self bindSignal];
     [self refreshData];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

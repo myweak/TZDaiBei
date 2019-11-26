@@ -56,6 +56,24 @@
     [self.view addSubview:self.m_tableView];
 }
 
+// 添加用户点击产品信息 统计
+- (void)postSaveProductClickUrlWithIndexModel:(TZProductBankModel*)model{
+    @weakify(self)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setObject:model.merchartid forKey:@"pid"];//产品id
+    [params setObject:model.name forKey:@"pname"];//产品名
+    [params setObject:@(1) forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setObject:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+
+    
+    [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
+        
+    } failure:^(NSError * _Nonnull error) {
+   
+        
+    }];
+}
 // 线上极速贷款 数据
 - (void)posthomeLastAllPathUrl{
     @weakify(self)
@@ -104,7 +122,7 @@
     cell.model = model;
     cell.backTapBtnActionBlock = ^(UIButton * _Nonnull btn) {
      @strongify(self)
-        [self PushToBaseWebViewControllerUrl:model.url andTitle:model.name];
+//        [self PushToBaseWebViewControllerUrl:model.url andTitle:model.name];
     };
     return cell;
 }
@@ -120,9 +138,11 @@
              NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=on%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
              NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
+        [self postSaveProductClickUrlWithIndexModel:model];
         [self PushToBaseWebViewControllerUrl:urlStr andTitle:model.name];
         return;
     }
+    [self postSaveProductClickUrlWithIndexModel:model];
     [self PushToBaseWebViewControllerUrl:model.url andTitle:model.name];
 
 }

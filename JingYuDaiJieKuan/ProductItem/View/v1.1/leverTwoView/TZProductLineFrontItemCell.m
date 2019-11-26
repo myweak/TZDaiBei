@@ -19,6 +19,8 @@
     [self.applyBtn setBackgroundImage:[UIImage imageWithColor:Bg_Btn_Colorblue] forState:UIControlStateNormal];
     [self.applyBtn setBackgroundImage:[UIImage imageWithColor:[@"#f0f0f0" getColor]] forState:UIControlStateDisabled];
     self.applyBtn.clipsToBounds = YES;
+    self.applyBtn.userInteractionEnabled = NO;
+    
 }
 - (IBAction)tapBtnAtion:(id)sender {
     !self.backTapBtnActionBlock ?:self.backTapBtnActionBlock((UIButton *)sender);

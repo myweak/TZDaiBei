@@ -71,3 +71,8 @@ NSString *const API_getTerm_path = @"/offline/screenCond/getTerm";
 
 /** 获取线下筛选条件*/
 NSString *const API_getScreeningConditions_path = @"/offline/screenCond/getScreeningConditions";
+
+/** 添加用户点击产品信息 */
+NSString *const API_saveProductClick_path = @"/offline/product/saveProductClick";
+
+

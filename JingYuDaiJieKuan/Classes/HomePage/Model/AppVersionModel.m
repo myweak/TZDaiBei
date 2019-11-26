@@ -12,7 +12,7 @@
 
 
 +(NSDictionary *)modelCustomPropertyMapper
-{
+{ 
     return @{@"indexTopNoticInfo":@"data.indexTopNoticInfo",
              @"register_protocol":@"data.protocol_urls.register_protocol",
              @"bindcard_protocol":@"data.protocol_urls.bindcard_protocol",

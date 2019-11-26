@@ -246,7 +246,7 @@
         self.m_selectView.hidden = NO;
         self.m_selectView.top = star_top;
         self.m_selectView.height = iPH(330);
-        self.m_selectView.condiTionListModel = self.condiTionListModel;
+        self.m_selectView.condiTionListModel = [self.condiTionListModel copy];
         [[UIApplication sharedApplication].keyWindow addSubview:self.m_selectView];
         
     }
@@ -356,10 +356,7 @@
     [_filterTableView1 dismiss];
     [_filterTableView2 dismiss];
     _filterTableView3.hidden = YES;
-    [_filterTableView3.textField resignFirstResponder];
-    if (!_m_selectView.hidden) {
-        [_m_selectView clickResetButton];
-    }
+
     _m_selectView.hidden = YES;
     //    [_filterTableView3 dismiss];
     //    [_m_selectView dismiss];
@@ -471,7 +468,7 @@
         @weakify(self)
         _m_selectView.backFilterClickBlock = ^(NSInteger tags, TZProductScreenConditionDateModel *model, TZLoanDataModel *workModel, TZLoanDataModel *typeModel) {
             @strongify(self)
-            self.condiTionListModel = [model mutableCopy];
+            self.condiTionListModel = model;
             self.m_selectView.hidden = YES;
             [self choseSort:@[workModel,typeModel] andIndex:0];
         };

@@ -9,6 +9,7 @@
 #import "StatusModel.h"
 
 @interface AdBannerModel: NSObject
+SINGLETON_FOR_HEADER(AdBannerModel)
 @property (nonatomic, copy) NSString *ad_id;
 @property (nonatomic, copy) NSString *ad_url;
 @property (nonatomic, copy) NSString *ad_name;

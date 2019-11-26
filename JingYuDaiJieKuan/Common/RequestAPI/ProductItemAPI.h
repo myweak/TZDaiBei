@@ -70,3 +70,6 @@ UIKIT_EXTERN NSString *const API_getTerm_path;
 
 /** 获取线下筛选条件*/
 UIKIT_EXTERN NSString *const API_getScreeningConditions_path;
+
+/** 添加用户点击产品信息 */
+UIKIT_EXTERN NSString *const API_saveProductClick_path;

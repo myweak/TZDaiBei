@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TZProductLinebackBankHeadView : TZXibNibView
+@interface TZProductLinebackBankHeadView : TZXibNibView<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (nonatomic, copy) void (^backBtnTapAction)(UIButton *btn);
 @end
