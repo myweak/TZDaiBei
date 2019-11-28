@@ -297,6 +297,12 @@
 
 #pragma mark - scrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offset_y = scrollView.contentOffset.y;
+    if (offset_y>self.headView.height-30) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    }else{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
     //    if (scrollView == self.m_tableView) {
     //        CGFloat offset_y = scrollView.contentOffset.y;
     //        if (offset_y < -KHeaderView_H) {
