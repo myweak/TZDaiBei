@@ -295,6 +295,7 @@
     BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
     targetVC.url = urlStr;
     targetVC.navigationItem.title = title;
+    targetVC.isShowBackView = YES;
     [self.navigationController pushViewController:targetVC animated:YES];
 }
 

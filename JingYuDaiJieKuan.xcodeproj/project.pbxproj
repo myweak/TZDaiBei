@@ -113,6 +113,12 @@
 		261FEF4823740DCA00121781 /* TZChooseProvinceAndCityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 261FEF4723740DCA00121781 /* TZChooseProvinceAndCityTableView.m */; };
 		262D5D56236D853D00C9429F /* TZProductLinebackBankHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D5D55236D853D00C9429F /* TZProductLinebackBankHeadView.m */; };
 		262D5D5A236D855700C9429F /* TZProductLinebackBankHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262D5D59236D855700C9429F /* TZProductLinebackBankHeadView.xib */; };
+		263C95DA239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C95D8239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m */; };
+		263C95DB239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263C95D9239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.xib */; };
+		263C95DF23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C95DD23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m */; };
+		263C95E023924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263C95DE23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib */; };
+		263C95E423924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C95E223924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m */; };
+		263C95E523924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263C95E323924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.xib */; };
 		2641AF9023698F4700209C06 /* UIView+Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AF8E23698F4700209C06 /* UIView+Line.m */; };
 		2641AF962369C8A000209C06 /* TZMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AF952369C8A000209C06 /* TZMineVC.m */; };
 		2641AF9A2369CA1F00209C06 /* TZMineRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AF982369CA1F00209C06 /* TZMineRowCell.m */; };
@@ -140,6 +146,12 @@
 		2676DA18236917BE00FDAAC2 /* TZHomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676DA17236917BE00FDAAC2 /* TZHomePageVC.m */; };
 		26A4EA5523696EFF002A6AA6 /* TZLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EA5323696EFF002A6AA6 /* TZLoginVC.m */; };
 		26A4EA5623696EFF002A6AA6 /* TZLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A4EA5423696EFF002A6AA6 /* TZLoginVC.xib */; };
+		26B5E6722391197C00C45FD4 /* TZMineHeaderCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E6712391197C00C45FD4 /* TZMineHeaderCardView.m */; };
+		26B5E6742391198E00C45FD4 /* TZMineHeaderCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5E6732391198E00C45FD4 /* TZMineHeaderCardView.xib */; };
+		26B5E67C2392004800C45FD4 /* TZMyFutureMoneyListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E67B2392004800C45FD4 /* TZMyFutureMoneyListVC.m */; };
+		26B5E67F2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E67E2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.m */; };
+		26B5E683239202BD00C45FD4 /* TZMyFutureMoneyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E681239202BD00C45FD4 /* TZMyFutureMoneyListCell.m */; };
+		26B5E684239202BD00C45FD4 /* TZMyFutureMoneyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5E682239202BD00C45FD4 /* TZMyFutureMoneyListCell.xib */; };
 		26E76140236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E7613F236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m */; };
 		26E76142236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E76141236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib */; };
 		26E76145236FB860003CCA28 /* TZProductLinebackBankFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E76144236FB860003CCA28 /* TZProductLinebackBankFlowView.m */; };
@@ -753,6 +765,15 @@
 		262D5D54236D853D00C9429F /* TZProductLinebackBankHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankHeadView.h; sourceTree = "<group>"; };
 		262D5D55236D853D00C9429F /* TZProductLinebackBankHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankHeadView.m; sourceTree = "<group>"; };
 		262D5D59236D855700C9429F /* TZProductLinebackBankHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankHeadView.xib; sourceTree = "<group>"; };
+		263C95D7239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyDetailNameCell.h; sourceTree = "<group>"; };
+		263C95D8239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyDetailNameCell.m; sourceTree = "<group>"; };
+		263C95D9239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZMyFutureMoneyDetailNameCell.xib; sourceTree = "<group>"; };
+		263C95DC23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyDetailContentCell.h; sourceTree = "<group>"; };
+		263C95DD23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyDetailContentCell.m; sourceTree = "<group>"; };
+		263C95DE23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZMyFutureMoneyDetailContentCell.xib; sourceTree = "<group>"; };
+		263C95E123924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyDetailCommentCell.h; sourceTree = "<group>"; };
+		263C95E223924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyDetailCommentCell.m; sourceTree = "<group>"; };
+		263C95E323924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZMyFutureMoneyDetailCommentCell.xib; sourceTree = "<group>"; };
 		2641AF8E23698F4700209C06 /* UIView+Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Line.m"; sourceTree = "<group>"; };
 		2641AF8F23698F4700209C06 /* UIView+Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Line.h"; sourceTree = "<group>"; };
 		2641AF942369C8A000209C06 /* TZMineVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMineVC.h; sourceTree = "<group>"; };
@@ -798,6 +819,16 @@
 		26A4EA5223696EFF002A6AA6 /* TZLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZLoginVC.h; sourceTree = "<group>"; };
 		26A4EA5323696EFF002A6AA6 /* TZLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZLoginVC.m; sourceTree = "<group>"; };
 		26A4EA5423696EFF002A6AA6 /* TZLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZLoginVC.xib; sourceTree = "<group>"; };
+		26B5E6702391197C00C45FD4 /* TZMineHeaderCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMineHeaderCardView.h; sourceTree = "<group>"; };
+		26B5E6712391197C00C45FD4 /* TZMineHeaderCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMineHeaderCardView.m; sourceTree = "<group>"; };
+		26B5E6732391198E00C45FD4 /* TZMineHeaderCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZMineHeaderCardView.xib; sourceTree = "<group>"; };
+		26B5E67A2392004800C45FD4 /* TZMyFutureMoneyListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyListVC.h; sourceTree = "<group>"; };
+		26B5E67B2392004800C45FD4 /* TZMyFutureMoneyListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyListVC.m; sourceTree = "<group>"; };
+		26B5E67D2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyDetailVC.h; sourceTree = "<group>"; };
+		26B5E67E2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyDetailVC.m; sourceTree = "<group>"; };
+		26B5E680239202BD00C45FD4 /* TZMyFutureMoneyListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMyFutureMoneyListCell.h; sourceTree = "<group>"; };
+		26B5E681239202BD00C45FD4 /* TZMyFutureMoneyListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMyFutureMoneyListCell.m; sourceTree = "<group>"; };
+		26B5E682239202BD00C45FD4 /* TZMyFutureMoneyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZMyFutureMoneyListCell.xib; sourceTree = "<group>"; };
 		26E7613E236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankSpeedItemView.h; sourceTree = "<group>"; };
 		26E7613F236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankSpeedItemView.m; sourceTree = "<group>"; };
 		26E76141236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankSpeedItemView.xib; sourceTree = "<group>"; };
@@ -2165,6 +2196,10 @@
 				26E7C413236BCA2B007EF5D4 /* TZEditUserTextFiedldVC.m */,
 				26E7C415236BDF58007EF5D4 /* TZUserEditChooseVC.h */,
 				26E7C416236BDF58007EF5D4 /* TZUserEditChooseVC.m */,
+				26B5E67A2392004800C45FD4 /* TZMyFutureMoneyListVC.h */,
+				26B5E67B2392004800C45FD4 /* TZMyFutureMoneyListVC.m */,
+				26B5E67D2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.h */,
+				26B5E67E2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2229,6 +2264,21 @@
 				26E7C41B236BE0D0007EF5D4 /* TZUserEditChooseCell.h */,
 				26E7C41C236BE0D0007EF5D4 /* TZUserEditChooseCell.m */,
 				26E7C41D236BE0D0007EF5D4 /* TZUserEditChooseCell.xib */,
+				26B5E6702391197C00C45FD4 /* TZMineHeaderCardView.h */,
+				26B5E6712391197C00C45FD4 /* TZMineHeaderCardView.m */,
+				26B5E6732391198E00C45FD4 /* TZMineHeaderCardView.xib */,
+				26B5E680239202BD00C45FD4 /* TZMyFutureMoneyListCell.h */,
+				26B5E681239202BD00C45FD4 /* TZMyFutureMoneyListCell.m */,
+				26B5E682239202BD00C45FD4 /* TZMyFutureMoneyListCell.xib */,
+				263C95D7239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.h */,
+				263C95D8239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m */,
+				263C95D9239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.xib */,
+				263C95DC23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.h */,
+				263C95DD23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m */,
+				263C95DE23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib */,
+				263C95E123924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.h */,
+				263C95E223924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m */,
+				263C95E323924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2669,9 +2719,11 @@
 				26E7AD2B236C635300264E87 /* TZProductQualityItemView.xib in Resources */,
 				26621799237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib in Resources */,
 				5F5BAA1A206C827800B732F4 /* homepage_test.png in Resources */,
+				263C95E523924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.xib in Resources */,
 				2676DA0F236802C500FDAAC2 /* TZHomeResultViewCell.xib in Resources */,
 				0A2042D822A754300055E2E0 /* 5.jpg in Resources */,
 				26E7AD3C236D2F2400264E87 /* TZProductNewsView.xib in Resources */,
+				263C95DB239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.xib in Resources */,
 				26E76147236FB86B003CCA28 /* TZProductLinebackBankFlowView.xib in Resources */,
 				2676DA0A2367FB4F00FDAAC2 /* TZHomeBodyCell.xib in Resources */,
 				0A2042DD22A754300055E2E0 /* 1.jpg in Resources */,
@@ -2679,6 +2731,7 @@
 				261FEF372373AA1400121781 /* tz_cho_sel@2x.png in Resources */,
 				0A2042D722A754300055E2E0 /* 4.jpg in Resources */,
 				0A2042DC22A754300055E2E0 /* 3.jpg in Resources */,
+				263C95E023924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib in Resources */,
 				26659F2C2375563B008854C2 /* LaunchView.xib in Resources */,
 				0A33E7B5207EF5B000012341 /* loading.gif in Resources */,
 				261FEF13237159EC00121781 /* TZProductScreenConditionItemCell.xib in Resources */,
@@ -2689,6 +2742,7 @@
 				261FEF332373A99400121781 /* tz_cho_nor@3x.png in Resources */,
 				261FEF322373A99400121781 /* tz_cho_nor@2x.png in Resources */,
 				261FEF2A2372696100121781 /* PR_filter_choice_top@3x.png in Resources */,
+				26B5E684239202BD00C45FD4 /* TZMyFutureMoneyListCell.xib in Resources */,
 				26A4EA5623696EFF002A6AA6 /* TZLoginVC.xib in Resources */,
 				261FEF362373AA1400121781 /* tz_cho_sel@3x.png in Resources */,
 				261FEF282372696100121781 /* PR_filter_choice@2x.png in Resources */,
@@ -2697,6 +2751,7 @@
 				0A125EF521ABC7210044BE06 /* manifest.plist in Resources */,
 				26E7AD17236C37C700264E87 /* TZProductPToPCell.xib in Resources */,
 				0A2042D322A754300055E2E0 /* 9.jpg in Resources */,
+				26B5E6742391198E00C45FD4 /* TZMineHeaderCardView.xib in Resources */,
 				0A2042D922A754300055E2E0 /* 7.jpg in Resources */,
 				5F2B9B3620638D3F00524617 /* NetworkEnvironment.plist in Resources */,
 				2601F4B5236C2B86005607DA /* TZProductHeaderView.xib in Resources */,
@@ -2814,6 +2869,8 @@
 				9CE7344922CF2BD00057AC96 /* CoreDataManager.m in Sources */,
 				0A0479AA22A50E1B005E157D /* HttpPropertyEntity.m in Sources */,
 				5F323B3E205F8BB500995197 /* UIImage+MyImage.m in Sources */,
+				26B5E683239202BD00C45FD4 /* TZMyFutureMoneyListCell.m in Sources */,
+				26B5E67C2392004800C45FD4 /* TZMyFutureMoneyListVC.m in Sources */,
 				0A1070B022C7415700614549 /* ProductItemHeadView.m in Sources */,
 				5F323B68205F9E9A00995197 /* StatusModel.m in Sources */,
 				262D5D56236D853D00C9429F /* TZProductLinebackBankHeadView.m in Sources */,
@@ -2850,6 +2907,8 @@
 				0A0479B722A512D5005E157D /* HomeAPIParameter.m in Sources */,
 				9CFCB11722CD95DC00DCBF54 /* CommonAPI.m in Sources */,
 				0A6135D72089C0AC00AE4044 /* SDWebImageManager+MJ.m in Sources */,
+				263C95DF23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m in Sources */,
+				263C95E423924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m in Sources */,
 				5F33A6342060E981006CCA9D /* UIViewController+Extend.m in Sources */,
 				0A6135D12089C0AC00AE4044 /* MJPhotoLoadingView.m in Sources */,
 				26FB9170237A63F6002B9D3A /* MZKeyboardDetectManager.m in Sources */,
@@ -2857,6 +2916,7 @@
 				0A1070BD22C750C700614549 /* UIColor+STMyIColor.m in Sources */,
 				E9F13954230A9ECF00BC5AB6 /* TheFirstHomePageCell.m in Sources */,
 				0A6135D82089C0AC00AE4044 /* MJPhotoBrowser.m in Sources */,
+				26B5E6722391197C00C45FD4 /* TZMineHeaderCardView.m in Sources */,
 				2641AFAB236A83D500209C06 /* TZShowAlertView.m in Sources */,
 				0A088AF422ADEEFC001FF532 /* DViewManager.m in Sources */,
 				0A0479B122A511F4005E157D /* HomeMainViewModel.m in Sources */,
@@ -2930,6 +2990,7 @@
 				5F3724982064A9E500F3FDDA /* UIView+SDExtension.m in Sources */,
 				2601F4B3236C2B77005607DA /* TZProductHeaderView.m in Sources */,
 				0A086D3722A6159E00361C3A /* LoginKeyInputViewModel.m in Sources */,
+				26B5E67F2392007F00C45FD4 /* TZMyFutureMoneyDetailVC.m in Sources */,
 				5F36ABB7207E036100D6E2C7 /* NetworkLoadingView.m in Sources */,
 				0A1070BC22C750C700614549 /* STlistFilterFootView.m in Sources */,
 				5F35862F206F62E400857708 /* TYBaseAnimation.m in Sources */,
@@ -3008,6 +3069,7 @@
 				26E7AD40236D580500264E87 /* TZProductCenterVC.m in Sources */,
 				5F48DFD12069D55500982B1F /* CustomUrlViewController.m in Sources */,
 				5F35862C206F62E400857708 /* TYAlertFadeAnimation.m in Sources */,
+				263C95DA239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m in Sources */,
 				261FEF432373EDB600121781 /* QZSortHeaderView.m in Sources */,
 				9CFCB10022CCCE6900DCBF54 /* TDAlertCommonView.swift in Sources */,
 				5F323B9B205FC62B00995197 /* UIFactory.m in Sources */,

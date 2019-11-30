@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TZMineHeaderCardView">
+            <rect key="frame" x="0.0" y="0.0" width="440" height="198"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8d-Zd-tsQ">
+                    <rect key="frame" x="10" y="10" width="420" height="168"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_head_card" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-EK-r1d">
+                            <rect key="frame" x="0.0" y="0.0" width="420" height="168"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUG-aC-VfO">
+                            <rect key="frame" x="28" y="26" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="QN3-2U-l79"/>
+                                <constraint firstAttribute="width" constant="40" id="qXq-Qm-OZS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张先生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf9-n1-nhd">
+                            <rect key="frame" x="79" y="24" width="56" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15312345678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrO-gl-1WR">
+                            <rect key="frame" x="79" y="49" width="90" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已借 0 笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgI-jz-Sej">
+                            <rect key="frame" x="57" y="118" width="60" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看借款详情 &gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4v-u5-pjY">
+                            <rect key="frame" x="282" y="118" width="99" height="17"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="MgI-jz-Sej" secondAttribute="bottom" constant="33" id="4e8-kQ-WrF"/>
+                        <constraint firstItem="cf9-n1-nhd" firstAttribute="top" secondItem="pUG-aC-VfO" secondAttribute="top" constant="-2" id="9hJ-LU-4Ia"/>
+                        <constraint firstItem="cf9-n1-nhd" firstAttribute="leading" secondItem="pUG-aC-VfO" secondAttribute="trailing" constant="11" id="Ccq-JK-iE3"/>
+                        <constraint firstItem="OrO-gl-1WR" firstAttribute="leading" secondItem="cf9-n1-nhd" secondAttribute="leading" id="HvB-vQ-7s3"/>
+                        <constraint firstItem="pUG-aC-VfO" firstAttribute="leading" secondItem="U8d-Zd-tsQ" secondAttribute="leading" constant="28" id="M7i-bR-YPZ"/>
+                        <constraint firstItem="cFi-EK-r1d" firstAttribute="leading" secondItem="U8d-Zd-tsQ" secondAttribute="leading" id="Ox1-Tn-n0Z"/>
+                        <constraint firstAttribute="bottom" secondItem="cFi-EK-r1d" secondAttribute="bottom" id="PhD-Qi-eFI"/>
+                        <constraint firstItem="cFi-EK-r1d" firstAttribute="top" secondItem="U8d-Zd-tsQ" secondAttribute="top" id="Zev-GG-vbc"/>
+                        <constraint firstItem="OrO-gl-1WR" firstAttribute="bottom" secondItem="pUG-aC-VfO" secondAttribute="bottom" id="dqp-Fc-4eD"/>
+                        <constraint firstItem="pUG-aC-VfO" firstAttribute="top" secondItem="U8d-Zd-tsQ" secondAttribute="top" constant="26" id="gCa-JE-4aD"/>
+                        <constraint firstAttribute="trailing" secondItem="cFi-EK-r1d" secondAttribute="trailing" id="glt-Eu-5ez"/>
+                        <constraint firstItem="MgI-jz-Sej" firstAttribute="leading" secondItem="U8d-Zd-tsQ" secondAttribute="leading" constant="57" id="hRN-iu-d3D"/>
+                        <constraint firstAttribute="trailing" secondItem="m4v-u5-pjY" secondAttribute="trailing" constant="39" id="nw1-0Q-B8o"/>
+                        <constraint firstItem="m4v-u5-pjY" firstAttribute="centerY" secondItem="MgI-jz-Sej" secondAttribute="centerY" id="y4J-dm-P2Y"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="U8d-Zd-tsQ" secondAttribute="trailing" constant="10" id="JLW-iI-pCX"/>
+                <constraint firstItem="U8d-Zd-tsQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Pz9-iR-Zsm"/>
+                <constraint firstAttribute="bottom" secondItem="U8d-Zd-tsQ" secondAttribute="bottom" constant="20" id="RxI-QW-NMU"/>
+                <constraint firstItem="U8d-Zd-tsQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="k6D-he-YjD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cardViewBg" destination="U8d-Zd-tsQ" id="zDu-5x-jlq"/>
+                <outlet property="detailLabel" destination="m4v-u5-pjY" id="eJK-pF-IUg"/>
+                <outlet property="iconImageView" destination="pUG-aC-VfO" id="EMC-jK-nBh"/>
+                <outlet property="moneyCountLabel" destination="MgI-jz-Sej" id="fxo-qG-tcj"/>
+                <outlet property="nameLabel" destination="cf9-n1-nhd" id="gge-fh-le8"/>
+                <outlet property="phoneNumLabel" destination="OrO-gl-1WR" id="9va-mM-LUD"/>
+            </connections>
+            <point key="canvasLocation" x="194" y="44"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mine_head_card" width="157.37704467773438" height="70.819671630859375"/>
+    </resources>
+</document>

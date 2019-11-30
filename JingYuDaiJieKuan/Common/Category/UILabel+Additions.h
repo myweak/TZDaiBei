@@ -58,6 +58,8 @@
 /** 更新设置 */
 - (void)reloadUIConfig;
 
+/** 根据宽度左右对齐 */
+- (void)changeAligLeftAndRight;
 
 /**
  *  设置label富文本

@@ -155,7 +155,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #else
 
 // 开发机
-#define SERVER_URL @"http://112.74.53.99:8005/"
+#define SERVER_URL @"http://112.74.53.99:8005/" //开发
 //#define SERVER_URL @"http://192.168.1.135:8001/" //本地地址
 #define HTTPS_type 1
 #define VERSION_URL @"1.0.0"

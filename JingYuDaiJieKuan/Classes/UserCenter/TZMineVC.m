@@ -14,6 +14,8 @@
 #import "TZMyProfileVC.h"  // 个人信息
 #import "TZShowAlertView.h"
 #import "TZShowWeiXinAndQQView.h"
+#import "TZMineHeaderCardView.h"
+#import "TZMyFutureMoneyListVC.h" // d贷款订单列表
 
 @interface TZMineVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,7 +24,7 @@
 @property (strong ,nonatomic) NSArray *iconArr;
 
 @property (strong ,nonatomic) TZShowWeiXinAndQQView *weiXinOrQQView;
-
+@property (nonatomic, strong) TZMineHeaderCardView *headerCardView;
 @end
 
 @implementation TZMineVC
@@ -61,12 +63,16 @@
 }
 
 - (void)bindSignal{
-    
+    @weakify(self)
+    [self.headerCardView.detailLabel handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
+     @strongify(self)
+        [self pushTZMyFutureMoneyListVC];
+    }];
 }
 
 -(void)initWithUI
 {
-    
+    self.m_tableView.tableHeaderView = self.headerCardView;
     [self.view addSubview:self.m_tableView];
     
 }
@@ -216,6 +222,18 @@
     return _weiXinOrQQView;
 }
 
+- (TZMineHeaderCardView *)headerCardView{
+    if (!_headerCardView) {
+        _headerCardView = [TZMineHeaderCardView new];
+    }
+    return _headerCardView;
+}
+
+#pragma mark - push-VC
+- (void)pushTZMyFutureMoneyListVC{
+    TZMyFutureMoneyListVC *listVc = [TZMyFutureMoneyListVC new];
+    [self.navigationController pushViewController:listVc animated:YES];
+}
 
 /*
  #pragma mark - Navigation

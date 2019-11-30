@@ -20,7 +20,6 @@
 @property (nonatomic, strong) UIView   * alertView;
 @property (nonatomic, strong) TZNotNetworkView *notNetWorkView;
 @property (nonatomic, strong) UIButton *buttonArrays;     // 按钮数组
-@property (nonatomic ,strong) UILabel  * contentLabel;    // 内容
 
 @end
 @implementation TZShowAlertView
@@ -200,7 +199,7 @@
 -(UILabel *)contentLabel{
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(SPACE,self.titleLabel.bottom+SPACE,self.alertView.width-2*SPACE,20)];
-        _contentLabel.font = kFontSize15;
+        _contentLabel.font = kFontSize14;
         _contentLabel.textColor = CP_ColorMBlack;
         _contentLabel.textAlignment = NSTextAlignmentCenter;
         _contentLabel.numberOfLines = 0;

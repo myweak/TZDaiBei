@@ -126,11 +126,10 @@
     
     // 字间距
     if(self.characterSpace > 0){
-        long number = self.characterSpace;
-        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-        [attributedString addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0,[attributedString length])];
         
-        CFRelease(num);
+        NSNumber *number =  [NSNumber numberWithFloat:self.characterSpace];
+        [attributedString addAttribute:(id)kCTKernAttributeName value:number range:NSMakeRange(0,[attributedString length]-1)];
+        
     }
     
     // 首行缩进字符
@@ -160,9 +159,7 @@
     if (self.underlineStr) {
         NSRange itemRange = [self.text rangeOfString:self.underlineStr];
         [attributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:itemRange];
-        if (self.underlineColor) {
-            [attributedString addAttribute:NSUnderlineColorAttributeName value:self.underlineColor range:itemRange];
-        }
+        [attributedString addAttribute:NSUnderlineColorAttributeName value:self.underlineColor ? self.underlineColor:self.textColor range:itemRange];
     }
     
     //段落后面的间距
@@ -170,7 +167,7 @@
         [paragraphStyle setParagraphSpacing:self.paragraphSpacing];
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,self.text.length)];
     }
-
+    
     self.attributedText = attributedString;
     
     CGRect rect = [attributedString boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
@@ -216,8 +213,17 @@
     paragraphStyle.lineSpacing = lineSpacing;
     [str addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, str.length)];
     self.attributedText = str;
-
+    
 }
+
+- (void)changeAligLeftAndRight{
+   CGRect rect = [self getLableHeightWithMaxWidth:self.width];
+    CGFloat margin = (self.width -rect.size.width)/(self.text.length -1);
+    self.characterSpace = margin;
+    [self reloadUIConfig];
+    
+}
+
 /** 更新设置 */
 - (void)reloadUIConfig{
     [self getLableHeightWithMaxWidth:self.width];

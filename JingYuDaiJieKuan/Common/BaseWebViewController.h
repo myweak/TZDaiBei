@@ -15,6 +15,8 @@
 
 @property(nonatomic,copy)NSString *url;
 
+@property (nonatomic, assign) BOOL isShowBackView; // 提示返回挽留弹框
+
 @property (copy, nonatomic)void (^testSuccssBlock)(void);
 
 /// 加载完成的回调

@@ -292,6 +292,9 @@
     [params setObject:[[SensorsAnalyticsSDK sharedInstance]anonymousId] forKey:@"distinctId"];
     [LoginKeyInputViewModel userLoginPath:userLogin params:params target:self success:^(LoginModel *model) {
         if (model.code == 200) {
+            [self.m_iphoneField resignFirstResponder];
+            [self.m_passwordField resignFirstResponder];
+
             ///为保持用户的实时数据更新，需要重新赋值缓存和内存
             kUserMessageManager.toKen = model.token;
             [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_TOKEN value:model.token];

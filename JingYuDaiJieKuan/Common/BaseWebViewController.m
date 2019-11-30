@@ -32,6 +32,32 @@
 
 @implementation BaseWebViewController
 
+-(void)backToSuperView
+{
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+        //        NSURL *back = [self.webView.backForwardList backItem].URL;//后退的URL
+        //        [self.webView loadRequest:[NSURLRequest requestWithURL:back]];
+    }else{
+        if (self.isShowBackView) {
+               TZShowAlertView *alrt = [[TZShowAlertView alloc] initWithAlerTitle:@"\"帒呗\"能解燃眉之急" Content:@"您确定要离开？" buttonArray:@[@"狠心离开",@"留在这里"] blueButtonIndex:1 alertButtonBlock:^(NSInteger buttonIndex) {
+                   if (buttonIndex == 0) {
+                       [super backToSuperView];
+                   }
+               }];
+            alrt.contentLabel.textColor = kBtnGrayColor;
+            [alrt show];
+           }else{
+               [super backToSuperView];
+           }
+//        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)backClick{
+   
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -159,16 +185,7 @@
     [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"pushAccurateRecommendationPage"];
 }
 
--(void)backToSuperView
-{
-    if ([self.webView canGoBack]) {
-        [self.webView goBack];
-        //        NSURL *back = [self.webView.backForwardList backItem].URL;//后退的URL
-        //        [self.webView loadRequest:[NSURLRequest requestWithURL:back]];
-    }else{
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+
 
 //解决白屏的方法二: wkwebview白屏时有概率会调用这个方法
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{

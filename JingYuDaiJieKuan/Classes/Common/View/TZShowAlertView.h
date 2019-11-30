@@ -12,6 +12,8 @@ typedef void (^ButtonActonBlock)(NSInteger buttonIndex);
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TZShowAlertView : UIView
+@property (nonatomic ,strong) UILabel  * contentLabel;    // 内容
+
 @property (nonatomic, copy) ButtonActonBlock buttonActonBlock;
 @property (nonatomic, assign) BOOL isShowAnimate; // 是否显示动画 ， 默认NO
 /**
