@@ -103,6 +103,10 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import <YYModel.h>
 #import <OpenUDID.h>
 #import <MBProgressHUD.h>
+#import "UITextView+FHTextView.h"
+#import "ACActionSheet.h"
+#import "NAAssetsManager.h"
+
 
 /// Dlog
 #ifdef DEBUG

@@ -202,14 +202,14 @@ class ProductItemSearchVC: UIViewController {
                 
                 if self.pageIndex == 1 {
                     self.productItemList = model.result as! [ProductItemModel]
-                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_header!.endRefreshing()
                     self.tableView.reloadData()
                 } else {
                     if model.result.count == 0 {
-                        self.tableView.mj_footer.state = .noMoreData
+                        self.tableView.mj_footer!.state = .noMoreData
                     } else {
                         self.productItemList += model.result as! [ProductItemModel]
-                        self.tableView.mj_footer.endRefreshing()
+                        self.tableView.mj_footer!.endRefreshing()
                     }
                 }
             }

@@ -21,6 +21,7 @@
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
+- (UIImage *)zipImageWithSize:(CGSize)size;
 - (UIImage *)cropImageInRect:(CGRect )rect;
 - (UIImage *)resizeImageToWidth:(float )width;
 - (UIImage *) rotateImage:(UIImage *)img angle:(int)angle;

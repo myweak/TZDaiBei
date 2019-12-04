@@ -31,4 +31,20 @@
     [self.layer setCornerRadius:radius];
 }
 
+- (UIButton *)addBottomTapButtonTitleStr:(NSString *)title block:(void (^)(UIButton *btn)) block
+{
+    UIButton *btn = [[UIButton alloc] init];
+    btn.frame = CGRectMake(0, kScreenHeight - 44 - kNavBarH- iPhoneXDiffHeight()*2, kScreenWidth, 44 +iPhoneXDiffHeight()*2);
+    btn.backgroundColor = Bg_Btn_Colorblue;
+    btn.titleLabel.font = kFontSize18;
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
+        !block ?:block(btn);
+    }];
+    [self addSubview:btn];
+    return btn;
+}
+
+
 @end

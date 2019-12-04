@@ -370,4 +370,6 @@
  *  @return label
  */
 - (UILabel *)autoSizeVertical:(CGFloat)minHeigh;
+- (instancetype)setLabelWith:(NSString *)text color:(UIColor *)color font:(UIFont *)font aliment:(NSTextAlignment)textAlignment;
+
 @end

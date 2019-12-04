@@ -13,7 +13,7 @@
 #import "TZMyFutureMoneyDetailContentCell.h"
 #import "TZMyFutureMoneyDetailCommentCell.h"
 
-@interface TZMyFutureMoneyDetailVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface TZMyFutureMoneyDetailVC ()<UITableViewDataSource,UITableViewDelegate,StarSLiderDelegate>
 @property (strong ,nonatomic) UITableView *m_tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
@@ -31,13 +31,21 @@
     [self refreshData];
     
 }
+- (void)dealloc{
+    [[NAAssetsManager shareManager] reset];
+    
+}
 - (void)refreshData{
     [self posthomeLastAllPathUrl];
 }
 
 - (NSMutableArray *)dataArr{
     if (!_dataArr) {
-        NSArray *arr = @[KName_Cell,m_blankCellReuseId,KContent_cell,KComment_Cell];
+        NSArray *arr = @[KName_Cell,
+                         m_blankCellReuseId,
+                         KContent_cell,
+                         m_blankCellReuseId,
+                         KComment_Cell];
         _dataArr = [NSMutableArray arrayWithArray:arr];
     }
     return _dataArr;
@@ -48,11 +56,21 @@
     @weakify(self)
     [self.m_tableView registerNibString:NSStringFromClass([TZMyFutureMoneyDetailNameCell class]) cellIndentifier:TZMyFutureMoneyDetailNameCell_ID];
     [self.m_tableView registerNibString:NSStringFromClass([TZMyFutureMoneyDetailContentCell class]) cellIndentifier:TZMyFutureMoneyDetailContentCell_ID];
+    [self.m_tableView registerNibString:NSStringFromClass([TZMyFutureMoneyDetailCommentCell class]) cellIndentifier:TZMyFutureMoneyDetailCommentCell_ID];
+
+    
+//    AXRatingView *stepRatingView = [[AXRatingView alloc] initWithFrame:nextFrame()];
+//    [stepRatingView sizeToFit];
+//    [stepRatingView setStepInterval:1.0];
+//    [self.view addSubview:stepRatingView];
     
 }
 
 - (void)initWithUI{
     [self.view addSubview:self.m_tableView];
+    [self.view addBottomTapButtonTitleStr:@"提交" block:^(UIButton *btn) {
+        
+    }];
 }
 
 // 线上极速贷款 数据
@@ -95,6 +113,8 @@
         return 71;
     }else if ([title isEqualToString:KContent_cell]){
         return 123;
+    }else if ([title isEqualToString:KComment_Cell]){
+        return 240;
     }
     return 10;
 }
@@ -109,6 +129,9 @@
         return cell;
     }else if ([title isEqualToString:KContent_cell]){
         TZMyFutureMoneyDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:TZMyFutureMoneyDetailContentCell_ID forIndexPath:indexPath];
+        return cell;
+    }else if ([title isEqualToString:KComment_Cell]){
+        TZMyFutureMoneyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:TZMyFutureMoneyDetailCommentCell_ID forIndexPath:indexPath];
         return cell;
     }
     return [UITableViewCell blankCell];
@@ -137,6 +160,7 @@
     }
     return _m_tableView;
 }
+
 
 
 

@@ -80,6 +80,7 @@ void UncaughtExceptionHandler(NSException *exception){
     #endif
     //神策埋点初始化(涉及神策监听方法,所以一定要直接放在didFinishLaunchingWithOptions,不能放在回调中)
     NSString *userId = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_ID];
+    [SensorsAnalyticsSDK startWithConfigOptions:nil];
     [SensorsAnalyticsSDKHelper registerSensorsAnalyticsWithLaunchOptions:launchOptions distinctId:userId];
     
     [self registerThirdData];

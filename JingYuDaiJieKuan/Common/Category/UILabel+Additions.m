@@ -159,7 +159,8 @@
     if (self.underlineStr) {
         NSRange itemRange = [self.text rangeOfString:self.underlineStr];
         [attributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:itemRange];
-        [attributedString addAttribute:NSUnderlineColorAttributeName value:self.underlineColor ? self.underlineColor:self.textColor range:itemRange];
+        UIColor *color = self.underlineColor ? self.underlineColor:(self.keywordsColor?self.keywordsColor:self.textColor);
+        [attributedString addAttribute:NSUnderlineColorAttributeName value:color range:itemRange];
     }
     
     //段落后面的间距

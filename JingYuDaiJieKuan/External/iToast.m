@@ -9,6 +9,16 @@
 #import "iToast.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define kPadding 60
+
+#define m_toast_tag 2009
+
+enum iToastDuration {
+    iToastDurationLong = 10000,
+    iToastDurationShort = 1000,
+    iToastDurationNormal = 3000
+}iToastDuration;
+
 static iToastSettings *sharedSettings = nil;
 
 @interface iToast(private)
@@ -29,7 +39,7 @@ static iToastSettings *sharedSettings = nil;
     return self;
 }
 
-- (void)hidden
+- (void)disMiss
 {
     if (view)
     {
@@ -48,8 +58,10 @@ static iToastSettings *sharedSettings = nil;
 - (void) show{
     [self show:iToastTypeNone];
 }
-
-- (void) show:(iToastType) type{
+- (void) show:(iToastType) type {
+    [self show:type superview:nil];
+}
+- (void) show:(iToastType) type superview:(UIView *)superview{
     
     iToastSettings *theSettings = _settings;
     
@@ -59,9 +71,9 @@ static iToastSettings *sharedSettings = nil;
     
     UIImage *image = [theSettings.images valueForKey:[NSString stringWithFormat:@"%i", type]];
     
-    UIFont *font = [UIFont systemFontOfSize:16];
-    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(280, 60)];
-    
+    UIFont *font = [UIFont systemFontOfSize:16.f];
+//    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 80, 60)];
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 80,MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName : font} context:nil].size;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, textSize.width + 5, textSize.height + 5)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
@@ -72,11 +84,12 @@ static iToastSettings *sharedSettings = nil;
     label.shadowOffset = CGSizeMake(1, 1);
     
     UIButton *v = [UIButton buttonWithType:UIButtonTypeCustom];
+    v.tag = 1000;
     if (image) {
-        v.frame = CGRectMake(0, 0, image.size.width + textSize.width + 15, MAX(textSize.height, image.size.height) + 10);
+        v.frame = CGRectMake(0, 0, image.size.width + textSize.width + 30, MAX(textSize.height, image.size.height) + 15);
         label.center = CGPointMake(image.size.width + 10 + (v.frame.size.width - image.size.width - 10) / 2, v.frame.size.height / 2);
     } else {
-        v.frame = CGRectMake(0, 0, textSize.width + 10, textSize.height + 10);
+        v.frame = CGRectMake(0, 0, textSize.width + 30, textSize.height + 15);
         label.center = CGPointMake(v.frame.size.width / 2, v.frame.size.height / 2);
     }
     [v addSubview:label];
@@ -87,22 +100,13 @@ static iToastSettings *sharedSettings = nil;
         [v addSubview:imageView];
     }
     
-    v.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
-    v.layer.cornerRadius = 5;
+    v.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.7];
+    v.layer.cornerRadius = 4;
     
-    UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
     
-    if (view)
-    {
-        view.alpha = 0.0;
-        [view removeFromSuperview];
-        view = nil;
-    }
-    v.tag = 10000;
-    UIButton *btn = (UIButton *)[window viewWithTag:10000];
-    if (btn)
-    {
-        [btn removeFromSuperview];
+    UIView *window = superview;
+    if (!window) {
+        window = [[UIApplication sharedApplication] keyWindow];
     }
     
     CGPoint point = CGPointMake(window.frame.size.width/2, window.frame.size.height/2);
@@ -113,9 +117,9 @@ static iToastSettings *sharedSettings = nil;
         case UIDeviceOrientationPortrait:
         {
             if (theSettings.gravity == iToastGravityTop) {
-                point = CGPointMake(window.frame.size.width / 2, 45);
+                point = CGPointMake(window.frame.size.width / 2, kPadding);
             } else if (theSettings.gravity == iToastGravityBottom) {
-                point = CGPointMake(window.frame.size.width / 2, window.frame.size.height - 45);
+                point = CGPointMake(window.frame.size.width / 2, window.frame.size.height - kPadding);
             } else if (theSettings.gravity == iToastGravityCenter) {
                 point = CGPointMake(window.frame.size.width/2, window.frame.size.height/2);
             } else {
@@ -133,9 +137,9 @@ static iToastSettings *sharedSettings = nil;
             float height = window.frame.size.height;
             
             if (theSettings.gravity == iToastGravityTop) {
-                point = CGPointMake(width / 2, height - 45);
+                point = CGPointMake(width / 2, height - kPadding);
             } else if (theSettings.gravity == iToastGravityBottom) {
-                point = CGPointMake(width / 2, 45);
+                point = CGPointMake(width / 2, kPadding);
             } else if (theSettings.gravity == iToastGravityCenter) {
                 point = CGPointMake(width/2, height/2);
             } else {
@@ -151,9 +155,9 @@ static iToastSettings *sharedSettings = nil;
             v.transform = CGAffineTransformMakeRotation(M_PI/2); //rotation in radians
             
             if (theSettings.gravity == iToastGravityTop) {
-                point = CGPointMake(window.frame.size.width - 45, window.frame.size.height / 2);
+                point = CGPointMake(window.frame.size.width - kPadding, window.frame.size.height / 2);
             } else if (theSettings.gravity == iToastGravityBottom) {
-                point = CGPointMake(45,window.frame.size.height / 2);
+                point = CGPointMake(kPadding,window.frame.size.height / 2);
             } else if (theSettings.gravity == iToastGravityCenter) {
                 point = CGPointMake(window.frame.size.width/2, window.frame.size.height/2);
             } else {
@@ -169,9 +173,9 @@ static iToastSettings *sharedSettings = nil;
             v.transform = CGAffineTransformMakeRotation(-M_PI/2);
             
             if (theSettings.gravity == iToastGravityTop) {
-                point = CGPointMake(45, window.frame.size.height / 2);
+                point = CGPointMake(kPadding, window.frame.size.height / 2);
             } else if (theSettings.gravity == iToastGravityBottom) {
-                point = CGPointMake(window.frame.size.width - 45, window.frame.size.height/2);
+                point = CGPointMake(window.frame.size.width - kPadding, window.frame.size.height/2);
             } else if (theSettings.gravity == iToastGravityCenter) {
                 point = CGPointMake(window.frame.size.width/2, window.frame.size.height/2);
             } else {
@@ -185,15 +189,29 @@ static iToastSettings *sharedSettings = nil;
         default:
             break;
     }
-    
+
     v.center = point;
     
+    UIView *lastToast = [window viewWithTag:m_toast_tag];
+    if (lastToast) {
+        [lastToast removeFromSuperview];
+        lastToast.alpha = 0.f;
+        lastToast.hidden = YES;
+    }
+    
     NSTimer *timer1 = [NSTimer timerWithTimeInterval:((float)theSettings.duration)/1000
-                                              target:self selector:@selector(hideToast:)
-                                            userInfo:nil repeats:NO];
+                                             target:self selector:@selector(hideToast:)
+                                           userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:timer1 forMode:NSDefaultRunLoopMode];
     
+    v.layer.shadowColor = [UIColor blackColor].CGColor;
+    v.layer.shadowOpacity = 0.4;
+    v.layer.shadowRadius = 2.5;
+    v.layer.shadowOffset = (CGSize){1.8,1.8};
+    v.tag = m_toast_tag;
     [window addSubview:v];
+    
+    view = v;
     
     [v addTarget:self action:@selector(hideToast:) forControlEvents:UIControlEventTouchDown];
 }
@@ -204,8 +222,8 @@ static iToastSettings *sharedSettings = nil;
     [UIView commitAnimations];
     
     NSTimer *timer2 = [NSTimer timerWithTimeInterval:500
-                                              target:self selector:@selector(hideToast:)
-                                            userInfo:nil repeats:NO];
+                                             target:self selector:@selector(hideToast:)
+                                           userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:timer2 forMode:NSDefaultRunLoopMode];
 }
 
@@ -254,6 +272,97 @@ static iToastSettings *sharedSettings = nil;
     return _settings;
 }
 
++ (void)ahShowBottom_ToastWithText:(NSString *)text
+{
+    [self showToastWithText:text position:iToastGravityBottom witduration:1700];
+}
+
++ (void)showTop_ToastWithText:(NSString *)text
+{
+    [self showToastWithText:text position:iToastGravityCenter witduration:1700];
+}
+
++ (void)showBottom_ToastWithText:(NSString *)text
+{
+    [self showToastWithText:text position:iToastGravityCenter witduration:1700];
+}
+
++ (void)showCenter_ToastWithText:(NSString *)text
+{
+    [self showToastWithText:text position:iToastGravityCenter witduration:1700];
+}
+
++ (void)showCenter_ToastWithText:(NSString *)text superview:(UIView *)superview
+{
+    [self showToastWithText:text position:iToastGravityCenter witduration:1700 superview:superview];
+}
+
++ (void)showToastWithText:(NSString *)text position:(iToastGravity)gravity
+{
+    if (gravity == iToastGravityBottom) {
+        gravity = iToastGravityCenter;
+    }
+    [self showToastWithText:text position:gravity witduration:1700];
+}
++ (void)showToastWithText:(NSString *)text position:(iToastGravity)gravity witduration:(CGFloat)duration{
+    [self showToastWithText:text position:gravity witduration:duration superview:nil];
+}
++ (void)showToastWithText:(NSString *)text position:(iToastGravity)gravity witduration:(CGFloat)duration superview:(UIView*)superview
+{
+    duration = [self calculateDuration:text];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (text.length) {
+            iToast *toast = [iToast makeText:text];
+            toast = [toast setDuration:duration];
+            [[toast setGravity:gravity] show:iToastTypeNone superview:superview];
+        }
+        
+    });
+}
+
++ (CGFloat)calculateDuration:(NSString *)text{
+    CGFloat duration = [self judgeChineseCount:text] * 200 + [self judgeNumberCount:text] * 100 + [self judgeLetterCount:text] * 50;
+    if (duration < 1700) {
+        duration = 1700;
+    }
+    return duration;
+}
+
++ (NSUInteger)judgeNumberCount:(NSString*)text {
+    if (!text) {
+        return 0;
+    }
+    NSRegularExpression * tNumberRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[0-9]"options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    //符合数字条件的有几个字节
+    NSUInteger tNumberMatchCount = [tNumberRegularExpression  numberOfMatchesInString:text options:NSMatchingReportProgress range:NSMakeRange(0, text.length)];
+    return tNumberMatchCount;
+
+}
+
++ (NSUInteger)judgeLetterCount:(NSString*)text {
+    if (!text) {
+        return 0;
+    }
+    //英文字条件
+    NSRegularExpression *tLetterRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    NSUInteger tLetterMatchCount = [tLetterRegularExpression numberOfMatchesInString:text options:NSMatchingReportProgress range:NSMakeRange(0, text.length)];
+    
+    return tLetterMatchCount;
+}
+
++ (NSUInteger)judgeChineseCount:(NSString*)text {
+    if (!text) {
+        return 0;
+    }
+    //中文条件
+    NSRegularExpression *tChineseRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[\u4e00-\u9fa5]"options:NSRegularExpressionCaseInsensitive error:nil];
+    NSUInteger tChineseMatchCount = [tChineseRegularExpression numberOfMatchesInString:text options:NSMatchingReportProgress range:NSMakeRange(0, text.length)];
+    return tChineseMatchCount;
+    
+}
 @end
 
 

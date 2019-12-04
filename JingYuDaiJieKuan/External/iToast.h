@@ -15,12 +15,6 @@ typedef enum iToastGravity {
     iToastGravityCenter
 }iToastGravity;
 
-typedef enum iToastDuration {
-    iToastDurationLong = 10000,
-    iToastDurationShort = 1000,
-    iToastDurationNormal = 3000
-}iToastDuration;
-
 typedef enum iToastType {
     iToastTypeInfo = -100000,
     iToastTypeNotice,
@@ -42,20 +36,29 @@ typedef enum iToastType {
     UIView *view;
     NSString *text;
 }
-
-- (void) hidden;
+- (void)disMiss;
 - (void) show;
 - (void) show:(iToastType) type;
+- (void) show:(iToastType) type superview:(UIView *)superview;
 - (iToast *) setDuration:(NSInteger ) duration;
 - (iToast *) setGravity:(iToastGravity) gravity
              offsetLeft:(NSInteger) left
-              offsetTop:(NSInteger) top;
+             offsetTop:(NSInteger) top;
 - (iToast *) setGravity:(iToastGravity) gravity;
 - (iToast *) setPostion:(CGPoint) position;
 
 + (iToast *) makeText:(NSString *) text;
 
 -(iToastSettings *) theSettings;
+// 底部提示
++ (void)ahShowBottom_ToastWithText:(NSString *)text;
+
++ (void)showTop_ToastWithText:(NSString *)text;
++ (void)showBottom_ToastWithText:(NSString *)text;
++ (void)showCenter_ToastWithText:(NSString *)text;
++ (void)showCenter_ToastWithText:(NSString *)text superview:(UIView *)superview;
++ (void)showToastWithText:(NSString *)text position:(iToastGravity)gravity;
++ (void)showToastWithText:(NSString *)text position:(iToastGravity)gravity witduration:(CGFloat)duration;
 
 @end
 
@@ -81,5 +84,5 @@ typedef enum iToastType {
 
 - (void) setImage:(UIImage *)img forType:(iToastType) type;
 + (iToastSettings *) getSharedSettings;
-
+                          
 @end

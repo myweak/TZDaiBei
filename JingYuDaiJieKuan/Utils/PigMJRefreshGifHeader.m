@@ -33,7 +33,7 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"loading" ofType:@"gif"];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    UIImage *image1 = [UIImage sd_animatedGIFWithData:data];
+    UIImage *image1 = [UIImage  sd_imageWithGIFData:data];
     UIImageView *logo = [[UIImageView alloc] initWithImage:image1];
     _logoImg = [UIImage imageWithContentsOfFile:[[NSUserDefaults standardUserDefaults] objectForKey:@"REFERSHLOGO"]?:@""];
     _logo.image = _logoImg;

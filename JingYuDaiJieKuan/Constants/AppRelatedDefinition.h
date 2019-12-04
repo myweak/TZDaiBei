@@ -10,6 +10,7 @@
 #define AppRelatedDefinition_h
 
 /********************** 常用宏 ****************************/
+#define WEAKSELF __weak typeof(self) weakSelf = self;
 
 // 新增宏定义判断无网络情况
 #define GetNetworkStatusNotReachable ([Reachability reachabilityForInternetConnection].currentReachabilityStatus == NotReachable)

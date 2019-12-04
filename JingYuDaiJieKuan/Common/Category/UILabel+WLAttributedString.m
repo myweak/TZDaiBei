@@ -420,5 +420,14 @@ UIFont *GetVariationOfFontWithTrait(UIFont *baseFont, CTFontSymbolicTraits trait
     self.frame = newFrame;
     return self;
 }
-
+- (instancetype)setLabelWith:(NSString *)text color:(UIColor *)color font:(UIFont *)font aliment:(NSTextAlignment)textAlignment
+{
+    if (text) self.text = text;
+    self.textColor = color;
+    self.font = font;
+    self.textAlignment = textAlignment;
+    self.backgroundColor = [UIColor clearColor];
+    
+    return self;
+}
 @end

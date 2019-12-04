@@ -20,7 +20,7 @@ static iToast *staticIToast;
     [staticIToast setGravity:iToastGravityTop
                   offsetLeft:0
                    offsetTop:120];
-    [staticIToast show];
+    [staticIToast show:iToastTypeNone];
     return staticIToast;
 }
 
@@ -31,13 +31,13 @@ static iToast *staticIToast;
     [staticIToast setGravity:iToastGravityCenter
                   offsetLeft:0
                    offsetTop:120];
-    [staticIToast show];
+    [staticIToast show:iToastTypeNone];
     return staticIToast;
 }
 
 + (void)hiddenIToast
 {
-    [staticIToast hidden];
+    [staticIToast disMiss];
 }
 
 @end

@@ -8,7 +8,7 @@ pod 'AFNetworking', '~> 3.1.0’
 pod 'IQKeyboardManager', '~> 3.0.8’
 #pod 'iToast', '~> 0.0.1'
 pod 'MBProgressHUD', '~> 1.0.0’
-pod 'SDWebImage', '~> 3.8.2'
+pod 'SDWebImage'
 pod 'RegexKitLite', '~> 4.0'
 pod 'FMDB', '~> 2.6.2’
 # [!]  SSKeychain has been deprecated in favor of SAMKeychain
@@ -45,6 +45,11 @@ pod 'UMCShare/UI'
 pod 'SnapKit'
 pod 'SensorsAnalyticsSDK'
 pod 'LLDebugTool' , '1.3.6' #,:configurations => ['Debug']
+pod 'CTAssetsPickerController',  '~> 3.3.0'
+pod 'GKPhotoBrowser'
+pod 'AliyunOSSiOS'
+
+
 # new
 #pod'SDCycleScrollView
 

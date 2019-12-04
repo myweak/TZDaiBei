@@ -28,4 +28,7 @@
  */
 - (void)setCornerRadius:(CGFloat)radius;
 
+// 添加底部按钮
+- (UIButton *)addBottomTapButtonTitleStr:(NSString *)title block:(void (^)(UIButton *btn)) block;
+
 @end
