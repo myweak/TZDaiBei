@@ -84,7 +84,25 @@
     [self postArticleRecommendListPathUrl];
     
 }
+// 添加用户点击产品信息 统计
+- (void)postSaveProductClickUrlWithIndexModel:(TZProductListModel*)model{
 
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+    [params setValue:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setValue:model.merchartid forKey:@"pid"];//产品id
+    [params setValue:model.name forKey:@"pname"];//产品名
+    [params setValue:model.type forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+
+    
+    [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
+        
+    } failure:^(NSError * _Nonnull error) {
+   
+        
+    }];
+}
 // 新闻数量统计
 - (void)postArticleAddLikeNumPathUrlWithID:(NSString *)ID{
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",articleAddLikeNum_Path,ID];
@@ -231,7 +249,8 @@
         [itemView.maxMoneyLabel reloadUIConfig];
         [itemView handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
             @strongify(self)
-            if (model.type.integerValue == 2) {
+            [self postSaveProductClickUrlWithIndexModel:model];
+            if (model.type.integerValue == 2) { // 线上
                 [self pushToTZProductScreenConditionVC];
             }else{
                 [self PushToBaseWebViewControllerUrl:model.url andTitle:model.title];

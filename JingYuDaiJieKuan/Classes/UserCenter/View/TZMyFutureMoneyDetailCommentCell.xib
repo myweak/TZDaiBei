@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WkR-GL-KJz">
-                        <rect key="frame" x="0.0" y="0.0" width="363" height="42"/>
+                        <rect key="frame" x="0.0" y="10" width="363" height="42"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易评分：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3c-hk-oq9">
                                 <rect key="frame" x="15" y="12.5" width="72" height="17"/>
@@ -63,17 +63,17 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlA-OD-l6n">
-                        <rect key="frame" x="15" y="42" width="333" height="174"/>
+                        <rect key="frame" x="15" y="52" width="333" height="164"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_photo_one" translatesAutoresizingMaskIntoConstraints="NO" id="gZR-Nt-5cv">
-                                <rect key="frame" x="15" y="116" width="43" height="43"/>
+                                <rect key="frame" x="15" y="106" width="43" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="43" id="a8w-BG-K5t"/>
                                     <constraint firstAttribute="height" constant="43" id="kdS-ld-zgA"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGW-6f-vLM">
-                                <rect key="frame" x="15" y="0.0" width="303" height="101"/>
+                                <rect key="frame" x="15" y="0.0" width="303" height="91"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,7 +111,7 @@
                     <constraint firstItem="XCc-z8-Zhw" firstAttribute="leading" secondItem="LlA-OD-l6n" secondAttribute="leading" id="IZP-Gb-Krz"/>
                     <constraint firstItem="XCc-z8-Zhw" firstAttribute="top" secondItem="LlA-OD-l6n" secondAttribute="bottom" constant="15" id="IfR-uO-l6y"/>
                     <constraint firstAttribute="trailing" secondItem="WkR-GL-KJz" secondAttribute="trailing" id="Rk6-Xv-bvd"/>
-                    <constraint firstItem="WkR-GL-KJz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ai1-My-GSj"/>
+                    <constraint firstItem="WkR-GL-KJz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ai1-My-GSj"/>
                     <constraint firstItem="LlA-OD-l6n" firstAttribute="top" secondItem="WkR-GL-KJz" secondAttribute="bottom" id="hqI-oa-wjW"/>
                     <constraint firstItem="WkR-GL-KJz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="i2r-cV-Fni"/>
                     <constraint firstAttribute="bottom" secondItem="XCc-z8-Zhw" secondAttribute="bottom" constant="26" id="idv-QS-bf5"/>

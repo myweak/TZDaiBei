@@ -44,7 +44,7 @@
         NSArray *arr = @[KName_Cell,
                          m_blankCellReuseId,
                          KContent_cell,
-                         m_blankCellReuseId,
+//                         m_blankCellReuseId,
                          KComment_Cell];
         _dataArr = [NSMutableArray arrayWithArray:arr];
     }
@@ -129,6 +129,7 @@
         return cell;
     }else if ([title isEqualToString:KContent_cell]){
         TZMyFutureMoneyDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:TZMyFutureMoneyDetailContentCell_ID forIndexPath:indexPath];
+        [cell setInsetWithLeftAndRight:15];
         return cell;
     }else if ([title isEqualToString:KComment_Cell]){
         TZMyFutureMoneyDetailCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:TZMyFutureMoneyDetailCommentCell_ID forIndexPath:indexPath];
@@ -143,7 +144,7 @@
 #pragma mark -UI
 - (UITableView *)m_tableView{
     if (!_m_tableView) {//UITableViewStyleGrouped
-        _m_tableView = InsertTableView(nil, CGRectMake(0, 0, kScreenWidth, CGRectGetHeight(self.view.frame)), self, self, UITableViewStylePlain, UITableViewCellSeparatorStyleNone);
+        _m_tableView = InsertTableView(nil, CGRectMake(0, 0, kScreenWidth, CGRectGetHeight(self.view.frame)), self, self, UITableViewStylePlain, UITableViewCellSeparatorStyleSingleLine);
         _m_tableView.height = self.view.height;
         _m_tableView.rowHeight = UITableViewAutomaticDimension;
         _m_tableView.estimatedRowHeight = 120;

@@ -83,7 +83,7 @@ static const void *limitLengthKey = &limitLengthKey;
     self.placeholderLabel.text = placeholder;
     self.placeholderLabel.numberOfLines = 0;
     self.placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.placeholderLabel.textColor = [self.class defaultPlaceholderColor];
+    self.placeholderLabel.textColor = [self defaultPlaceholderColor];
     CGRect rect = [placeholder boundingRectWithSize:CGSizeMake(CGRectGetWidth(self.frame)-7, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:13.]} context:nil];
     self.placeholderLabel.frame = CGRectMake(7, 7, rect.size.width, rect.size.height);
     [self addSubview:self.placeholderLabel];
@@ -157,13 +157,17 @@ static const void *limitLengthKey = &limitLengthKey;
 - (void)setPlaceholderColor:(UIColor *)placeholderColor {
     self.placeholderLabel.textColor = placeholderColor;
 }
-+ (UIColor *)defaultPlaceholderColor {
+- (UIColor *)defaultPlaceholderColor {
     static UIColor *color = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        UITextField *textField = [[UITextField alloc] init];
+       __autoreleasing UITextField *textField = [[UITextField alloc] init];
         textField.placeholder = @" ";
-        color = [textField valueForKeyPath:@"_placeholderLabel.textColor"];
+        @try{
+            color = [textField valueForKeyPath:@"_placeholderLabel.textColor"];
+        }@catch (NSException *exception){
+            color = [textField valueForKeyPath:@"placeholderLabel.textColor"];
+        }
     });
     return color;
 }

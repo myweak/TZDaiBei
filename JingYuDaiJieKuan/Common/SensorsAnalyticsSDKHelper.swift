@@ -30,6 +30,8 @@ class SensorsAnalyticsSDKHelper: NSObject {
 
         //1.初始化神策SDK
         let options = SAConfigOptions.init(serverURL: SA_SERVER_URL, launchOptions: launchOptions)
+        SensorsAnalyticsSDK.start(configOptions: options)
+
         shared = SensorsAnalyticsSDK.sharedInstance(withConfig: options)
         
         //2.打开自动采集, 并指定追踪哪些 AutoTrack 事件

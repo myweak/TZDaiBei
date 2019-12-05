@@ -15,5 +15,5 @@
 @property (nonatomic, strong) UIColor *placeholderColor;
 @property (nonatomic,strong) NSString *placeholder;//占位符
 @property (copy, nonatomic) NSNumber *limitLength;//限制字数
-+ (UIColor *)defaultPlaceholderColor;
+- (UIColor *)defaultPlaceholderColor;
 @end

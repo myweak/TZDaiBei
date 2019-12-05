@@ -18,6 +18,14 @@
 #import "MessageCenterModel.h"
 #import "HomeFourEarningsModel.h"
 
+// 阿里云。h
+#import "OSSNetworking.h"
+#import "OSSClient.h"
+#import "OSSModel.h"
+#import "OSSUtil.h"
+#import "OSSLog.h"
+#import "OSSService.h"
+
 
 #define kRequestTimeOut 60
 
@@ -612,6 +620,71 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
     }];
     
     return dataTask.taskIdentifier;
+}
+
+
+
+
+/**
+ *  上传图片
+ *
+ *  @param image   要上传的image
+ *  @param show    是否显示菊花器
+ *  @param success 成功 或 失败 回调
+ */
+
+- (void) uploadOSSServicesImage:(UIImage *)image
+                        showHUD:(BOOL)show
+                        success:(void (^)(id, BOOL))success {
+    if (show) {
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+    }
+    id<OSSCredentialProvider> credential = [[OSSPlainTextAKSKPairCredentialProvider alloc] initWithPlainTextAccessKey:ACCESSKEY secretKey:SECRETKEY];
+    
+    OSSClient * client = [[OSSClient alloc] initWithEndpoint:OSSHOSTID credentialProvider:credential];
+    
+    OSSPutObjectRequest * putObject = [OSSPutObjectRequest new];
+    putObject.bucketName = DD_FEED;
+    
+    UIImage * tempImage = image; //[image zipImageWithSize:image.size];
+    NSData  * imageData = UIImageJPEGRepresentation(tempImage, 1);
+    
+    NSString * encodedImage = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSDate * sendData = [NSDate date];
+    
+    NSDateFormatter  * dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYYMMDD"];
+    NSString *  locationString=[dateformatter stringFromDate:sendData];
+    
+    NSString * MD5Name =  [NSString NA_UUIDString]; //[UtilityClass getMd5_16Bit_String:encodedImage];
+    
+    NSString * UserID = kUserMessageManager.userId;
+    
+    if (!checkStrEmty(UserID)) {
+        int value = (arc4random() % 10000) + 1;
+        UserID    = [@(value)stringValue];
+    }
+    NSString * addName = [NSString stringWithFormat:@"%@%@",MD5Name,UserID];
+    NSString * endMD5  = addName; //[UtilityClass getMd5_16Bit_String:addName];
+    NSString * fileName = [NSString stringWithFormat:@"%@/%@.jpg",locationString,endMD5];
+    putObject.objectKey  = fileName;
+    putObject.uploadingData = imageData;
+    putObject.contentType = @"image/jpeg";
+    
+    OSSTask * putask = [client putObject:putObject];
+    
+    [putask continueWithBlock:^id _Nullable(OSSTask * _Nonnull task) {
+        [SVProgressHUD dismiss];
+
+        if (!task.error) {
+            success([NSString stringWithFormat:@"http://dd-feed.digi123.cn/%@",fileName],YES);
+        } else {
+            success(task.error,NO);
+        }
+        return nil;
+    }];
+    
 }
 
 

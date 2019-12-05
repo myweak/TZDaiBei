@@ -20,6 +20,8 @@
 + (instancetype)blankLineCell;//灰色有分割线
 
 
-- (void)setInsetWithX:(CGFloat)xpoint;
+- (void)setInsetWithX:(CGFloat)xpoint; //左偏移
+- (void)setInsetWithLeftAndRight:(CGFloat)xpoint;//左右都偏移
+
 + (UITableViewCell *)setCustomCell:(Class)cellClass insetWithX:(NSInteger)insetWidth tableView:(UITableView *)tableView;
 @end

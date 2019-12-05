@@ -147,4 +147,6 @@ static inline void showMessage(NSString *msgString){
 - (BOOL)checkMoneyIsValidCurrency;
 //金额输入格式判断
 -(BOOL)inputShouldNumberText;
+
++(NSString *)NA_UUIDString;
 @end

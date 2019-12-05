@@ -59,10 +59,13 @@
             // set delegate
             picker.delegate = weakSelf;
             picker.selectedAssets = [weakSelf.currentAssets mutableCopy];
-            if (self.imageOnly)
+            if (self.imageOnly){
+                picker.showsSelectionIndex = YES;
+                picker.defaultAssetCollection = PHAssetCollectionSubtypeSmartAlbumUserLibrary;
                 [self setImageOnlyForPicker:picker];
-            else if (self.videoOnly)
+            }else if (self.videoOnly){
                 [self setVideoOnlyForPicker:picker];
+            }
             
             // to present picker as a form sheet in iPad
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -237,16 +240,16 @@
                                         options:self.requestOptions
                                   resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         UIImage *image = [UIImage imageWithData:imageData];
-                                      CGSize timageSize = CGSizeMake(1500, 1500);
-                                      if (image.size.width >= timageSize.width && image.size.height >= timageSize.height) {
-                                          image = [image zipImageWithSize:timageSize];
-                                      }
-//                                      imageData = UIImageJPEGRepresentation(image, 0.5);
-                                      
-                                      if (block) {
-                                          block(image, imageData);
-                                      }
-                                  }];
+        CGSize timageSize = CGSizeMake(1500, 1500);
+        if (image.size.width >= timageSize.width && image.size.height >= timageSize.height) {
+            image = [image zipImageWithSize:timageSize];
+        }
+        //                                      imageData = UIImageJPEGRepresentation(image, 0.5);
+        
+        if (block) {
+            block(image, imageData);
+        }
+    }];
 }
 
 #pragma mark - 图片Nav
@@ -267,18 +270,18 @@
     NSArray *titles = @[@"拍照",@"相册"];
     [[[ACActionSheet alloc]initWithTitle:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil
                        otherButtonTitles:titles actionSheetBlock:^(NSInteger buttonIndex) {
-                           if (buttonIndex == 0)  {
-                               // 拍照
-                               [weakSelf pickImageFromCamera];
-                           } else if (buttonIndex == 1){
-                               [weakSelf pickAssetsFromAblum];
-                           } else {
-                               if (weakSelf.didCancelPickAssetsBlock) {
-                                   weakSelf.didCancelPickAssetsBlock();
-                               }
-                           }
-                           
-                       }] showWithBlackBg];
+        if (buttonIndex == 0)  {
+            // 拍照
+            [weakSelf pickImageFromCamera];
+        } else if (buttonIndex == 1){
+            [weakSelf pickAssetsFromAblum];
+        } else {
+            if (weakSelf.didCancelPickAssetsBlock) {
+                weakSelf.didCancelPickAssetsBlock();
+            }
+        }
+        
+    }] showWithBlackBg];
 }
 
 - (void)didFinishPickAssets{
@@ -298,7 +301,7 @@
     progressView.progress = 0.f;
     self.currentProgressView = progressView;
     
-//    [WkkeeperQiniuManager sharedManager].currenProgressBlock = nil;
+    //    [WkkeeperQiniuManager sharedManager].currenProgressBlock = nil;
     
     if (self.currentAssets.count > 0) {
         
@@ -308,7 +311,7 @@
             return;
         }
         
-//        NSMutableArray *imageDatasArray = [NSMutableArray arrayWithCapacity:self.currentAssets.count];
+        //        NSMutableArray *imageDatasArray = [NSMutableArray arrayWithCapacity:self.currentAssets.count];
         NSMutableArray *imageDatasArray = [NSMutableArray arrayWithCapacity:10];
         
         dispatch_group_t asset_group = dispatch_group_create();
@@ -329,41 +332,41 @@
                                                 options:self.requestOptions
                                           resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
                 UIImage *image = [UIImage imageWithData:imageData];
-                                              CGSize timageSize = CGSizeMake(2000, 2000);
-                                              if (image.size.width >= timageSize.width && image.size.height >= timageSize.height) {
-                                                  image = [image zipImageWithSize:timageSize];
-                                              }
-//                                              imageData = UIImageJPEGRepresentation(image, 0.3);
-                                              [imageDatasArray addObject:imageData];
-                                              
-                                              dispatch_group_leave(asset_group);
-                                          }];
+                CGSize timageSize = CGSizeMake(2000, 2000);
+                if (image.size.width >= timageSize.width && image.size.height >= timageSize.height) {
+                    image = [image zipImageWithSize:timageSize];
+                }
+                //                                              imageData = UIImageJPEGRepresentation(image, 0.3);
+                [imageDatasArray addObject:imageData];
+                
+                dispatch_group_leave(asset_group);
+            }];
         }
         
         dispatch_group_notify(asset_group, dispatch_get_main_queue(), ^{
             WEAKSELF;
             weakSelf.currentProgressView.totalProgress = 0.f;
-//            [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
-//                if (progress==1.0) {
-//                    weakSelf.currentProgressView.totalProgress = weakSelf.currentProgressView.totalProgress+progress;
-//                    weakSelf.currentProgressView.progress = weakSelf.currentProgressView.totalProgress*0.82f/((CGFloat)weakSelf.currentAssets.count);
-//                }else
-//                {
-//                    weakSelf.currentProgressView.progress = (weakSelf.currentProgressView.totalProgress+progress)*0.82f/((CGFloat)weakSelf.currentAssets.count);
-//                }
-//                NSLog(@"----> assets progress : %f", progress);
-//                weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%", (int)(weakSelf.currentProgressView.progress*100)];
-//            }];
-//            [[WkkeeperQiniuManager sharedManager] uploadImagesWithDataArray:imageDatasArray withProgressView:progressView completion:^(BOOL success, NSMutableArray *paths) {
-//                if (success) {
-//                    if (block) {
-//                        block(YES, paths, nil);
-//                    }
-//                }else{
-//                    [progressView dismiss];
-//                    [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
-//                }
-//            }];
+            //            [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
+            //                if (progress==1.0) {
+            //                    weakSelf.currentProgressView.totalProgress = weakSelf.currentProgressView.totalProgress+progress;
+            //                    weakSelf.currentProgressView.progress = weakSelf.currentProgressView.totalProgress*0.82f/((CGFloat)weakSelf.currentAssets.count);
+            //                }else
+            //                {
+            //                    weakSelf.currentProgressView.progress = (weakSelf.currentProgressView.totalProgress+progress)*0.82f/((CGFloat)weakSelf.currentAssets.count);
+            //                }
+            //                NSLog(@"----> assets progress : %f", progress);
+            //                weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%", (int)(weakSelf.currentProgressView.progress*100)];
+            //            }];
+            //            [[WkkeeperQiniuManager sharedManager] uploadImagesWithDataArray:imageDatasArray withProgressView:progressView completion:^(BOOL success, NSMutableArray *paths) {
+            //                if (success) {
+            //                    if (block) {
+            //                        block(YES, paths, nil);
+            //                    }
+            //                }else{
+            //                    [progressView dismiss];
+            //                    [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
+            //                }
+            //            }];
         });
         
     }else
@@ -384,11 +387,11 @@
     CGFloat scale       = screen.scale;
     CGSize targetSize = CGSizeMake(CGRectGetWidth(screen.bounds) * scale, CGRectGetHeight(screen.bounds) * scale);
     
-//    [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
-//        NSLog(@"----> Progress : %f", progress);
-//        weakSelf.currentProgressView.progress = progress*0.2f;
-//        weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%",(int)(progress*100*0.2f)];
-//    }];
+    //    [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
+    //        NSLog(@"----> Progress : %f", progress);
+    //        weakSelf.currentProgressView.progress = progress*0.2f;
+    //        weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%",(int)(progress*100*0.2f)];
+    //    }];
     
     [manager ctassetsPickerRequestImageForAsset:asset
                                      targetSize:targetSize
@@ -396,51 +399,51 @@
                                         options:self.requestOptions
                                   resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         UIImage *image = [UIImage imageWithData:imageData];
-                                                                        image = [image zipImageWithSize:CGSizeMake(1024, 1024)];
-                                                                        
-                                                                        PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
-                                                                        options.version = PHImageRequestOptionsVersionCurrent;
-                                                                        options.deliveryMode = PHVideoRequestOptionsDeliveryModeFastFormat;
-                                                                        
-                                                                        [manager requestAVAssetForVideo:asset
-                                                                                                options:options
-                                                                                          resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
-                                                                                              AVURLAsset* myAsset = (AVURLAsset*)asset;
-                                                                                              NSData * data = [NSData dataWithContentsOfFile:myAsset.URL.relativePath];
-                                                                                              
-                                                                                              if (data) {
-                                                                                                  
-//                                                                                                  NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
-                                  //                                                                [[WkkeeperQiniuManager sharedManager] uploadImageWithData:imageData completion:^(BOOL img_success, NSString *img_fileUrl) {
-                                  //
-                                  //                                                                    if (img_success) {
-                                  //                                                                        [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
-                                  //                                                                            NSLog(@"----> Progress : %f", progress);
-                                  //                                                                            weakSelf.currentProgressView.progress = 0.2f+progress*0.7f;
-                                  //                                                                            weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%",(int)(weakSelf.currentProgressView.progress*100)];
-                                  //                                                                        }];
-                                  //                                                                        [[WkkeeperQiniuManager sharedManager] uploadVideoData:data completion:^(BOOL success, NSString *fileUrl) {
-                                  //
-                                  //                                                                            if (success) {
-                                  //                                                                                if (block) {
-                                  //                                                                                    block(YES, @{@"path":img_fileUrl}, @{@"path":fileUrl});
-                                  //                                                                                }
-                                  //                                                                            }else{
-                                  //                                                                                [weakSelf.currentProgressView dismiss];
-                                  //                                                                                [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
-                                  //                                                                            }
-                                  //                                                                        }];
-                                  //                                                                    }else{
-                                  //                                                                        [weakSelf.currentProgressView dismiss];
-                                  //                                                                        [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
-                                  //                                                                    }
-                                  //                                                                }];
-                                                                                              }else{
-                                                                                                  [weakSelf.currentProgressView dismiss];
-                                                                                                  [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
-                                                                                              }
-                                                                                          }];
-                                                                    }];
+        image = [image zipImageWithSize:CGSizeMake(1024, 1024)];
+        
+        PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+        options.version = PHImageRequestOptionsVersionCurrent;
+        options.deliveryMode = PHVideoRequestOptionsDeliveryModeFastFormat;
+        
+        [manager requestAVAssetForVideo:asset
+                                options:options
+                          resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+            AVURLAsset* myAsset = (AVURLAsset*)asset;
+            NSData * data = [NSData dataWithContentsOfFile:myAsset.URL.relativePath];
+            
+            if (data) {
+                
+                //                                                                                                  NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
+                //                                                                [[WkkeeperQiniuManager sharedManager] uploadImageWithData:imageData completion:^(BOOL img_success, NSString *img_fileUrl) {
+                //
+                //                                                                    if (img_success) {
+                //                                                                        [[WkkeeperQiniuManager sharedManager] setCurrenProgressBlock:^(CGFloat progress){
+                //                                                                            NSLog(@"----> Progress : %f", progress);
+                //                                                                            weakSelf.currentProgressView.progress = 0.2f+progress*0.7f;
+                //                                                                            weakSelf.currentProgressView.bottomTipLabel.text = [NSString stringWithFormat:@"%d%%",(int)(weakSelf.currentProgressView.progress*100)];
+                //                                                                        }];
+                //                                                                        [[WkkeeperQiniuManager sharedManager] uploadVideoData:data completion:^(BOOL success, NSString *fileUrl) {
+                //
+                //                                                                            if (success) {
+                //                                                                                if (block) {
+                //                                                                                    block(YES, @{@"path":img_fileUrl}, @{@"path":fileUrl});
+                //                                                                                }
+                //                                                                            }else{
+                //                                                                                [weakSelf.currentProgressView dismiss];
+                //                                                                                [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
+                //                                                                            }
+                //                                                                        }];
+                //                                                                    }else{
+                //                                                                        [weakSelf.currentProgressView dismiss];
+                //                                                                        [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
+                //                                                                    }
+                //                                                                }];
+            }else{
+                [weakSelf.currentProgressView dismiss];
+                [iToast  showCenter_ToastWithText:@"出错啦，再试一次哈！"];
+            }
+        }];
+    }];
 }
 
 @end

@@ -968,4 +968,13 @@
     BOOL b = [pred evaluateWithObject:self];
     return b;
 }
+
++ (NSString *)NA_UUIDString
+{
+    CFUUIDRef UUID = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *UUIDString = (__bridge_transfer NSString *) CFUUIDCreateString(kCFAllocatorDefault, UUID);
+    CFRelease(UUID);
+    // Remove '-' in UUID
+    return [[[UUIDString componentsSeparatedByString:@"-"] componentsJoinedByString:@""] lowercaseString];
+}
 @end

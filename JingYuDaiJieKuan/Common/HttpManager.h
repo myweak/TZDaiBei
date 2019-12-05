@@ -22,6 +22,8 @@ typedef void (^HttpFailureBlock)(NSError *error);
 //请求回调时指定的线程,不指定的话就是主线程
 @property (nonatomic, strong, nullable) dispatch_queue_t completionQueue;
 
+SINGLETON_FOR_HEADER(HttpManager)
+
 -(NSUInteger)getWithPath:(NSString *)api
                   params:(NSDictionary *)params
                  success:(HttpSuccessBlock)success
@@ -48,4 +50,16 @@ typedef void (^HttpFailureBlock)(NSError *error);
 
 +(RACSignal *)requestWithPropertyEntity:(HttpPropertyEntity *)entity ;
 +(AFSecurityPolicy *)customSecurityPolicy;
+
+/**
+ *  上传图片
+ *
+ *  @param image   要上传的image
+ *  @param show    是否显示菊花器
+ *  @param success 成功 或 失败 回调
+ */
+
+- (void) uploadOSSServicesImage:(UIImage *)image
+                        showHUD:(BOOL)show
+                        success:(void (^)(id, BOOL))success;
 @end

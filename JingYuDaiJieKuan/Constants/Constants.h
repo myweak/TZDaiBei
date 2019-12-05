@@ -118,6 +118,18 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #endif
 
 
+/**
+ *  关于阿里云的东西
+ */
+#define ACCESSKEY @"LTAI4Fef3u7ZWBtnDAhHFsVP"
+// 私秘
+#define SECRETKEY @"caQauinVujygrHzhytCCw4yiTQ0CKT"
+#define DD_FEED   @"daibei-ceshi"
+//#define OSSHOSTID @"oss-cn-shenzhen.aliyuncs.com"
+#define OSSHOSTID @"oss-cn-beijing.aliyuncs.com"
+
+
+
 
 /***************************环境切换****************************/
 ///是否线上1为线上,0为测试

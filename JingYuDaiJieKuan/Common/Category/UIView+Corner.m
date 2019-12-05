@@ -34,9 +34,11 @@
 - (UIButton *)addBottomTapButtonTitleStr:(NSString *)title block:(void (^)(UIButton *btn)) block
 {
     UIButton *btn = [[UIButton alloc] init];
-    btn.frame = CGRectMake(0, kScreenHeight - 44 - kNavBarH- iPhoneXDiffHeight()*2, kScreenWidth, 44 +iPhoneXDiffHeight()*2);
+    CGFloat btn_H = iPH(44);
+    btn.frame = CGRectMake(0, kScreenHeight - btn_H - kNavBarH- iPhoneXDiffHeight(), kScreenWidth, btn_H +iPhoneXDiffHeight());
     btn.backgroundColor = Bg_Btn_Colorblue;
     btn.titleLabel.font = kFontSize18;
+    btn.titleEdgeInsets = UIEdgeInsetsMake(-iPhoneXDiffHeight(), 0, 0, 0);
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {

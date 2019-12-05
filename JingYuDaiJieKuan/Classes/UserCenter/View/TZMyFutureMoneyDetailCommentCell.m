@@ -27,7 +27,10 @@
     assetManager.didFinishPickAssetsBlock = ^{
         @strongify(self)
         [assetManager getImageWithAsserts:[assetManager.currentAssets objectAtIndex:0] size:self.photoImageView.size completion:^(UIImage *image, NSData *imageData) {
-            [self.photoImageView setImage:image];
+            [[[HttpManager alloc] init] uploadOSSServicesImage:image showHUD:YES success:^(id imageUrl, BOOL success) {
+                [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+            }];
+//            [self.photoImageView setImage:image];
         }];        
     };
     [self.photoImageView handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
@@ -36,6 +39,7 @@
 }
 
 -(void)starSliderMoveWithCurrentNum:(int)starNum{
+    showMessage([NSString NA_UUIDString]);
     NSString *title = @"";
     if (starNum == 1) {
         title = @"非常不满意";
@@ -44,7 +48,7 @@
     }else if (starNum == 3) {
         title = @"一般";
     }else if (starNum == 4) {
-        title = @"不满意";
+        title = @"满意";
     }else if (starNum == 5) {
         title = @"非常满意";
     }

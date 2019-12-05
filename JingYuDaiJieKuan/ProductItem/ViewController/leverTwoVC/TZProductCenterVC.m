@@ -47,8 +47,8 @@
     BOOL numb =  (arc4random() % 5)== 4;
     
     // 神经体验
-    hadSave = YES;
-    numb = YES;
+//    hadSave = YES;
+//    numb = YES;
     
     if ((!hadSave || numb) && self.pageIndex == 0) {
         [[[TZShowAlertView alloc] initWithAlerTitle:@"温馨提示" Content:@"建议申请5个以上产品，成功率提升95%！" buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {

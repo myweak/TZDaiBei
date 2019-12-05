@@ -58,7 +58,7 @@
 - (void)setRateType:(NSString *)rateType{
     _rateType =rateType;
     // 1:日利率；2:月利率；1:年利率-》rate
-    NSString *title = @"";
+    NSString *title = @"利息";
     switch (self.rateType.integerValue) {
         case 1:
             title = @"日利率";

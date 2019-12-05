@@ -58,7 +58,13 @@
     [cell setInsetWithX:0.f];
     return cell;
 }
-
+- (void)setInsetWithLeftAndRight:(CGFloat)xpoint
+{
+    self.separatorInset = UIEdgeInsetsMake(0, xpoint, 0, xpoint);
+    if ([(UITableViewCell *)self respondsToSelector:@selector(setLayoutMargins:)]) {
+        [(UITableViewCell *)self setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 - (void)setInsetWithX:(CGFloat)xpoint
 {
     self.separatorInset = UIEdgeInsetsMake(0, xpoint, 0, 0);
