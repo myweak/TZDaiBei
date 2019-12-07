@@ -97,12 +97,18 @@
 
     
     [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
-        
+               [self postCheckProductUrlWithDict:params];
+           } failure:^(NSError * _Nonnull error) {
+               [self postCheckProductUrlWithDict:params];
+        }];
+
+}
+- (void)postCheckProductUrlWithDict:(NSDictionary *)params{
+    [ProductItemViewModel homeLastAllPath:API_checkProduct_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
     } failure:^(NSError * _Nonnull error) {
-   
-        
     }];
 }
+
 // 新闻数量统计
 - (void)postArticleAddLikeNumPathUrlWithID:(NSString *)ID{
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",articleAddLikeNum_Path,ID];
@@ -242,16 +248,33 @@
         
         //
         [itemView.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.icon]];
+        NSString *keyStr = @"";
         itemView.titleLab.text = model.name;
-        itemView.maxMoneyLabel.text = [NSString stringWithFormat:@"最高可贷%@",model.maxAmount.getLargeNumbersAbbreviation];
-        itemView.maxMoneyLabel.keywords = model.maxAmount.getLargeNumbersAbbreviation;
+        if (model.type.intValue == 2) {
+            keyStr = [NSString stringWithFormat:@"%@万",model.maxAmount];
+        }else{
+            keyStr = model.maxAmount.getLargeNumbersAbbreviation;
+        }
+        itemView.maxMoneyLabel.text = [NSString stringWithFormat:@"最高可贷%@",keyStr];
+                   itemView.maxMoneyLabel.keywords = keyStr;
         itemView.maxMoneyLabel.keywordsColor = KText_ColorRed;
         [itemView.maxMoneyLabel reloadUIConfig];
         [itemView handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
             @strongify(self)
             [self postSaveProductClickUrlWithIndexModel:model];
             if (model.type.integerValue == 2) { // 线上
-                [self pushToTZProductScreenConditionVC];
+//                [self pushToTZProductScreenConditionVC];
+                NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+                NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=off%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
+                if (checkStrEmty(urlStr)) {
+                    return;
+                }
+                BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
+                targetVC.url = urlStr;
+                targetVC.title = @"智能匹配";
+                targetVC.isShowBackView = YES;
+                [self.navigationController pushViewController:targetVC animated:YES];
             }else{
                 [self PushToBaseWebViewControllerUrl:model.url andTitle:model.title];
             }

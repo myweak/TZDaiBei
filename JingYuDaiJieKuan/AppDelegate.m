@@ -34,6 +34,7 @@
 #import "BufferedNavigationController.h"
 #import "TZLoginVC.h"
 #import "LLDebug.h"
+#import "AdPageView.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -88,8 +89,26 @@ void UncaughtExceptionHandler(NSException *exception){
     self.semaphore = dispatch_semaphore_create(0);
     [self appNetwork];
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+
+    
+
     
     return YES;
+}
+
+- (void)ss{
+    //加载广告
+      AdPageView *adView = [[AdPageView alloc] initWithFrame:[UIScreen mainScreen].bounds
+                                                withTapBlock:^{
+          BaseWebViewController *web = [BaseWebViewController new];
+          UINavigationController *webVC = [[UINavigationController alloc]initWithRootViewController:web];
+
+          web.url = @"http://112.74.53.99:9012/index.html";
+          UIViewController *cureentVC = [UIViewController visibleViewController];
+          [cureentVC presentViewController:webVC animated:NO completion:^{
+          }];
+
+      }];
 }
 
 - (void)appNetwork {
@@ -139,15 +158,10 @@ void UncaughtExceptionHandler(NSException *exception){
             TZLoginVC *view = [[TZLoginVC alloc]init];
             UINavigationController *LoginNav = [[UINavigationController alloc]initWithRootViewController:view];
             
-            ///因为没有设置rootViewController的情况下,弹出的界面导航栏是黑的,所以这边添加一个空白的控制器
-            UIViewController *vc = [UIViewController new];
-            UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:vc];
-            self.window.rootViewController = navVC;
+            self.window.rootViewController = LoginNav;
             self.window.backgroundColor = [UIColor whiteColor];
             [self.window makeKeyAndVisible];
             
-            [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:LoginNav animated:YES completion:^{
-            }];
         });
         return ;
     } else {

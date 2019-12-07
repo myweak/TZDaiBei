@@ -37,4 +37,7 @@
 /** 获取当前的VCv */
 + (UIViewController *)visibleViewController;
 
+-(void)addPsuhVCAnimationFromTop; // 添加从底部弹起动画 push
+
+
 @end

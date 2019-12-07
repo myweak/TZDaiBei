@@ -215,10 +215,10 @@
     if (param) {
         [params addEntriesFromDictionary:param];
     }
-//    [params setObject:[NSString stringWithFormat:@"%@",kApp_Version] forKey:@"version"];
-//    [params setObject:[NSString stringWithFormat:@"App Store"] forKey:@"channel"];
-//    [params setObject:[NSString stringWithFormat:kClientType] forKey:@"clientType"];
-//    [params setObject:[NSString stringWithFormat:@"%@", [kUserMessageManager getUserToken]] forKey:@"token"];
+//    [params setValue:[NSString stringWithFormat:@"%@",kApp_Version] forKey:@"version"];
+//    [params setValue:[NSString stringWithFormat:@"App Store"] forKey:@"channel"];
+//    [params setValue:[NSString stringWithFormat:kClientType] forKey:@"clientType"];
+//    [params setValue:[NSString stringWithFormat:@"%@", [kUserMessageManager getUserToken]] forKey:@"token"];
 
     return params;
 }

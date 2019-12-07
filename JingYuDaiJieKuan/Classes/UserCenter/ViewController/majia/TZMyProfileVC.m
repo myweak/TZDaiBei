@@ -28,7 +28,6 @@
     [super viewDidLoad];
     
     self.title = @"个人信息";
-    
     [self initWithUI];
     [self setNavBar];
     [self bindSignal];

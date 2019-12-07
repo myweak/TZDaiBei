@@ -86,7 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * url;
 @property (nonatomic, copy) NSString * maxAmount;
-@property (nonatomic, copy) NSString * merchartid;
+@property (nonatomic, copy) NSString * merchartid; // 产品id
+@property (nonatomic, copy) NSString * pid;// 产品id
+
 @property (nonatomic, copy) NSString * type; // 2线上 1:线下
 
 @end

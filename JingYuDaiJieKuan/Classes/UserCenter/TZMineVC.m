@@ -164,7 +164,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    @weakify(self)
     NSString *title = self.titleArr[indexPath.section][indexPath.row];
     if ([title isEqualToString:@"退出登录"]) {
         [SensorsAnalyticsSDKHelper mySettingsEventWithPosition:@"安全退出"];
@@ -173,6 +172,7 @@
         TZMyProfileVC *profVc = [TZMyProfileVC new];
         profVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:profVc animated:YES];
+        
         
     }else if ([title isEqualToString:@"隐私政策"]){
         

@@ -171,11 +171,11 @@
 - (void)postSaveProductClickUrlWithIndexModel:(TZProductOfflineInfoModel*)model{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(2) forKey:@"equipment"];//1安卓，2ios，3web
-    [params setObject:model.proId forKey:@"pid"];//产品id
-    [params setObject:model.title forKey:@"pname"];//产品名
-    [params setObject:@(2) forKey:@"ptype"];//产品类型1:线上，2:线下
-    [params setObject:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+    [params setValue:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setValue:model.proId forKey:@"pid"];//产品id
+    [params setValue:model.title forKey:@"pname"];//产品名
+    [params setValue:@(2) forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
 
     
     [ProductItemViewModel getOfflineInfoPath:API_saveProductClick_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
@@ -206,7 +206,7 @@
 - (void)getOfflineInfoPathUrl{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(self.page) forKey:@"pageNo"];
+    [params setValue:@(self.page) forKey:@"pageNo"];
     
     [ProductItemViewModel getOfflineInfoPath:API_getOfflineInfo_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
         @strongify(self)

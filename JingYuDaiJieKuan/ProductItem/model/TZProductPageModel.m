@@ -98,6 +98,8 @@
 
 
 @implementation TZProductListModel
-
+- (NSString *)merchartid{
+    return checkStrEmty(_merchartid) ? self.pid :_merchartid;
+}
 @end
 

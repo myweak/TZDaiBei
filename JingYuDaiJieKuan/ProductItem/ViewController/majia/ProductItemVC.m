@@ -181,16 +181,16 @@
 //商户列表查询
 - (void)getProductItemList {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(self.pageIndex) forKey:@"pageNo"];
+    [params setValue:@(self.pageIndex) forKey:@"pageNo"];
     if (isSort) {
-        if (![tags isEqualToString:@"-1"]) { [params setObject:tags forKey:@"tag"];}
+        if (![tags isEqualToString:@"-1"]) { [params setValue:tags forKey:@"tag"];}
     } else {
-        if (![tags isEqualToString:@"-1"]) { [params setObject:tags forKey:@"tag"];}
+        if (![tags isEqualToString:@"-1"]) { [params setValue:tags forKey:@"tag"];}
         ///这里要特殊操作,判断是否要传对应的max和min
-        if (maxAmount != -1) { [params setObject:@(maxAmount) forKey:@"maxAmount"];}
-        if (mixAmount != -1) { [params setObject:@(mixAmount) forKey:@"mixAmount"];}
-        if (maxLimit != -1) { [params setObject:@(maxLimit) forKey:@"maxLimit"];}
-        if (mixLimit != -1) { [params setObject:@(mixLimit) forKey:@"mixLimit"];}
+        if (maxAmount != -1) { [params setValue:@(maxAmount) forKey:@"maxAmount"];}
+        if (mixAmount != -1) { [params setValue:@(mixAmount) forKey:@"mixAmount"];}
+        if (maxLimit != -1) { [params setValue:@(maxLimit) forKey:@"maxLimit"];}
+        if (mixLimit != -1) { [params setValue:@(mixLimit) forKey:@"mixLimit"];}
     }
     
     kSelfWeak;

@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TZProductLineFrontVC : SuperVC
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @end
 

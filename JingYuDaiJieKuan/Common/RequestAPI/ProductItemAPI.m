@@ -74,5 +74,7 @@ NSString *const API_getScreeningConditions_path = @"/offline/screenCond/getScree
 
 /** 添加用户点击产品信息 */
 NSString *const API_saveProductClick_path = @"/offline/product/saveProductClick";
+NSString *const API_checkProduct_path = @"offline/product/checkProduct"; // 数据补齐
+
 
 

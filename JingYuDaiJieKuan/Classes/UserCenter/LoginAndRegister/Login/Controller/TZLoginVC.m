@@ -57,7 +57,7 @@
 
 - (void)viewDidLoad {
     
-    
+    [self setFd_interactivePopDisabled:YES];
     self.protocolRange = NSMakeRange(7, 6);
     self.policyProtocolRange = NSMakeRange(14, 6);
     
@@ -284,12 +284,12 @@
     NSString *identifierStr = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     
-    [params setObject:self.m_iphoneField.text?:@"" forKey:@"mobile"];
-    [params setObject:self.m_passwordField.text forKey:@"smsCode"];
-    [params setObject:pmodel forKey:@"pmodel"];
-    [params setObject:identifierStr forKey:@"deviceNo"];
+    [params setValue:self.m_iphoneField.text?:@"" forKey:@"mobile"];
+    [params setValue:self.m_passwordField.text forKey:@"smsCode"];
+    [params setValue:pmodel forKey:@"pmodel"];
+    [params setValue:identifierStr forKey:@"deviceNo"];
 
-    [params setObject:[[SensorsAnalyticsSDK sharedInstance]anonymousId] forKey:@"distinctId"];
+    [params setValue:[[SensorsAnalyticsSDK sharedInstance]anonymousId] forKey:@"distinctId"];
     [LoginKeyInputViewModel userLoginPath:userLogin params:params target:self success:^(LoginModel *model) {
         if (model.code == 200) {
             [self.m_iphoneField resignFirstResponder];
@@ -326,8 +326,8 @@
 - (void)smsSendCodeData
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:self.m_iphoneField.text forKey:@"mobile"];
-    [params setObject:@"10" forKey:@"type"];
+    [params setValue:self.m_iphoneField.text forKey:@"mobile"];
+    [params setValue:@"10" forKey:@"type"];
     [LoginKeyInputViewModel smsSendCodePath:smsSendCode params:params target:self success:^(LoginModel *model) {
         if (model.code != 200) {
             [self stop];

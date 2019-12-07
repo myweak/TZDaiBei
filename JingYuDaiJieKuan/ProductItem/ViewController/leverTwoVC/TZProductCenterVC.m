@@ -40,10 +40,14 @@
 
 // 提示骚扰弹框
 - (void)showUserMessageView{
+    TZProductLineFrontVC *vc = [self.pageChildVCArr objectAtIndex:0];
+    if (vc.dataArr.count == 0) {
+        return;
+    }
     
     NSString *idKey = [NSString stringWithFormat:@"message_%@",kUserMessageManager.phone];
     BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
-    // 随5 的 机数概率判断
+    // 1/5概率判断
     BOOL numb =  (arc4random() % 5)== 4;
     
     // 神经体验

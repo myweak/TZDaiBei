@@ -19,13 +19,7 @@
 #import "HomeFourEarningsModel.h"
 
 // 阿里云。h
-#import "OSSNetworking.h"
-#import "OSSClient.h"
-#import "OSSModel.h"
-#import "OSSUtil.h"
-#import "OSSLog.h"
-#import "OSSService.h"
-
+#import <AliyunOSSiOS/OSSService.h>
 
 #define kRequestTimeOut 60
 
@@ -639,12 +633,18 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
     if (show) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     }
-    id<OSSCredentialProvider> credential = [[OSSPlainTextAKSKPairCredentialProvider alloc] initWithPlainTextAccessKey:ACCESSKEY secretKey:SECRETKEY];
+    // 移动端建议使用STS方式初始化OSSClient。可以通过sample中STS使用说明了解更多(https://github.com/aliyun/aliyun-oss-ios-sdk/tree/master/DemoByOC)
+    id<OSSCredentialProvider> credential = [[OSSStsTokenCredentialProvider alloc] initWithAccessKeyId:ACCESSKEYID secretKeyId:ACCESSKEYSECRET securityToken:@"SecurityToken"];
+
+   OSSClient* client = [[OSSClient alloc] initWithEndpoint:ENDPOINT credentialProvider:credential];
+
     
-    OSSClient * client = [[OSSClient alloc] initWithEndpoint:OSSHOSTID credentialProvider:credential];
+//    id<OSSCredentialProvider> credential = [[OSSPlainTextAKSKPairCredentialProvider alloc] initWithPlainTextAccessKey:ACCESSKEY secretKey:SECRETKEY];
+//
+//    client = [[OSSClient alloc] initWithEndpoint:OSSHOSTID credentialProvider:credential];
     
     OSSPutObjectRequest * putObject = [OSSPutObjectRequest new];
-    putObject.bucketName = DD_FEED;
+    putObject.bucketName = BUCKETNAMKE;
     
     UIImage * tempImage = image; //[image zipImageWithSize:image.size];
     NSData  * imageData = UIImageJPEGRepresentation(tempImage, 1);
@@ -678,7 +678,7 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
         [SVProgressHUD dismiss];
 
         if (!task.error) {
-            success([NSString stringWithFormat:@"http://dd-feed.digi123.cn/%@",fileName],YES);
+            success([NSString stringWithFormat:@"https://daibei-ceshi.oss-cn-beijing.aliyuncs.com/DaiBeiApk/download/%@",fileName],YES);
         } else {
             success(task.error,NO);
         }

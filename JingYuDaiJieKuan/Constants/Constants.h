@@ -121,12 +121,12 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 /**
  *  关于阿里云的东西
  */
-#define ACCESSKEY @"LTAI4Fef3u7ZWBtnDAhHFsVP"
+#define ACCESSKEYID     @"LTAI4Fef3u7ZWBtnDAhHFsVP"
 // 私秘
-#define SECRETKEY @"caQauinVujygrHzhytCCw4yiTQ0CKT"
-#define DD_FEED   @"daibei-ceshi"
+#define ACCESSKEYSECRET @"caQauinVujygrHzhytCCw4yiTQ0CKT"
+#define BUCKETNAMKE     @"daibei-ceshi"
 //#define OSSHOSTID @"oss-cn-shenzhen.aliyuncs.com"
-#define OSSHOSTID @"oss-cn-beijing.aliyuncs.com"
+#define ENDPOINT        @"http://oss-cn-beijing.aliyuncs.com"
 
 
 
@@ -172,12 +172,12 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 
 // 开发机
 #define SERVER_URL @"http://112.74.53.99:8005/" //开发
-//#define SERVER_URL @"http://192.168.1.135:8001/" //本地地址
+//#define SERVER_URL @"http://192.168.1.135:8005/" //本地地址
 #define HTTPS_type 1
 #define VERSION_URL @"1.0.0"
 #define WAP_URL @"http://192.168.28.99:9013/report/2017/index.html"
 
-//#define WAP_PHONEURL   @"http://192.168.1.135:8001/" //本地地址
+//#define WAP_PHONEURL   @"http://192.168.1.135:8005/" //本地地址
 #define WAP_PHONEURL   SERVER_URL
 
 #endif

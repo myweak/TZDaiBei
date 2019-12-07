@@ -49,7 +49,7 @@
 - (void)posthomeLastAllPathUrl{
     @weakify(self)
 //    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setObject:@(self.page) forKey:@"pageNo"];
+//    [params setValue:@(self.page) forKey:@"pageNo"];
 //    NSString *urlStr = [NSString stringWithFormat:@"%@%@",API_homeLastAll_path,@(self.page)];
 //
 //    [ProductItemViewModel homeLastAllPath:urlStr params:nil target:self success:^(TZProductPageModel * _Nonnull model) {

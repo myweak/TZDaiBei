@@ -211,7 +211,7 @@
 - (void)postConditonCityUrlWithCityId:(NSString *)cityId block:(void(^)(void)) succeess{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(1) forKey:@"cityId"];
+    [params setValue:@(1) forKey:@"cityId"];
     NSString *strName =  [[NSString stringWithFormat:@"%@/%@",API_getTwoTierCities_path,cityId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [ProductItemViewModel conditionPath:strName params:nil target:self modelClass:[TZProductScreenConditionCityModel class] success:^(id  _Nonnull model) {

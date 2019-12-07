@@ -188,7 +188,7 @@
 
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.alertView.width, 44)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.alertView.width, 49)];
         _titleLabel.font = kFontSize18;
         _titleLabel.textColor = CP_ColorMBlack;
         _titleLabel.textAlignment = NSTextAlignmentCenter;

@@ -80,10 +80,10 @@
         if (type == 1) {
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
             NSString *token = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN];
-            [params setObject:token?:@"" forKey:@"token"];
-            [params setObject:token?:@"" forKey:@"channel"];
-            [params setObject:token?:@"" forKey:@"clientType"];
-            [params setObject:token?:kApp_Version forKey:@"version"];
+            [params setValue:token?:@"" forKey:@"token"];
+            [params setValue:token?:@"" forKey:@"channel"];
+            [params setValue:token?:@"" forKey:@"clientType"];
+            [params setValue:token?:kApp_Version forKey:@"version"];
             [UserViewModel userLogoutPath:userLogout params:params target:self success:^(UserModel *model) {
                 if (model.code == 200) {
                     [kUserMessageManager removeDataWhenLogout];

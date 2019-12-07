@@ -124,6 +124,7 @@
 		2641AFAB236A83D500209C06 /* TZShowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAA236A83D500209C06 /* TZShowAlertView.m */; };
 		2641AFAE236A87D700209C06 /* UIView+Tap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAD236A87D700209C06 /* UIView+Tap.m */; };
 		2641AFB1236A8A1C00209C06 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641AFAF236A8A1B00209C06 /* ViewUtils.m */; };
+		264E1813239A4E9A00136D53 /* AdPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 264E1812239A4E9A00136D53 /* AdPageView.m */; };
 		26621797237D388100DC3A9F /* TZProductLinebackBankDevelopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */; };
 		26621799237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */; };
 		26659F2523743CC4008854C2 /* TZConditionMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26659F2423743CC4008854C2 /* TZConditionMoneyView.m */; };
@@ -774,6 +775,8 @@
 		2641AFAD236A87D700209C06 /* UIView+Tap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Tap.m"; sourceTree = "<group>"; };
 		2641AFAF236A8A1B00209C06 /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
 		2641AFB0236A8A1C00209C06 /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
+		264E1811239A4E9A00136D53 /* AdPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdPageView.h; sourceTree = "<group>"; };
+		264E1812239A4E9A00136D53 /* AdPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdPageView.m; sourceTree = "<group>"; };
 		26621795237D388100DC3A9F /* TZProductLinebackBankDevelopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankDevelopView.h; sourceTree = "<group>"; };
 		26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankDevelopView.m; sourceTree = "<group>"; };
 		26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankDevelopView.xib; sourceTree = "<group>"; };
@@ -1582,6 +1585,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		264E1810239A4E6E00136D53 /* AdPageView */ = {
+			isa = PBXGroup;
+			children = (
+				264E1811239A4E9A00136D53 /* AdPageView.h */,
+				264E1812239A4E9A00136D53 /* AdPageView.m */,
+			);
+			path = AdPageView;
+			sourceTree = "<group>";
+		};
 		2676DA052367FAED00FDAAC2 /* V1.0.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1673,6 +1685,7 @@
 		26FB9167237A63F6002B9D3A /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				264E1810239A4E6E00136D53 /* AdPageView */,
 				26D31C002396127B00839FCE /* PHAssets */,
 				26D31BFA239611A600839FCE /* ACActionSheet */,
 				26FB9168237A63F6002B9D3A /* SVProgressHUD */,
@@ -2950,6 +2963,7 @@
 				26659F2A23755630008854C2 /* TZLaunchView.m in Sources */,
 				5F323B40205F8BB500995197 /* UIImageView+DWGifTool.m in Sources */,
 				0A088AF722ADF205001FF532 /* ClickRectExpandButton.m in Sources */,
+				264E1813239A4E9A00136D53 /* AdPageView.m in Sources */,
 				2601F4AF236C2933005607DA /* UITableViewCell+NATools.m in Sources */,
 				5F41B5B820902F4200D65A8A /* AssetsNoDataView.m in Sources */,
 				2641AFAE236A87D700209C06 /* UIView+Tap.m in Sources */,
@@ -3465,7 +3479,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = tianze.com.daibei;
 				PRODUCT_NAME = "宝银帒呗";
@@ -3505,7 +3519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = tianze.com.daibei;
 				PRODUCT_NAME = "宝银帒呗";

@@ -11,7 +11,6 @@
 #import "ProductItemViewModel.h"
 @interface TZProductLineFrontVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong ,nonatomic) UITableView *m_tableView;
-@property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 @end
 
@@ -60,25 +59,34 @@
 - (void)postSaveProductClickUrlWithIndexModel:(TZProductBankModel*)model{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(2) forKey:@"equipment"];//1安卓，2ios，3web
-    [params setObject:model.merchartid forKey:@"pid"];//产品id
-    [params setObject:model.name forKey:@"pname"];//产品名
-    [params setObject:@(1) forKey:@"ptype"];//产品类型1:线上，2:线下
-    [params setObject:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
-
+    [params setValue:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setValue:model.merchartid forKey:@"pid"];//产品id
+    [params setValue:model.name forKey:@"pname"];//产品名
+    [params setValue:@(1) forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+    
     
     [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
-        
+        [self postCheckProductUrlWithDict:params];
     } failure:^(NSError * _Nonnull error) {
-   
-        
+        [self postCheckProductUrlWithDict:params];
+    }];
+    
+}
+- (void)postCheckProductUrlWithDict:(NSDictionary *)params{
+    [ProductItemViewModel homeLastAllPath:API_checkProduct_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
+    } failure:^(NSError * _Nonnull error) {
     }];
 }
+
+
+
+
 // 线上极速贷款 数据
 - (void)posthomeLastAllPathUrl{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@(self.page) forKey:@"pageNo"];
+    [params setValue:@(self.page) forKey:@"pageNo"];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",API_homeLastAll_path,@(self.page)];
     
     [ProductItemViewModel homeLastAllPath:urlStr params:nil target:self success:^(TZProductPageModel * _Nonnull model) {

@@ -229,14 +229,11 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
 
 // push App登陆
 -(void)checkAppLogin{
+    UIViewController *selfVC = [UIViewController visibleViewController];
+    selfVC.hidesBottomBarWhenPushed = YES;
     TZLoginVC *view = [[TZLoginVC alloc]init];
-    UINavigationController *LoginNav = [[UINavigationController alloc]initWithRootViewController:view];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:LoginNav animated:YES completion:^{
-        }];
-    });
+    [view addPsuhVCAnimationFromTop];
+    [selfVC.navigationController pushViewController:view animated:NO];
 }
 
 
@@ -245,12 +242,13 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
 {
     CustomAlertView *alertView = [CustomAlertView initNewStyleOneContent_TwoBtnPushWithAddInSuper:kAlertwindow Content:@"您确定要退出登录吗?" LeftBtnTitle:@"取消" RightBtnTitle:@"确认" clickBlock:^(NSInteger type) {
         if (type == 1) {
+
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
             NSString *token = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN];
-            [params setObject:token?:@"" forKey:@"token"];
-            [params setObject:token?:@"" forKey:@"channel"];
-            [params setObject:token?:@"" forKey:@"clientType"];
-            [params setObject:token?:kApp_Version forKey:@"version"];
+            [params setValue:token?:@"" forKey:@"token"];
+            [params setValue:token?:@"" forKey:@"channel"];
+            [params setValue:token?:@"" forKey:@"clientType"];
+            [params setValue:token?:kApp_Version forKey:@"version"];
             [UserViewModel userLogoutPath:userLogout params:params target:self success:^(UserModel *model) {
                 if (model.code == 200) {
                     [kUserMessageManager removeDataWhenLogout];
