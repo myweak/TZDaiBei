@@ -145,13 +145,14 @@
     [btnA sizeToFit];
     [btnB sizeToFit];
     
+    BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
     
     CGRect rectAA = CGRectMake(btnA.right, 0, 150, 11);
-    UIButton * btnAA = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectAA, 11, nil, nil, nil, NO, @"《注册协议》", UIEdgeInsetsZero, kFontSize10,  UIColorHex(@"#39bae8"), self, @selector(btnClickAction:));
+    UIButton * btnAA = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectAA, 11, nil, nil, nil, btnSelect, @"《注册协议》", UIEdgeInsetsZero, kFontSize10,  UIColorHex(@"#39bae8"), self, @selector(btnClickAction:));
     
     CGRect rectBB = CGRectMake(btnB.right,  36, 150, 11);
     
-    UIButton * btnBB = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectBB, 22, nil, nil, nil, NO, @"《客户隐私保护政策》", UIEdgeInsetsZero, kFontSize10,  UIColorHex(@"#39bae8"), self, @selector(btnClickAction:));
+    UIButton * btnBB = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectBB, 22, nil, nil, nil, btnSelect, @"《客户隐私保护政策》", UIEdgeInsetsZero, kFontSize10,  UIColorHex(@"#39bae8"), self, @selector(btnClickAction:));
     
     [btnAA sizeToFit];
     [btnBB sizeToFit];
@@ -165,7 +166,8 @@
 
     _btnRegisterWebBtn =btnA;
     _btnPrivayWebBtn = btnB;
-    
+    _btnRegisterWebBtn.selected = btnSelect;
+    _btnPrivayWebBtn.selected = btnSelect;
     
     // 提示信息
     InsertLabel(viewBg, CGRectMake(btnB.left, btnB.bottom+10, kScreenWidth- btnB.left *2, 12), NSTextAlignmentLeft, @"*温馨提示：不协助学生办理贷款业务", kFontSize16, KText_ColorRed, YES);
@@ -397,6 +399,9 @@
 /// textFiled改变的通知
 - (void)textFiledEditChanged:(NSNotification *)obj
 {
+    BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
+    _btnRegisterWebBtn.selected = btnSelect;
+    _btnPrivayWebBtn.selected = btnSelect;
     self.m_nextBtn.effective = ([self.m_iphoneField.text length] == 11) && ([self.m_passwordField.text length] >= 4);
 }
 

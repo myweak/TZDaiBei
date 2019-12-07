@@ -50,7 +50,6 @@
         @strongify(self)
 
         NSLog(@"贷款金额：%@",self.headView.moneyTextField.text);
-        
         if (!checkStrEmty(self.headView.moneyTextField.text)) {
             NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
 
@@ -227,6 +226,7 @@
     BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
     targetVC.url = urlStr;
     targetVC.navigationItem.title = title;
+    targetVC.isShowBackView = YES;
     [self.navigationController pushViewController:targetVC animated:YES];
 }
 

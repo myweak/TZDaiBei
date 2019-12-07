@@ -53,7 +53,7 @@ static int const showtime = 5;
         // 2.跳过按钮
         CGFloat btnW = 60;
         CGFloat btnH = 30;
-        _countBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - btnW - 24, kNavBarH, btnW, btnH)];
+        _countBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - btnW - 24, kNavBarH-btnH, btnW, btnH)];
         [_countBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
         [_countBtn setTitle:[NSString stringWithFormat:@"跳过%d", showtime] forState:UIControlStateNormal];
         _countBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -124,9 +124,12 @@ static int const showtime = 5;
         return;
     }
     [self startTimer];
-
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:self];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:self];
+    });
+    
 }
 
 // 定时器倒计时

@@ -89,14 +89,18 @@ void UncaughtExceptionHandler(NSException *exception){
     self.semaphore = dispatch_semaphore_create(0);
     [self appNetwork];
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-
     
+    #ifdef DEBUG
+            [self advertising];
+       #else
+       #endif
+
 
     
     return YES;
 }
 
-- (void)ss{
+- (void)advertising{
     //加载广告
       AdPageView *adView = [[AdPageView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                 withTapBlock:^{
