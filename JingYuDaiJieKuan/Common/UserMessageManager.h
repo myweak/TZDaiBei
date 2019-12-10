@@ -51,6 +51,8 @@
 @property(nonatomic,assign) int g_PushType;
 
 @property (copy ,nonatomic) NSString *userId;
+@property (copy ,nonatomic) NSString *gender;
+
 
 @property (copy ,nonatomic) NSString *toKen;
 

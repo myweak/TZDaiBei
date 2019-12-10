@@ -29,6 +29,14 @@
 
 @implementation TZMineVC
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    BOOL b = [kUserMessageManager.gender containsString:@"女"];
+    NSString *gender = b ?  @"user_gird_":@"user_man_";
+    [self.headerCardView.iconImageView setImage:R_ImageName(gender)];
+    self.headerCardView.nameLabel.text = b ? @"女士":@"先生";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -65,8 +73,9 @@
 - (void)bindSignal{
     @weakify(self)
     [self.headerCardView.detailLabel handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
-     @strongify(self)
-        [self pushTZMyFutureMoneyListVC];
+        @strongify(self)
+        showMessage(@"您当前暂无其他借款");
+//        [self pushTZMyFutureMoneyListVC];
     }];
 }
 

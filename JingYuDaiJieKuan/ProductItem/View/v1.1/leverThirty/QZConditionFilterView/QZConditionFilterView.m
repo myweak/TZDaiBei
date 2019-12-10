@@ -356,7 +356,7 @@
     [_filterTableView1 dismiss];
     [_filterTableView2 dismiss];
     _filterTableView3.hidden = YES;
-
+    [_filterTableView3.textField resignFirstResponder];
     _m_selectView.hidden = YES;
     //    [_filterTableView3 dismiss];
     //    [_m_selectView dismiss];

@@ -18,6 +18,8 @@
 //    self.cardViewBg.layer.shadowRadius = 5;
     self.detailLabel.underlineStr = @"查看借款详情";
     [self.detailLabel reloadUIConfig];
+    self.phoneNumLabel.text = [kUserMessageManager.phone phoneNumberFormat];
+    
 }
 
 

@@ -23,7 +23,9 @@
     
     [self handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
         @strongify(self)
-        [self.textField becomeFirstResponder];
+        if (loc.x < kScreenWidth - 100) {
+            [self.textField becomeFirstResponder];
+        }
     }];
 }
 
@@ -66,6 +68,7 @@
         showMessage(@"最低筛选金额0.1万元");
         return;
     }
+    [self.textField resignFirstResponder];
     !self.backTapBtnActionBlock ?:self.backTapBtnActionBlock(title);
     
 }

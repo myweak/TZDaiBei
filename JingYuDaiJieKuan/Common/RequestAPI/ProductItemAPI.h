@@ -74,3 +74,7 @@ UIKIT_EXTERN NSString *const API_getScreeningConditions_path;
 /** 添加用户点击产品信息 */
 UIKIT_EXTERN NSString *const API_saveProductClick_path;
 UIKIT_EXTERN NSString *const API_checkProduct_path;
+
+/** 用户贷款列表信息 */
+UIKIT_EXTERN NSString *const API_offlineAmountInfo_path;
+

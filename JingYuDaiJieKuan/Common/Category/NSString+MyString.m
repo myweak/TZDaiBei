@@ -977,4 +977,24 @@
     // Remove '-' in UUID
     return [[[UUIDString componentsSeparatedByString:@"-"] componentsJoinedByString:@""] lowercaseString];
 }
+
+- (NSString *)appVersionNumberFormat{
+    NSString *str = [[self componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+    if (str.length >3) {
+        str = [str substringToIndex:3];
+    }else if (str.length<3) {
+        str = [NSString stringWithFormat:@"%@0",str];
+        str = [str appVersionNumberFormat];
+    }
+    return str;
+}
+
+- (NSString *)phoneNumberFormat{
+    NSString *string = [self stringByReplacingOccurrencesOfString:[self substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    return string;
+}
+
+
+
+
 @end

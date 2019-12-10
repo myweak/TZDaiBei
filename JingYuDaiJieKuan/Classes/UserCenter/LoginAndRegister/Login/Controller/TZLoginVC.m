@@ -399,9 +399,12 @@
 /// textFiled改变的通知
 - (void)textFiledEditChanged:(NSNotification *)obj
 {
-    BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
-    _btnRegisterWebBtn.selected = btnSelect;
-    _btnPrivayWebBtn.selected = btnSelect;
+    if ([self.m_iphoneField isFirstResponder]) {
+        BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
+        _btnRegisterWebBtn.selected = btnSelect;
+        _btnPrivayWebBtn.selected = btnSelect;
+    }
+    
     self.m_nextBtn.effective = ([self.m_iphoneField.text length] == 11) && ([self.m_passwordField.text length] >= 4);
 }
 

@@ -47,29 +47,16 @@
 
 // 线上极速贷款 数据
 - (void)posthomeLastAllPathUrl{
+//    /offline/product/offlineAmountInfo
     @weakify(self)
 //    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 //    [params setValue:@(self.page) forKey:@"pageNo"];
 //    NSString *urlStr = [NSString stringWithFormat:@"%@%@",API_homeLastAll_path,@(self.page)];
 //
-//    [ProductItemViewModel homeLastAllPath:urlStr params:nil target:self success:^(TZProductPageModel * _Nonnull model) {
+//    [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:nil target:self success:^(id * _Nonnull model) {
 //        @strongify(self)
-//        if (self.page == 1) {
-//            self.dataArr = [[NSMutableArray alloc] initWithArray:model.bankList];
-//        }else{
-//            if (model.bankList.count == 0) {
-//                [self.m_tableView.mj_footer endRefreshingWithNoMoreData];
-//                return ;
-//            }else{
-//                [self.dataArr addObjectsFromArray:model.bankList];
-//            }
-//        }
-//        [self.m_tableView.mj_header endRefreshing];
-//        [self.m_tableView.mj_footer endRefreshing];
-//        [self.m_tableView reloadData];
+//        
 //    } failure:^(NSError * _Nonnull error) {
-//        [self.m_tableView.mj_header endRefreshing];
-//        [self.m_tableView.mj_footer endRefreshing];
 //    }];
 }
 

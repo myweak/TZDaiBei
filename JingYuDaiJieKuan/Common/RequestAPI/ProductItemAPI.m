@@ -77,4 +77,6 @@ NSString *const API_saveProductClick_path = @"/offline/product/saveProductClick"
 NSString *const API_checkProduct_path = @"offline/product/checkProduct"; // 数据补齐
 
 
+NSString *const API_offlineAmountInfo_path = @"/offline/product/offlineAmountInfo";
+
 

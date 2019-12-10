@@ -149,4 +149,10 @@ static inline void showMessage(NSString *msgString){
 -(BOOL)inputShouldNumberText;
 
 +(NSString *)NA_UUIDString;
+
+//app版本格式化 1.0--》100
+- (NSString *)appVersionNumberFormat;
+
+//手机号码格式化 135*****324
+- (NSString *)phoneNumberFormat;
 @end

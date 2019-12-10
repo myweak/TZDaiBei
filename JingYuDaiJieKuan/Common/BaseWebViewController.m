@@ -197,7 +197,7 @@
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
 {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
+//    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
 
     self.webView.hidden = NO;
     self.progressView.hidden = NO;

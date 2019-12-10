@@ -90,6 +90,7 @@ void UncaughtExceptionHandler(NSException *exception){
     [self appNetwork];
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
     
+    
     #ifdef DEBUG
             [self advertising];
        #else
@@ -101,6 +102,10 @@ void UncaughtExceptionHandler(NSException *exception){
 }
 
 - (void)advertising{
+    
+    if (![kUserMessageManager checkUserLogin]) {
+        return;
+    }
     //加载广告
       AdPageView *adView = [[AdPageView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                 withTapBlock:^{
@@ -128,6 +133,17 @@ void UncaughtExceptionHandler(NSException *exception){
         NetworkStatus status = [self.connetion currentReachabilityStatus];
         // 两种检测:路由与服务器是否可达  三种状态:手机流量联网、WiFi联网、没有联网
         if ((status == ReachableViaWWAN) || (status == kReachableVia2G) || (status == kReachableVia3G) || (status == kReachableVia4G) || (status == ReachableViaWiFi)) {
+            [self applicationStart];
+            //版本更新 模拟数据
+            AppUpdateModel *model = [AppUpdateModel new];
+            model.appTitle = @"温馨提示";
+            model.appDesc = @"有新版本更新了";
+            model.appV = @"V1.1.0";
+            model.dialogRepeat = 1;
+            model.upgradeWay = 1;
+            model.url = @"http://www.daibei.net.cn:8005/static/upload/uploadApp";
+//            [self setUpdateApp:model];
+            //版本更新 接口
             [self checkAppUpdate];
         } else {
             NSLog(@"没网");
@@ -135,16 +151,16 @@ void UncaughtExceptionHandler(NSException *exception){
         
         [[NSRunLoop currentRunLoop] run];
     });
-    
-    
 }
+
+
 
 // 处理网络状态改变
 - (void)appReachabilityChanged:(NSNotification *)notification{
     NetworkStatus status = [self.connetion currentReachabilityStatus];
     // 两种检测:路由与服务器是否可达  三种状态:手机流量联网、WiFi联网、没有联网
     if ((status == ReachableViaWWAN) || (status == kReachableVia2G) || (status == kReachableVia3G) || (status == kReachableVia4G) || (status == ReachableViaWiFi)) {
-        [self checkAppUpdate];
+//        [self applicationStart];
     } else {
         NSLog(@"没网");
     }
@@ -152,11 +168,8 @@ void UncaughtExceptionHandler(NSException *exception){
 }
 
 - (void)applicationStart {
-    
-    
-    
-    if (![kUserMessageManager checkUserLogin]) {
         dispatch_semaphore_signal(self.semaphore);
+    if (![kUserMessageManager checkUserLogin]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             TZLoginVC *view = [[TZLoginVC alloc]init];
@@ -169,9 +182,15 @@ void UncaughtExceptionHandler(NSException *exception){
         });
         return ;
     } else {
-        dispatch_semaphore_signal(self.semaphore);
+//        dispatch_semaphore_signal(self.semaphore);
+        //            [self readyToInitWindowNeedShowNewFeature:[self needShowNewFeature]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self readyToInitWindowNeedShowNewFeature:[self needShowNewFeature]];
+            
+            MainViewController *mainVC = [[MainViewController alloc]init];
+            [mainVC initWithVC: nil];
+            self.window.rootViewController = mainVC;
+            self.window.backgroundColor    = [UIColor whiteColor];
+            [self.window makeKeyAndVisible];
         });
     }
     
@@ -182,54 +201,14 @@ void UncaughtExceptionHandler(NSException *exception){
 #pragma mark 界面
 -(void)enterMainViewIndex:(NSInteger)index
 {
-    [self readyToInitWindowNeedShowNewFeature:NO];
-}
-
-- (BOOL)needShowNewFeature{
-    NSString *date = [self getCurrentDate];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *currentDate = [defaults objectForKey:@"startBannerCurrentDate"];
-    
-    BOOL needShowNewFeature = !self.isShowedNewFeature;
-    // 如果没有数据,那么就不弹出新特性
-    if (self.appInitModel == nil){
-        needShowNewFeature = NO;
-    } else {
-        switch (self.appInitModel.startBaner.triggerWay) {
-            case 1://每日首次打开
-            {
-                if ([currentDate isEqualToString:date]) {
-                    needShowNewFeature = NO;
-                    //一样就不显示
-                } else {
-                    //不一样证明这个日期还没打开过APP,需要显示
-                    needShowNewFeature = needShowNewFeature && YES;
-                }
-                break;
-            }
-            case 3://首次打开
-            {
-                if (currentDate == nil) {
-                    //没有记录,第一次安装,需要显示
-                    needShowNewFeature = needShowNewFeature && YES;
-                } else {
-                    needShowNewFeature = NO;
-                }
-                break;
-            }
-                
-            default:{ // == 2
-                needShowNewFeature = needShowNewFeature && YES;
-                break;
-            }
-        }
-    }
-    
-    /// 保存弹窗时间
-    [defaults setObject:date forKey:@"startBannerCurrentDate"];
-    [defaults synchronize];
-    
-    return needShowNewFeature;
+//    [self readyToInitWindowNeedShowNewFeature:NO];
+    ///跳过的话就加载首页
+      MainViewController *mainVC = [[MainViewController alloc]init];
+      [mainVC initWithVC: nil];
+      
+      self.window.rootViewController = mainVC;
+      self.window.backgroundColor    = [UIColor whiteColor];
+      [self.window makeKeyAndVisible];
 }
 
 ///数据处理完成,初始化界面
@@ -290,32 +269,6 @@ void UncaughtExceptionHandler(NSException *exception){
     
 }
 
-- (NSString *)getCurrentDate {
-    NSDate *date = [NSDate date];                            //实际上获得的是：UTC时间，协调世界时，亚州的时间与UTC的时差均为+8
-    
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];                  //zone为当前时区信息  在我的程序中打印的是@"Asia/Shanghai"
-    
-    NSInteger interval = [zone secondsFromGMTForDate: date];      //28800 //所在地区时间与协调世界时差距
-    
-    NSDate *localeDate = [date dateByAddingTimeInterval: interval];  //加上时差，得到本地时间
-    
-    //get seconds since 1970
-    
-    NSTimeInterval intervalWith1970 = [localeDate timeIntervalSince1970];     //本地时间与1970年的时间差（秒数）
-    
-    int daySeconds = 24 * 60 * 60;                                            //每天秒数
-    
-    NSInteger allDays = intervalWith1970 / daySeconds;                        //这一步是为了舍去后面的时分秒
-    
-    localeDate = [NSDate dateWithTimeIntervalSince1970:allDays * daySeconds];
-    
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    
-    fmt.dateFormat = @"yyyy-MM-dd";   //创建日期格式（年-月-日）
-    
-    return [fmt stringFromDate:localeDate];       //得到当地当时的时间（年月日）
-}
-
 
 #pragma mark - 版本更新
 - (void)checkAppUpdate {
@@ -326,15 +279,15 @@ void UncaughtExceptionHandler(NSException *exception){
     } else {
         self.isCompleteInitApp = !self.isCompleteInitApp;
     }
-    [self applicationStart];
-    return;
+//    [self applicationStart];
+//    return;
     // app 升级判断
     [UserViewModel appUpdatePath:appUpdatePath params:nil target:nil success:^(AppUpdateModel *model) {
         if (model.code == 200) {
             switch (model.upgradeWay) {
                 case 0: //不升级
                 {
-                    [self applicationStart];
+//                    [self applicationStart];
                     break;
                 }
                 case 1: //建议升级
@@ -345,9 +298,8 @@ void UncaughtExceptionHandler(NSException *exception){
                     if (model.dialogRepeat == 0) {
                         if (appVersion == nil) {
                             //第一次建议升级,需要弹框
-                            
                         } else {
-                            [self applicationStart];
+//                            [self applicationStart];
                             break;
                         }
                     } else if (model.dialogRepeat == 1) {
@@ -399,7 +351,7 @@ void UncaughtExceptionHandler(NSException *exception){
                     abort();
                     break;
                 default:
-                    [self applicationStart];
+//                    [self applicationStart];
                     break;
             }
         }
@@ -407,6 +359,80 @@ void UncaughtExceptionHandler(NSException *exception){
         
     }];
     
+}
+
+- (void)setUpdateApp:(AppUpdateModel *)model{
+    switch (model.upgradeWay) {
+        case 0: //不升级
+        {
+            [self applicationStart];
+            break;
+        }
+        case 1: //建议升级
+        {
+            ///获取建议升级的版本号
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *appVersion = [defaults objectForKey:@"appupdateVersion"];
+            if (model.dialogRepeat == 0) {
+                if (appVersion == nil) {
+                    //第一次建议升级,需要弹框
+    
+                } else {
+//                    [self applicationStart];
+                    break;
+                }
+            } else if (model.dialogRepeat == 1) {
+                
+            }
+            
+            /// 保存建议升级的版本号
+            [defaults setObject:model.appV forKey:@"appupdateVersion"];
+            [defaults synchronize];
+            
+            AppUpdateAlertView *alert = [[AppUpdateAlertView alloc]initWithModel:model cancelClosure:^{
+                [self applicationStart];
+            } sureUpdateClosure:^{
+                //跳转网页
+                [UIApplication.sharedApplication openURL:[NSURL URLWithString:model.url]];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    abort();
+                });
+            }];
+            
+            dispatch_semaphore_signal(self.semaphore);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [alert showAlertViewInViewController:self.window.rootViewController leftOrRightMargin:30];
+            });
+            break;
+            
+        }
+            
+        case 2: //强制升级
+        {
+            AppUpdateAlertView *alert = [[AppUpdateAlertView alloc]initWithModel:model cancelClosure:^{
+            } sureUpdateClosure:^{
+                //跳转网页
+                [UIApplication.sharedApplication openURL:[NSURL URLWithString:model.url]];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    abort();
+                });
+            }];
+            
+            dispatch_semaphore_signal(self.semaphore);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [alert showAlertViewInViewController:self.window.rootViewController leftOrRightMargin:30];
+            });
+            break;
+            
+        }
+        case 3:
+            dispatch_semaphore_signal(self.semaphore);
+            abort();
+            break;
+        default:
+//            [self applicationStart];
+            break;
+    }
 }
 
 #pragma 第三方

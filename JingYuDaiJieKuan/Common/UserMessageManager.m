@@ -35,7 +35,7 @@
 @synthesize g_StateTradePasswordSet;
 @synthesize g_State_bankBind;
 @synthesize g_PushType;
-
+@synthesize gender = _gender;
 
 
 
@@ -167,6 +167,12 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
     return self;
 }
 
+- (void)setGender:(NSString *)gender{
+
+    _gender = ChangeNullData(gender);
+    [self setMessageManagerForObjectWithKey:KEY_USER_GENDER value:gender];
+}
+
 -(void)setUserId:(NSString *)userId
 {
     _userId = ChangeNullData(userId);
@@ -185,6 +191,10 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
     [self setMessageManagerForObjectWithKey:DEVICE_TOKEN value:deviceToken];
 }
 
+
+- (NSString *)gender{
+    return [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_GENDER];
+}
 -(NSString *)getUserId
 {
     return ChangeNullData(_userId);

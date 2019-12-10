@@ -48,17 +48,24 @@
     
     self.headView.backBtnTapAction = ^(UIButton * _Nonnull btn) {
         @strongify(self)
-
-        NSLog(@"贷款金额：%@",self.headView.moneyTextField.text);
-        if (!checkStrEmty(self.headView.moneyTextField.text)) {
-            NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
-
-            NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&loanAmount=%@",phone,self.headView.moneyTextField.text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-            NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
-            
-            [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"智能匹配"];
+        if (checkStrEmty(self.headView.moneyTextField.text)) {
+            showMessage(@"请输入您需要贷款的金额");
+            return ;
         }
+        if ([self.headView.moneyTextField.text floatValue]<100) {
+            showMessage(@"线下贷款申请办理不能低于100元");
+            return ;
+        }
+        NSLog(@"贷款金额：%@",self.headView.moneyTextField.text);
+        
+        NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+        
+        NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&loanAmount=%@",phone,self.headView.moneyTextField.text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
+        
+        [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"智能匹配"];
+        
     };
 }
 
