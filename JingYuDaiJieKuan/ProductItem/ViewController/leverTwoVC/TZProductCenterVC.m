@@ -44,8 +44,9 @@
     if (vc.dataArr.count == 0) {
         return;
     }
-    
-    NSString *idKey = [NSString stringWithFormat:@"message_%@",kUserMessageManager.phone];
+    NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+
+    NSString *idKey = [NSString stringWithFormat:@"message_%@",phone];
     BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
     // 1/5概率判断
     BOOL numb =  (arc4random() % 5)== 4;

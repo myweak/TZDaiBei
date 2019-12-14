@@ -145,7 +145,9 @@
     [btnA sizeToFit];
     [btnB sizeToFit];
     
-    BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
+    NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+
+    BOOL btnSelect = [phone isEqualToString:self.m_iphoneField.text];
     
     CGRect rectAA = CGRectMake(btnA.right, 0, 150, 11);
     UIButton * btnAA = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectAA, 11, nil, nil, nil, btnSelect, @"《注册协议》", UIEdgeInsetsZero, kFontSize10,  UIColorHex(@"#39bae8"), self, @selector(btnClickAction:));
@@ -276,7 +278,7 @@
 //user/login 用户登录接口
 - (void)userLoginData
 {
-    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
     kSelfWeak;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSString *pmodel = [self deviceVersion];
@@ -290,13 +292,16 @@
     [params setValue:self.m_passwordField.text forKey:@"smsCode"];
     [params setValue:pmodel forKey:@"pmodel"];
     [params setValue:identifierStr forKey:@"deviceNo"];
-
+    
     [params setValue:[[SensorsAnalyticsSDK sharedInstance]anonymousId] forKey:@"distinctId"];
+    [self.m_iphoneField resignFirstResponder];
+    [self.m_passwordField resignFirstResponder];
+    
+ 
     [LoginKeyInputViewModel userLoginPath:userLogin params:params target:self success:^(LoginModel *model) {
+        [SVProgressHUD dismiss];
         if (model.code == 200) {
-            [self.m_iphoneField resignFirstResponder];
-            [self.m_passwordField resignFirstResponder];
-
+            NSLog(@"登录成功😄");
             ///为保持用户的实时数据更新，需要重新赋值缓存和内存
             kUserMessageManager.toKen = model.token;
             [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_TOKEN value:model.token];
@@ -314,13 +319,20 @@
             //登录的埋点
             [SensorsAnalyticsSDKHelper trackLoginWithDistinctId:model.userId];
             
-            [weakSelf dismissViewControllerAnimated:YES completion:^{
-                [kAppDelegate enterMainViewIndex:0];
-            }];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MainViewController *mainVC = [[MainViewController alloc]init];
+                [mainVC initWithVC: nil];
+                kAppDelegate.window.rootViewController = mainVC;
+                kAppDelegate.window.backgroundColor    = [UIColor whiteColor];
+                [kAppDelegate.window makeKeyAndVisible];
+            });
+               
         }else{
             [[ZXAlertView shareView] showMessage:model.msg?:@""];
         }
     } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
         [[ZXAlertView shareView] showMessage:kloadfailedNotNetwork];
     }];
 }
@@ -399,11 +411,6 @@
 /// textFiled改变的通知
 - (void)textFiledEditChanged:(NSNotification *)obj
 {
-    if ([self.m_iphoneField isFirstResponder]) {
-        BOOL btnSelect = [kUserMessageManager.phone isEqualToString:self.m_iphoneField.text];
-        _btnRegisterWebBtn.selected = btnSelect;
-        _btnPrivayWebBtn.selected = btnSelect;
-    }
     
     self.m_nextBtn.effective = ([self.m_iphoneField.text length] == 11) && ([self.m_passwordField.text length] >= 4);
 }

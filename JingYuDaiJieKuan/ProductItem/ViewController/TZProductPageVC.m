@@ -46,7 +46,7 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self refreshData];
-
+    
 }
 
 - (NSMutableArray *)dataViewArr{
@@ -74,7 +74,7 @@
     [self initWithUI];
     [self bindSignal];
     [self refreshData];
-
+    
 }
 
 
@@ -86,22 +86,22 @@
 }
 // 添加用户点击产品信息 统计
 - (void)postSaveProductClickUrlWithIndexModel:(TZProductListModel*)model{
-
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-
+    
     [params setValue:@(2) forKey:@"equipment"];//1安卓，2ios，3web
     [params setValue:model.merchartid forKey:@"pid"];//产品id
     [params setValue:model.name forKey:@"pname"];//产品名
     [params setValue:model.type forKey:@"ptype"];//产品类型1:线上，2:线下
     [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
-
+    
     
     [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
-               [self postCheckProductUrlWithDict:params];
-           } failure:^(NSError * _Nonnull error) {
-               [self postCheckProductUrlWithDict:params];
-        }];
-
+        [self postCheckProductUrlWithDict:params];
+    } failure:^(NSError * _Nonnull error) {
+        [self postCheckProductUrlWithDict:params];
+    }];
+    
 }
 - (void)postCheckProductUrlWithDict:(NSDictionary *)params{
     [ProductItemViewModel homeLastAllPath:API_checkProduct_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
@@ -145,9 +145,12 @@
             if (idx <3) {
                 [array addObject:itmeModel];
             }        }];
-        [model.offlineProductBanks enumerateObjectsUsingBlock:^(TZProductListModel *itmeModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            [array addObject:itmeModel];
-        }];
+        if (![TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+            [model.offlineProductBanks enumerateObjectsUsingBlock:^(TZProductListModel *itmeModel, NSUInteger idx, BOOL * _Nonnull stop) {
+                [array addObject:itmeModel];
+            }];
+        }
+        
         
         [self addTZProductQualityItemView:array];
         [self.m_tableView reloadData];
@@ -168,7 +171,7 @@
         [model.bannerInfo enumerateObjectsUsingBlock:^(TZProductBannerInfoModel *infoModel, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:[NSString stringWithFormat:@"%@",infoModel.photoIphonex]];
         }];
-
+        
         if (array.count == 0 && [self.dataViewArr containsObject:KBottom_scroll]) {
             [self.dataViewArr removeObject:KBottom_scroll];
         }else if (array.count > 0 && ![self.dataViewArr containsObject:KBottom_scroll]){
@@ -256,14 +259,14 @@
             keyStr = model.maxAmount.getLargeNumbersAbbreviation;
         }
         itemView.maxMoneyLabel.text = [NSString stringWithFormat:@"最高可贷%@",keyStr];
-                   itemView.maxMoneyLabel.keywords = keyStr;
+        itemView.maxMoneyLabel.keywords = keyStr;
         itemView.maxMoneyLabel.keywordsColor = KText_ColorRed;
         [itemView.maxMoneyLabel reloadUIConfig];
         [itemView handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
             @strongify(self)
             [self postSaveProductClickUrlWithIndexModel:model];
             if (model.type.integerValue == 2) { // 线上
-//                [self pushToTZProductScreenConditionVC];
+                //                [self pushToTZProductScreenConditionVC];
                 NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
                 NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=off%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];

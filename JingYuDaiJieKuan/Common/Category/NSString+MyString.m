@@ -990,7 +990,10 @@
 }
 
 - (NSString *)phoneNumberFormat{
-    NSString *string = [self stringByReplacingOccurrencesOfString:[self substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    NSString *string = self;
+    if (self.length >7) {
+        string = [self stringByReplacingOccurrencesOfString:[self substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    }
     return string;
 }
 

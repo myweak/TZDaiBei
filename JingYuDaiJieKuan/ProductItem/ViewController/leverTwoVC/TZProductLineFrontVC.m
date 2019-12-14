@@ -101,6 +101,17 @@
                 [self.dataArr addObjectsFromArray:model.bankList];
             }
         }
+        
+        if([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]){
+            NSMutableArray *arr = [NSMutableArray array];
+            [self.dataArr enumerateObjectsUsingBlock:^(TZProductBankModel  * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.name containsString:@"银行"] || [obj.name containsString:@"帒呗"]) {
+                    [arr addObject:obj];
+                }
+            }];
+            [self.dataArr removeObjectsInArray:arr];
+        }
+        
         [self.m_tableView.mj_header endRefreshing];
         [self.m_tableView.mj_footer endRefreshing];
         [self.m_tableView reloadData];

@@ -40,7 +40,8 @@
 //app 版本号
 #define kApp_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-
+//
+#define KCheck_app @"Check_app_state"
 
 
 /** 转成字符串 */

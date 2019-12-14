@@ -54,6 +54,7 @@
              @"dialogRepeat":@"data.dialogRepeat",
              @"upgradeWay":@"data.upgradeWay",
              @"url":@"data.url",
+             @"isOffline":@"data.isOffline",
              };
 }
 

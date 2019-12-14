@@ -185,7 +185,6 @@ void UncaughtExceptionHandler(NSException *exception){
 //        dispatch_semaphore_signal(self.semaphore);
         //            [self readyToInitWindowNeedShowNewFeature:[self needShowNewFeature]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             MainViewController *mainVC = [[MainViewController alloc]init];
             [mainVC initWithVC: nil];
             self.window.rootViewController = mainVC;
@@ -203,12 +202,13 @@ void UncaughtExceptionHandler(NSException *exception){
 {
 //    [self readyToInitWindowNeedShowNewFeature:NO];
     ///跳过的话就加载首页
-      MainViewController *mainVC = [[MainViewController alloc]init];
-      [mainVC initWithVC: nil];
-      
-      self.window.rootViewController = mainVC;
-      self.window.backgroundColor    = [UIColor whiteColor];
-      [self.window makeKeyAndVisible];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MainViewController *mainVC = [[MainViewController alloc]init];
+        [mainVC initWithVC: nil];
+        self.window.rootViewController = mainVC;
+        self.window.backgroundColor    = [UIColor whiteColor];
+        [self.window makeKeyAndVisible];
+    });
 }
 
 ///数据处理完成,初始化界面
@@ -283,6 +283,10 @@ void UncaughtExceptionHandler(NSException *exception){
 //    return;
     // app 升级判断
     [UserViewModel appUpdatePath:appUpdatePath params:nil target:nil success:^(AppUpdateModel *model) {
+        [TZUserDefaults saveBoolValueInUD:model.isOffline forKey:KCheck_app];
+        if ([[model.appV appVersionNumberFormat] integerValue] <= [[kApp_Version appVersionNumberFormat] integerValue]) {
+            return ;
+        }
         if (model.code == 200) {
             switch (model.upgradeWay) {
                 case 0: //不升级

@@ -51,7 +51,7 @@
                @"per_icon_pri",
                @"per_icon_tel",
                @"per_icon_wc",
-               @"per_icon_tel",
+               @"per_icon_qq",
                @"per_icon_info",
                ],@[@""]
              ];
@@ -81,7 +81,9 @@
 
 -(void)initWithUI
 {
-    self.m_tableView.tableHeaderView = self.headerCardView;
+    if([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]){
+        self.m_tableView.tableHeaderView = self.headerCardView;
+    }
     [self.view addSubview:self.m_tableView];
     
 }
@@ -208,7 +210,12 @@
         [showView show];
         
     }else if ([title isEqualToString:@"官方QQ"]){
-        
+        // 判断手机是否安装QQ
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
+            
+        }else{
+            
+               }
         self.weiXinOrQQView.type = TZShowWeiXinAndQQViewType_QQ;
         
         TZShowAlertView *showView = [[TZShowAlertView alloc] initWithAlerTitle:nil ContentView:self.weiXinOrQQView];
@@ -219,6 +226,26 @@
         
     }else if ([title isEndssWith:@"版本信息"]){
         
+        //            附:Android和web的跳转方法http://blog.csdn.net/chaoyong918/article/details/46882285
+
+//         UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+//            // 提供uin, 你所要联系人的QQ号码
+//            NSString *qqstr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web",KCompany_qq_num];
+//        // 跳到微信
+////        NSString *str =@"weixin://";
+//            NSURL *url = [NSURL URLWithString:qqstr];
+//            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//            [webView loadRequest:request];
+//            [self.view addSubview:webView];
+//        // 判断手机是否安装QQ
+//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
+//
+//        }else{
+//
+//            NSLog(@"no---");
+//
+//        }
+
     }
     
 }

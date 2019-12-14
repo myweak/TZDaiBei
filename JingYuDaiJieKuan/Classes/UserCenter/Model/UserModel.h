@@ -53,6 +53,10 @@
 @property (nonatomic, assign) NSInteger upgradeWay;
 /// 安装包地址
 @property (nonatomic, strong) NSString *url;
+// 1shen
+@property (nonatomic, assign) NSInteger isOffline;
+
+
 
 @end
 

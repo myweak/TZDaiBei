@@ -5,12 +5,17 @@
 //  Created by TianZe on 2019/10/31.
 //  Copyright © 2019 Jincaishen. All rights reserved.
 //
+
 typedef NS_ENUM(NSInteger, TZShowWeiXinAndQQViewType)
 {
     TZShowWeiXinAndQQViewType_weiXin = 0,  // 微信
     TZShowWeiXinAndQQViewType_QQ  = 1, // QQ
     
 };
+
+#define KCompany_weixin_num @"gh_6015de870fed"
+#define KCompany_qq_num     @"3113205309"
+
 #import "TZXibNibView.h"
 
 NS_ASSUME_NONNULL_BEGIN

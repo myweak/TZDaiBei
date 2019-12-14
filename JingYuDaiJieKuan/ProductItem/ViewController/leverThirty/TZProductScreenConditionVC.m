@@ -207,9 +207,13 @@
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:@(self.page) forKey:@"pageNo"];
-    
+    if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+        [params setValue:@(100) forKey:@"pageSize"];
+    }
+
     [ProductItemViewModel getOfflineInfoPath:API_getOfflineInfo_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
         @strongify(self)
+       
         if (self.page == 1) {
             self.dataArr = [[NSMutableArray alloc] initWithArray:model.list];
         }else{
@@ -220,6 +224,17 @@
                 [self.dataArr addObjectsFromArray:model.list];
             }
         }
+        
+        if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+            NSMutableArray *arr = [NSMutableArray array];
+            [self.dataArr enumerateObjectsUsingBlock:^(TZProductOfflineInfoModel  * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.title containsString:@"银行"] || [obj.title containsString:@"帒呗"]) {
+                    [arr addObject:obj];
+                }
+            }];
+            [self.dataArr removeObjectsInArray:arr];
+        }
+        
         [self.m_tableView.mj_header endRefreshing];
         [self.m_tableView.mj_footer endRefreshing];
         [self.m_tableView reloadData];

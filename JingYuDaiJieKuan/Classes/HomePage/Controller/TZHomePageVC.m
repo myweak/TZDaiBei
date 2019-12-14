@@ -224,7 +224,7 @@
         TZBannerNavigationModel *model = self.m_HomeBodyModel.bannerNavigation[indexPath.row];
         if (model.referType.integerValue == 1) {
             TZProductCenterVC *centerVc = [TZProductCenterVC new];
-            centerVc.pageIndex = 1;
+            centerVc.pageIndex = 0;
             [self.navigationController pushViewController:centerVc animated:YES];
         }else{
             if ([model.url containsString:HTML_creditRepair_api] || [model.title containsString:@"征信"]) {

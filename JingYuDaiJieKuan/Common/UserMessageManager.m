@@ -252,7 +252,7 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
 {
     CustomAlertView *alertView = [CustomAlertView initNewStyleOneContent_TwoBtnPushWithAddInSuper:kAlertwindow Content:@"您确定要退出登录吗?" LeftBtnTitle:@"取消" RightBtnTitle:@"确认" clickBlock:^(NSInteger type) {
         if (type == 1) {
-
+            [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
             NSString *token = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN];
             [params setValue:token?:@"" forKey:@"token"];
@@ -260,12 +260,13 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
             [params setValue:token?:@"" forKey:@"clientType"];
             [params setValue:token?:kApp_Version forKey:@"version"];
             [UserViewModel userLogoutPath:userLogout params:params target:self success:^(UserModel *model) {
+                [SVProgressHUD dismiss];
                 if (model.code == 200) {
                     [kUserMessageManager removeDataWhenLogout];
                     [kUserMessageManager checkUserLoginAndLoginWithEventkey:nil];
                 }
             } failure:^(NSError *error) {
-                
+                [SVProgressHUD dismiss];
             }];
         }
     }];
@@ -355,6 +356,10 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
     //保存退出前手机号
 //    [kUserMessageManager setMessageManagerForObjectWithKey:KEY_OLD_TEL value:[kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TELPHONE]];
 //    [kUserMessageManager removeMessageManagerForKey:KEY_USER_ID];
+    
+    
+    
+    
     _userId = nil;
     _toKen = nil;
     //    _deviceToken = nil
