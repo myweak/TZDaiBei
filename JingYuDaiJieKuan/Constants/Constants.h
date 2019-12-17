@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import "CustomLoadingView.h"
 #import "NetworkReachability.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "LoginModel.h"
+
 
 ///类别
 #import "NSObject+RAC.h"
@@ -93,6 +95,8 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 
 #import "UserAPI.h"
 #import "UserAPIParameter.h"
+
+
 ///pod库
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "iToast.h"

@@ -79,7 +79,7 @@
     CustomAlertView *alertView = [CustomAlertView initNewStyleOneContent_TwoBtnPushWithAddInSuper:kAlertwindow Content:@"您确定要退出登录么？" LeftBtnTitle:@"取消" RightBtnTitle:@"确认" clickBlock:^(NSInteger type) {
         if (type == 1) {
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            NSString *token = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN];
+            NSString *token = aUser.token;
             [params setValue:token?:@"" forKey:@"token"];
             [params setValue:token?:@"" forKey:@"channel"];
             [params setValue:token?:@"" forKey:@"clientType"];

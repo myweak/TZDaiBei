@@ -15,6 +15,7 @@
 #import <AdSupport/AdSupport.h>
 #import "TZLoginVC.h"
 #import "JingYuDaiJieKuan-Swift.h"
+#import "LoginModel.h"
 
 @interface UserMessageManager()
 
@@ -112,113 +113,32 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
     }
 }
 
-//- (void)TimeBeginWithType:(kTimeSecondType )type WithTel:(NSString *)tel
-//{
-//    
-//    switch (type) {
-//        case 0:
-//        {
-//            [self.g_Timer invalidate];
-//            self.g_TimeTel = tel;
-//            self.g_TimeSecond = 60;
-//            self.g_Timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:@{@"type":@"0"} repeats:YES];
-//        }
-//            break;
-//        case 1:
-//        {
-//            [self.g_Timer_forgetKey invalidate];
-//            self.g_TimeTel_forgetKey = tel;
-//            self.g_TimeSecond_forgetKey = 60;
-//            self.g_Timer_forgetKey = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:@{@"type":@"1"} repeats:YES];
-//        }
-//            break;
-//        case 2:
-//        {
-//            [self.g_Timer_codeLogin invalidate];
-//            self.g_TimeTel_codeLogin = tel;
-//            self.g_TimeSecond_codeLogin = 60;
-//            self.g_Timer_codeLogin = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:@{@"type":@"2"} repeats:YES];
-//        }
-//            break;
-//            
-//            
-//            
-//        default:
-//            break;
-//    }
-//}
 
 
-
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.userDefaults = [NSUserDefaults standardUserDefaults];
-//        _userId =  ChangeNullData([self getMessageManagerForObjectWithKey:KEY_USER_ID]);
-        _toKen =  ChangeNullData([self getMessageManagerForObjectWithKey:KEY_USER_TOKEN]);
-        _deviceToken =  ChangeNullData([self getMessageManagerForObjectWithKey:DEVICE_TOKEN]);
-        _bank = ChangeNullData([self getMessageManagerForObjectWithKey:KEY_IS_BINDCARD]);
-        _phone = ChangeNullData([self getMessageManagerForObjectWithKey:KEY_USER_PHONE]);
-        _userId = ChangeNullData([self getMessageManagerForObjectWithKey:KEY_USER_ID]);
-        
-    }
-    return self;
-}
-
-- (void)setGender:(NSString *)gender{
-
-    _gender = ChangeNullData(gender);
-    [self setMessageManagerForObjectWithKey:KEY_USER_GENDER value:gender];
-}
-
--(void)setUserId:(NSString *)userId
-{
-    _userId = ChangeNullData(userId);
-    [self setMessageManagerForObjectWithKey:KEY_USER_ID value:userId];
-}
-
--(void)setToken:(NSString *)toKen
-{
-    _toKen = ChangeNullData(toKen);
-    [self setMessageManagerForObjectWithKey:KEY_USER_TOKEN value:toKen];
-}
-
--(void)setDeviceToken:(NSString *)deviceToken
-{
-    _deviceToken = ChangeNullData(deviceToken);
-    [self setMessageManagerForObjectWithKey:DEVICE_TOKEN value:deviceToken];
-}
-
-
-- (NSString *)gender{
-    return [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_GENDER];
-}
 -(NSString *)getUserId
 {
-    return ChangeNullData(_userId);
+    return aUser.userId;
 }
 
 -(NSString *)getUserToken
 {
-    return ChangeNullData(_toKen);
+    return aUser.token;
 }
 
 - (NSString *)getUserPhone
 {
-    return ChangeNullData(_phone);
+    return aUser.mobile;
 }
 
 - (NSString *)getDeviceToken
 {
-    return ChangeNullData(_deviceToken);
+    return aUser.token;
 }
 
 -(BOOL)checkUserLogin
 {
     //    return StringHasDataJudge(self.userId) ;
-    return StringHasDataJudge(self.toKen);
+    return !checkStrEmty(aUser.token);
 }
 
 -(BOOL)bankCardAre
@@ -239,11 +159,13 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
 
 // push App登陆
 -(void)checkAppLogin{
-    UIViewController *selfVC = [UIViewController visibleViewController];
-    selfVC.hidesBottomBarWhenPushed = YES;
-    TZLoginVC *view = [[TZLoginVC alloc]init];
-    [view addPsuhVCAnimationFromTop];
-    [selfVC.navigationController pushViewController:view animated:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *selfVC = [UIViewController visibleViewController];
+           selfVC.hidesBottomBarWhenPushed = YES;
+          __strong TZLoginVC *view = [[TZLoginVC alloc]init];
+           [view addPsuhVCAnimationFromTop];
+           [selfVC.navigationController pushViewController:view animated:NO];
+    });
 }
 
 
@@ -254,7 +176,7 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
         if (type == 1) {
             [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            NSString *token = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN];
+            NSString *token = aUser.token;
             [params setValue:token?:@"" forKey:@"token"];
             [params setValue:token?:@"" forKey:@"channel"];
             [params setValue:token?:@"" forKey:@"clientType"];
@@ -357,20 +279,20 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(UserMessageManager);
 //    [kUserMessageManager setMessageManagerForObjectWithKey:KEY_OLD_TEL value:[kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TELPHONE]];
 //    [kUserMessageManager removeMessageManagerForKey:KEY_USER_ID];
     
+    [[LoginModel sharedLoginModel] removeUserData];
     
     
-    
-    _userId = nil;
-    _toKen = nil;
-    //    _deviceToken = nil
-    _bank = nil;
-
-    [kUserMessageManager removeMessageManagerForKey:KEY_USER_TRADEPASSWORD];
-    [kUserMessageManager removeMessageManagerForKey:KEY_USER_IDENTITY_ID];
-    [kUserMessageManager removeMessageManagerForKey:KEY_IS_BINDCARD];
-    [kUserMessageManager removeMessageManagerForKey:KEY_FINGERSCAN_ISOPEN];
-    [kUserMessageManager removeMessageManagerForKey:KEY_USER_TOKEN];
-    [kUserMessageManager removeMessageManagerForKey:KEY_USER_ID];
+//    _userId = nil;
+//    _toKen = nil;
+//    //    _deviceToken = nil
+//    _bank = nil;
+//
+//    [kUserMessageManager removeMessageManagerForKey:KEY_USER_TRADEPASSWORD];
+//    [kUserMessageManager removeMessageManagerForKey:KEY_USER_IDENTITY_ID];
+//    [kUserMessageManager removeMessageManagerForKey:KEY_IS_BINDCARD];
+//    [kUserMessageManager removeMessageManagerForKey:KEY_FINGERSCAN_ISOPEN];
+//    [kUserMessageManager removeMessageManagerForKey:KEY_USER_TOKEN];
+//    [kUserMessageManager removeMessageManagerForKey:KEY_USER_ID];
     
     [self removeHuoDongGongGao];
     [self removeBankCardInfo];

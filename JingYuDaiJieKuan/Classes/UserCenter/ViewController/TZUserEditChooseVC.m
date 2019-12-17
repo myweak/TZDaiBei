@@ -23,9 +23,9 @@
     [super viewDidLoad];
     
     if (self.type == TZUserEditChooseVCType_gender) {
-        self.chooseTitle = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_GENDER];
+        self.chooseTitle = aUser.gender;
     }else{
-        self.chooseTitle = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_EDUCATION];
+        self.chooseTitle = aUser.education;
     }
     
     
@@ -127,7 +127,7 @@
     NSString *title = self.titleArr[indexPath.row] ;
     self.chooseTitle = title;
     [self.m_tableView reloadData];
-   
+    
 }
 
 
@@ -166,12 +166,15 @@
 - (void)postUserUpdateGenderUrl{
     kSelfWeak;
     NSString *strName =  [self.chooseTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
+    
     NSString *name = [NSString stringWithFormat:@"%@%@",userUpdateGender,strName];
     [UserViewModel userUpdateGenderPath:name params:nil target:self success:^(UserModel *model) {
         if (model.code == 200) {
             showMessage(@"修改成功");
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_GENDER value:self.chooseTitle];
+            aUser.gender = self.chooseTitle;
+            [aUser saveUserData];
+            
+            //            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_GENDER value:self.chooseTitle];
             if (self.saveSuccessBlock) {
                 weakSelf.saveSuccessBlock(self.chooseTitle);
             }
@@ -191,11 +194,12 @@
     NSString *strName =  [self.chooseTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString *name = [NSString stringWithFormat:@"%@%@",userUpdateEducation,strName];
-
+    
     [UserViewModel userUpdateEducationPath:name params:nil target:self success:^(UserModel *model) {
         if (model.code == 200) {
             showMessage(@"修改成功");
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EDUCATION value:self.chooseTitle];
+            aUser.education = self.chooseTitle;
+            [aUser saveUserData];
             if (self.saveSuccessBlock) {
                 weakSelf.saveSuccessBlock(self.chooseTitle);
             }
@@ -215,13 +219,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

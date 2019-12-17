@@ -9,6 +9,7 @@
 #import "StatusModel.h"
 
 @implementation StatusModel
+//fh_CodingImplementation
 
 + (NSDictionary *)modelCustomPropertyMapper
 {

@@ -24,7 +24,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [HomePageModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(HomePageModel *model) {
         success(model);
@@ -70,7 +70,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [HomePageModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(HomePageModel *model) {
         success(model);

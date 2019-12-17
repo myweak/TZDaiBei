@@ -556,7 +556,7 @@ SYNTHESIZE_SINGLETON_ARC_FOR_CLASS(HttpManager);
     [_sessionManager.requestSerializer setValue:kChannel forHTTPHeaderField:@"channel"];
     [_sessionManager.requestSerializer setValue:kApp_Version forHTTPHeaderField:@"version"];
     [_sessionManager.requestSerializer setValue:kClientType forHTTPHeaderField:@"clientType"];
-    [_sessionManager.requestSerializer setValue:[kUserMessageManager getUserToken] forHTTPHeaderField:@"token"];
+    [_sessionManager.requestSerializer setValue:aUser.token forHTTPHeaderField:@"token"];
     [_sessionManager.requestSerializer setValue:kTplKey forHTTPHeaderField:@"tplKey"];
     
     if (!isNotEncryption) {

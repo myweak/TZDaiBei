@@ -267,7 +267,7 @@
     
     TZProductOfflineInfoModel *model = [self.dataArr objectAtIndex:indexPath.row];
     
-    NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+    NSString *phone = aUser.mobile;
     
     NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=off%@",phone,model.proId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

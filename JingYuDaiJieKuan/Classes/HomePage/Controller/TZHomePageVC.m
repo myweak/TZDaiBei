@@ -228,7 +228,7 @@
             [self.navigationController pushViewController:centerVc animated:YES];
         }else{
             if ([model.url containsString:HTML_creditRepair_api] || [model.title containsString:@"征信"]) {
-                NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+                NSString *phone = aUser.mobile;
                 
                 NSString *strName =  [[NSString stringWithFormat:@"phone=%@",phone] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 NSString *urlStr = [NSString stringWithFormat:@"%@?%@",model.url,strName];

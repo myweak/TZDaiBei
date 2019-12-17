@@ -50,6 +50,8 @@ typedef enum : NSUInteger
  iPhone6Plus，autoSizeScaleX=1.104， autoSizeScaleY=1.103448；
  */
 
+#define aUser ((LoginModel *)[[LoginModel sharedLoginModel] userModel])
+
 #define kAppDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
 /// Sys
@@ -279,6 +281,45 @@ shared##className = [[self alloc] init]; \
 return shared##className; \
 }\
 
+
+
+/**
+ 归档的实现
+ */
+
+#define fh_CodingImplementation \
+- (void)encodeWithCoder:(NSCoder *)aCoder \
+{ \
+unsigned int outCount = 0; \
+Ivar * vars = class_copyIvarList([self class], &outCount); \
+for (int i = 0; i < outCount; i++) { \
+    Ivar var = vars[i]; \
+    const char * name = ivar_getName(var); \
+    NSString * key = [NSString stringWithUTF8String:name]; \
+    id value = [self valueForKey:key]; \
+    if (value) { \
+        [aCoder encodeObject:value forKey:key]; \
+    } \
+} \
+} \
+\
+- (instancetype)initWithCoder:(NSCoder *)aDecoder \
+{ \
+    if (self = [super init]) { \
+        unsigned int outCount = 0; \
+        Ivar * vars = class_copyIvarList([self class], &outCount); \
+        for (int i = 0; i < outCount; i++) { \
+            Ivar var = vars[i]; \
+            const char * name = ivar_getName(var); \
+            NSString * key = [NSString stringWithUTF8String:name]; \
+            id value = [aDecoder decodeObjectForKey:key]; \
+            if (value) { \
+                [self setValue:value forKey:key]; \
+            } \
+        } \
+    } \
+    return self; \
+}
 
 
 

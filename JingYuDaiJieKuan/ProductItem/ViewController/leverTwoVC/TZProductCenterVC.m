@@ -44,7 +44,7 @@
     if (vc.dataArr.count == 0) {
         return;
     }
-    NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+    NSString *phone = aUser.mobile;
 
     NSString *idKey = [NSString stringWithFormat:@"message_%@",phone];
     BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];

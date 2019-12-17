@@ -65,12 +65,8 @@
     [LoginKeyInputViewModel userLoginPath:API_getPersonalInfo_path params:nil target:self success:^(LoginModel *model) {
             if (model.code == 200) {
                 ///为保持用户的实时数据更新，需要重新赋值缓存和内存
-                kUserMessageManager.userId = model.userId;
-                [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_ID value:model.userId];
-                [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EMail value:model.mailbox];
-                [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_GENDER value:model.gender];
-                [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EDUCATION value:model.education];
-                
+                [model saveUserData];
+                [self.m_tableView reloadData];
             }else{
                 [[ZXAlertView shareView] showMessage:model.msg?:@""];
             }
@@ -135,19 +131,18 @@
     cell.mianTitleLabel.text = title;
     
     if ([title isEqualToString: @"个人手机"]) {
-        NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
-        cell.rightSubLabel.text = phone;
+        cell.rightSubLabel.text = aUser.mobile;
         cell.moreImageView.hidden = YES;
         
     }else  if ([title isEqualToString: @"邮箱地址"]) {
-        NSString *eMail = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_EMail];
+        NSString *eMail = aUser.mailbox;
         cell.rightSubLabel.text = checkStrEmty(eMail) ?@"填写QQ邮箱审批更快":eMail;
     }else  if ([title isEqualToString: @"性别"]) {
-        NSString *gender = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_GENDER];
+        NSString *gender = aUser.gender;
         cell.rightSubLabel.text = checkStrEmty(gender) ?@" 未填写":gender;
         
     }else  if ([title isEqualToString: @"教育程度"]) {
-        NSString *edu = [kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_EDUCATION];
+        NSString *edu = aUser.education;
         cell.rightSubLabel.text = checkStrEmty(edu) ?@" 未填写":edu;
     }
     return cell;

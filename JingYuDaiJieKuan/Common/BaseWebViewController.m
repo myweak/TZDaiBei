@@ -291,7 +291,7 @@
     }
     //网页内部跳转  //getBasicParams
     if ([message.name isEqualToString:@"getToken"]) {
-        NSString *token = [NSString stringWithFormat:@"getToken('%@')",[kUserMessageManager getMessageManagerForObjectWithKey:KEY_USER_TOKEN]];
+        NSString *token = [NSString stringWithFormat:@"getToken('%@')",aUser.token];
     }
     
     //  2、获取基本参数

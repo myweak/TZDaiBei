@@ -5,7 +5,7 @@
 //  Created by xiaoguo on 2019/6/29.
 //  Copyright © 2019 Jincaishen. All rights reserved.
 //
-
+#define KUserData @"用户数据"
 #import "StatusModel.h"
 
 
@@ -13,8 +13,11 @@
 
 @end
 
-@interface LoginModel : StatusModel
+@interface LoginModel : StatusModel<NSCoding>
 
+SINGLETON_FOR_HEADER(LoginModel)
+
+@property (nonatomic, strong) LoginModel *userModel;// 当前model数据
 
 @property (nonatomic, copy) NSString *token;// token
 @property (nonatomic, copy) NSString *headImg;// token
@@ -27,7 +30,12 @@
 @property (nonatomic, copy) NSString *mobile;// 手机号码
 @property (nonatomic, copy) NSString *type;// login
 
-
+// 清空用户数据
+- (void)removeUserData;
+//读取用户数据
+- (LoginModel *)readUserData;
+// 保存用户数据
+- (void)saveUserData;
 @end
 
 

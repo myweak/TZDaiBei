@@ -58,7 +58,7 @@
         }
         NSLog(@"贷款金额：%@",self.headView.moneyTextField.text);
         
-        NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+        NSString *phone = aUser.mobile;
         
         NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&loanAmount=%@",phone,self.headView.moneyTextField.text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         

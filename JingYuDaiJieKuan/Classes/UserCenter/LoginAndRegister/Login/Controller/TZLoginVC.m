@@ -16,7 +16,6 @@
 #import "HomePageViewModel.h"
 #import "SensorsAnalyticsSDK.h"
 
-
 @interface TZLoginVC ()<UITextFieldDelegate>{
     NSInteger msgMaxlength;
     UIButton *_btnRegisterWebBtn; // *协议
@@ -56,6 +55,8 @@
 
 
 - (void)viewDidLoad {
+    
+
     
     [self setFd_interactivePopDisabled:YES];
     self.protocolRange = NSMakeRange(7, 6);
@@ -302,20 +303,7 @@
         [SVProgressHUD dismiss];
         if (model.code == 200) {
             NSLog(@"登录成功😄");
-            ///为保持用户的实时数据更新，需要重新赋值缓存和内存
-            kUserMessageManager.toKen = model.token;
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_TOKEN value:model.token];
-            kUserMessageManager.userId = model.userId;
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_ID value:model.userId];
-//            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_HEAD_PORTRAIT value:model.headImg];
-//            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_NICK_NAME value:model.nickName];
-            [kUserMessageManager setMessageManagerForObjectWithKey:USER_MOBILE value:self.m_iphoneField.text];
-            
-
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EMail value:model.mailbox];
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_GENDER value:model.gender];
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EDUCATION value:model.education];
-            
+            [model saveUserData];
             //登录的埋点
             [SensorsAnalyticsSDKHelper trackLoginWithDistinctId:model.userId];
             
@@ -343,6 +331,7 @@
     [params setValue:self.m_iphoneField.text forKey:@"mobile"];
     [params setValue:@"10" forKey:@"type"];
     [LoginKeyInputViewModel smsSendCodePath:smsSendCode params:params target:self success:^(LoginModel *model) {
+
         if (model.code != 200) {
             [self stop];
         }
@@ -494,7 +483,7 @@
 {
     if (!_m_iphoneField) {
         _m_iphoneField = InsertTextField(nil, nil, CGRectZero, @"请输入您的手机号码",KFont(15), NSTextAlignmentLeft, UIControlContentVerticalAlignmentCenter);
-        _m_iphoneField.keyboardType = UIKeyboardTypeNamePhonePad;
+        _m_iphoneField.keyboardType = UIKeyboardTypeNumberPad;//UIKeyboardTypeNamePhonePad;
         _m_iphoneField.textColor = kColorDeepBlack;
         _m_iphoneField.tag = 10001;
         _m_iphoneField.clearsOnBeginEditing = NO;
@@ -511,7 +500,7 @@
 {
     if (!_m_passwordField) {
         _m_passwordField = InsertTextField(nil, nil, CGRectZero, @"请输入验证码",KFont(15), NSTextAlignmentLeft, UIControlContentVerticalAlignmentCenter);
-        _m_passwordField.keyboardType = UIKeyboardTypeDecimalPad;
+        _m_passwordField.keyboardType = UIKeyboardTypeNumberPad;
         _m_passwordField.textColor = kColorDeepBlack;
         _m_passwordField.tag = 10002;
         _m_passwordField.clearsOnBeginEditing = NO;

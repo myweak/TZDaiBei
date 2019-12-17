@@ -22,7 +22,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -44,7 +44,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [HotToolListModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(HotToolListModel *model) {
         success(model);
@@ -66,7 +66,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -88,7 +88,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -110,7 +110,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -131,7 +131,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -153,7 +153,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -178,7 +178,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [AppUpdateModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(AppUpdateModel *model) {
         success(model);
@@ -200,7 +200,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [CheckMchStatusModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(CheckMchStatusModel *model) {
         success(model);
@@ -223,7 +223,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -245,7 +245,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);
@@ -267,7 +267,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [UserModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(UserModel *model) {
         success(model);

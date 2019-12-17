@@ -46,7 +46,9 @@
     [UserViewModel userUpdateMailboxPath:name params:nil target:self success:^(UserModel *model) {
         if (model.code == 200) {
             showMessage(@"修改成功");
-            [kUserMessageManager setMessageManagerForObjectWithKey:KEY_USER_EMail value:self.textField.text];
+            aUser.mailbox = self.textField.text;
+            [aUser saveUserData];
+
             if (self.saveSuccessBlock) {
                 weakSelf.saveSuccessBlock(self.textField.text);
             }

@@ -63,7 +63,7 @@
     [params setValue:model.merchartid forKey:@"pid"];//产品id
     [params setValue:model.name forKey:@"pname"];//产品名
     [params setValue:@(1) forKey:@"ptype"];//产品类型1:线上，2:线下
-    [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+    [params setValue:aUser.userId forKey:@"uid"];//用户ID
     
     
     [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
@@ -152,7 +152,7 @@
         showMessage(@"申请人数已满，请申请其他产品");
         return;
     }else if(model.productType.integerValue == 3) {
-        NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
+        NSString *phone = aUser.mobile;
 
              NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=on%@",phone,model.merchartid] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
