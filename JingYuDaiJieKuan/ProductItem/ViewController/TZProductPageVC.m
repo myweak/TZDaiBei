@@ -150,7 +150,15 @@
                 [array addObject:itmeModel];
             }];
         }
-        
+        if (array.count == 0) {
+            if ([self.dataViewArr containsObject:KHot_title]) {
+                [self.dataViewArr removeObject:KHot_title];
+            }
+        }else{
+            if (![self.dataViewArr containsObject:KHot_title]) {
+                [self.dataViewArr addObject:KHot_title];
+            }
+        }
         
         [self addTZProductQualityItemView:array];
         [self.m_tableView reloadData];
