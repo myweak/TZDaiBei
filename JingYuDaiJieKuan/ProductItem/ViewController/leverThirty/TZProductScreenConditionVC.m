@@ -58,10 +58,15 @@
 }
 - (void)refreshData{
     [self getOfflineInfoPathUrl];
-
+    
 }
 - (void)postdataUrl{
-    [self getOfflineInfoPathUrl];
+    // body 列表数据
+    if (self.type == TZProductScreenConditionType_main) {
+        [self getOfflineRecommendPathUrl];
+    }else{
+        [self getOfflineInfoPathUrl];
+    }
     // 贷款日期
     [self postConditonDateUrl];
     //塞选按钮数据
@@ -86,11 +91,19 @@
     [footRefre setTitle:@"没有更多数据了" forState:(MJRefreshStateNoMoreData)];
     self.m_tableView.mj_footer = footRefre;
     
+    if (self.type == TZProductScreenConditionType_main) {
+        self.m_tableView.mj_footer = nil;
+        self.m_tableView.mj_header = nil;
+       }
 }
 
 - (void)initWithUI{
     [self.view addSubview:self.m_tableView];
-    [self addTopCondtionView];
+    if (self.type == TZProductScreenConditionType_main) {
+        self.m_tableView.top = 0;
+    }else{
+        [self addTopCondtionView];
+    }
 }
 
 
@@ -120,11 +133,6 @@
         TZProvinceModel *models =  [self.provinceArr objectAtIndex:index];
         
     };
-    
-    // 传入数据源，对应三个tableView顺序
-    //    _conditionFilterView.dataAry2 = @[@"不限期限",@"3个月",@"6个月",@"12个月",@"2年",@"3年",@"5年",@"10年"];
-//    _conditionFilterView.dataAry3 = @[@"3-1",@"3-2",@"3-3",@"3-4",@"3-5"];
-
     
     // 初次设置默认显示数据，内部会调用block 进行第一次数据加载
     [_conditionFilterView bindChoseArrayDataSource1:_selectedDataSource1Ary DataSource2:_selectedDataSource2Ary DataSource3:_selectedDataSource3Ary DataSource4:_selectedDataSource4Ary];
@@ -160,7 +168,7 @@
     [ProductItemViewModel conditionPath:API_getScreeningConditions_path params:nil target:self modelClass:[TZProductScreenConditionDateModel class] success:^(id  _Nonnull model) {
         @strongify(self)
         TZProductScreenConditionDateModel *models = (TZProductScreenConditionDateModel *)model;
-       self.conditionFilterView.condiTionListModel = models;
+        self.conditionFilterView.condiTionListModel = models;
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -176,12 +184,12 @@
     [params setValue:model.title forKey:@"pname"];//产品名
     [params setValue:@(2) forKey:@"ptype"];//产品类型1:线上，2:线下
     [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
-
+    
     
     [ProductItemViewModel getOfflineInfoPath:API_saveProductClick_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
         
     } failure:^(NSError * _Nonnull error) {
-   
+        
         
     }];
 }
@@ -202,27 +210,17 @@
 }
 
 
-// 线下产品大全
-- (void)getOfflineInfoPathUrl{
+// 主推产品
+- (void)getOfflineRecommendPathUrl{
     @weakify(self)
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:@(self.page) forKey:@"pageNo"];
-    if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
-        [params setValue:@(100) forKey:@"pageSize"];
-    }
-
-    [ProductItemViewModel getOfflineInfoPath:API_getOfflineInfo_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
+    [ProductItemViewModel getOfflineInfoPath:API_getOfflineRecommend_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
         @strongify(self)
-       
+        
         if (self.page == 1) {
             self.dataArr = [[NSMutableArray alloc] initWithArray:model.list];
         }else{
-            if (model.list.count == 0) {
-                [self.m_tableView.mj_footer endRefreshingWithNoMoreData];
-                return ;
-            }else{
-                [self.dataArr addObjectsFromArray:model.list];
-            }
+            [self.dataArr addObjectsFromArray:model.list];
         }
         
         if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
@@ -233,6 +231,48 @@
                 }
             }];
             [self.dataArr removeObjectsInArray:arr];
+        }
+        
+        [self.m_tableView reloadData];
+    } failure:^(NSError * _Nonnull error) {
+
+    }];
+}
+// 线下产品大全
+- (void)getOfflineInfoPathUrl{
+    @weakify(self)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@(self.page) forKey:@"pageNo"];
+    if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+        [params setValue:@(100) forKey:@"pageSize"];
+    }
+    
+    [ProductItemViewModel getOfflineInfoPath:API_getOfflineInfo_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
+        @strongify(self)
+        
+        if (self.page == 1) {
+            self.dataArr = [[NSMutableArray alloc] initWithArray:model.list];
+        }else{
+            [self.dataArr addObjectsFromArray:model.list];
+            
+        }
+        
+        
+        if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+            NSMutableArray *arr = [NSMutableArray array];
+            [self.dataArr enumerateObjectsUsingBlock:^(TZProductOfflineInfoModel  * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.title containsString:@"银行"] || [obj.title containsString:@"帒呗"]) {
+                    [arr addObject:obj];
+                }
+            }];
+            [self.dataArr removeObjectsInArray:arr];
+        }
+        
+        if (model.list.count < 10) {
+            [self.m_tableView.mj_header endRefreshing];
+            [self.m_tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.m_tableView reloadData];
+            return ;
         }
         
         [self.m_tableView.mj_header endRefreshing];

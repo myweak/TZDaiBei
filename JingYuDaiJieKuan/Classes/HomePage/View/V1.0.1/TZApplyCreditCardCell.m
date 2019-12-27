@@ -17,6 +17,7 @@
 
 }
 
+
 - (IBAction)tapBtnAtion:(id)sender {
     !self.backTapBtnActionBlock ?:self.backTapBtnActionBlock((UIButton *)sender);
 }
@@ -27,5 +28,22 @@
 
     // Configure the view for the selected state
 }
+
+- (void)setModel:(TZApplyCreditCardListModel *)model{
+    _model = model;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.icoUrl] placeholderImage:kplaceImage];
+    self.nameLabel.text = model.title;
+    self.tagLabelA.text = model.introduceOne;
+    self.tagLabelB.text = model.introduceTwo;
+    self.tagLabelC.text = model.introduceThree;
+    self.tagLabelD.text = model.introduceFour;
+    self.tagLabelE.text = model.introduceFive;
+
+
+    
+}
+
+
+
 
 @end

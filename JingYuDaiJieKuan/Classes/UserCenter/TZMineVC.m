@@ -31,7 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    BOOL b = [kUserMessageManager.gender containsString:@"女"];
+    BOOL b = [aUser.gender containsString:@"女"];
     NSString *gender = b ?  @"user_gird_":@"user_man_";
     [self.headerCardView.iconImageView setImage:R_ImageName(gender)];
     self.headerCardView.nameLabel.text = b ? @"女士":@"先生";

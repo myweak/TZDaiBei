@@ -11,6 +11,9 @@
 #define KFlow_cell          @"办理流程cell"
 #define KDevelop_title      @"经营模式"
 #define KDevelop_cell       @"经营模式cell"
+#define KMianProduct_title  @"主推产品"
+#define KMianProduct_cell  @"主推产品cell"
+
 #import "TZProductLinebackBankVC.h"
 #import "TZProductLinebackBankHeadView.h"
 #import "TZProductLinebackBankFlowView.h"
@@ -18,7 +21,10 @@
 #import "TZProductLinebackBankSpeedItemView.h" // 快速通道 item
 #import "TZProductScreenConditionVC.h"  // 商品塞选页
 #import "TZProductLinebackBankDevelopView.h"
-
+#import "TZProductScreenConditionItemCell.h" // 主推产品
+#import "TZProductScreenConditionVC.h"
+#import "TZProductScreenConditionItemView.h"
+#import "ProductItemViewModel.h"
 
 @interface TZProductLinebackBankVC ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -28,6 +34,7 @@
 @property (nonatomic, strong) TZProductLinebackBankDevelopView *developView;
 @property (nonatomic, strong) UIView *speedView; // 快速通道
 @property (nonatomic, strong) NSMutableArray *dataViewArr;
+@property (nonatomic, strong) TZProductScreenConditionView *mianProductView;
 @end
 
 @implementation TZProductLinebackBankVC
@@ -36,6 +43,7 @@
     [super viewDidLoad];
     [self initWithUI];
     [self bindSignal];
+    [self postdataUrl];
 }
 
 - (void)initWithUI{
@@ -45,7 +53,7 @@
     @weakify(self)
     self.m_tableView.tableHeaderView = self.headView;
     [self.m_tableView registerNibString:NSStringFromClass([TZUserEditChooseCell class]) cellIndentifier:TZUserEditChooseCell_ID];
-    
+
     self.headView.backBtnTapAction = ^(UIButton * _Nonnull btn) {
         @strongify(self)
         if (checkStrEmty(self.headView.moneyTextField.text)) {
@@ -74,15 +82,17 @@
 - (NSMutableArray *)dataViewArr{
     if (!_dataViewArr) {
         NSArray *array = @[
-                           KSpeed_title,
-                           KSpeed_cell,
-                           m_blankCellReuseId,
-                           KDevelop_title,
-                           KDevelop_cell,
-                           m_blankCellReuseId,
-                           KFlow_title,
-                           KFlow_cell,
-                           ];
+            KFlow_title,
+            KFlow_cell,
+            KSpeed_title,
+            KSpeed_cell,
+            m_blankCellReuseId,
+            KDevelop_title,
+            KDevelop_cell,
+            m_blankCellReuseId,
+            KMianProduct_title,
+            KMianProduct_cell,
+        ];
         _dataViewArr = [[NSMutableArray alloc] initWithArray:array];
     }
     return _dataViewArr;
@@ -94,7 +104,45 @@
     }
 }
 
+- (void)postdataUrl{
+    [self getOfflineRecommendPathUrl];
+}
 
+#pragma mark - postUrl
+
+// 主推产品
+- (void)getOfflineRecommendPathUrl{
+    @weakify(self)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@(100) forKey:@"pageSize"];
+    [ProductItemViewModel getOfflineInfoPath:API_getOfflineRecommend_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
+        @strongify(self)
+        [self.mianProductView setTZProductScreenConditionItemViewWithArray:model.list];
+        [self.m_tableView reloadData];
+    } failure:^(NSError * _Nonnull error) {
+
+    }];
+}
+
+
+// 添加用户点击产品信息 统计
+- (void)postSaveProductClickUrlWithIndexModel:(TZProductOfflineInfoModel*)model{
+    @weakify(self)
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@(2) forKey:@"equipment"];//1安卓，2ios，3web
+    [params setValue:model.proId forKey:@"pid"];//产品id
+    [params setValue:model.title forKey:@"pname"];//产品名
+    [params setValue:@(2) forKey:@"ptype"];//产品类型1:线上，2:线下
+    [params setValue:[kUserMessageManager getUserId] forKey:@"uid"];//用户ID
+    
+    
+    [ProductItemViewModel getOfflineInfoPath:API_saveProductClick_path params:params target:self success:^(TZProductScreenConditionModel * _Nonnull model) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        
+    }];
+}
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
@@ -106,6 +154,7 @@
     id titleV = [self.dataViewArr objectAtIndex:indexPath.row];
     if ([titleV isEqualToString:KSpeed_title] ||
         [titleV isEqualToString:KFlow_title] ||
+        [titleV isEqualToString:KMianProduct_title] ||
         [titleV isEqualToString:KDevelop_title]
         ) {
         return 44;
@@ -115,7 +164,10 @@
         return self.flowView.height;
     }else if ([titleV isEqualToString:KDevelop_cell]) {
         return self.developView.height;
+    }else if ([titleV isEqualToString:KMianProduct_cell]) {
+        return self.mianProductView.height;
     }
+    
     return 10;
     
 }
@@ -130,11 +182,15 @@
     
     if ([titleV isEqualToString:KSpeed_title] ||
         [titleV isEqualToString:KFlow_title] ||
+        [titleV isEqualToString:KMianProduct_title] ||
         [titleV isEqualToString:KDevelop_title]
         ) {
         TZUserEditChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:TZUserEditChooseCell_ID forIndexPath:indexPath];
         cell.mainTitleLabel.text = titleV;
         cell.backgroundColor = [UIColor whiteColor];
+        if ([titleV isEqualToString:KFlow_title]) {
+            cell.backgroundColor = [UIColor clearColor];
+        }
         return cell;
         
     }else if ([titleV isEqualToString:KSpeed_cell]) {
@@ -150,9 +206,11 @@
         UITableViewCell *cell = [UITableViewCell blankWhiteCellWithID:titleV];
         [cell.contentView addSubview:self.developView];
         return cell;
+    }else if ([titleV isEqualToString:KMianProduct_cell]) {
+        UITableViewCell *cell = [UITableViewCell blankWhiteCellWithID:titleV];
+        [cell.contentView addSubview:self.mianProductView];
+        return cell;
     }
-    
-    
     return [UITableViewCell blankWhiteCell];
     
 }
@@ -161,6 +219,25 @@
 
 
 #pragma mark - UI
+
+- (TZProductScreenConditionView *)mianProductView{
+    if (!_mianProductView) {
+        @weakify(self)
+        _mianProductView = [[TZProductScreenConditionView alloc] initWithFrame:CGRectZero];
+        _mianProductView.backItemTapAction = ^(TZProductOfflineInfoModel * _Nonnull model) {
+         @strongify(self)
+            NSString *phone = aUser.mobile;
+            
+            NSString *strName =  [[NSString stringWithFormat:@"phoneNumber=%@&productInfo=off%@",phone,model.proId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            NSString *urlStr = [NSString stringWithFormat:@"%@%@?%@",WAP_PHONEURL,THTML_essentialInfo_api,strName];
+            
+            [self postSaveProductClickUrlWithIndexModel:model];
+            [self PushToBaseWebViewControllerUrl:urlStr andTitle:@"智能匹配"];
+        };
+    }
+    return _mianProductView;
+}
 
 - (TZProductLinebackBankDevelopView *)developView{
     if (!_developView) {
@@ -188,6 +265,7 @@
     if (!_flowView) {
         _flowView = [[TZProductLinebackBankFlowView alloc] init];
         _flowView.frame = CGRectMake(0, 0, kScreenWidth, 146);
+        _flowView.backgroundColor = kColorLightgrayBackground;
     }
     return _flowView;
 }

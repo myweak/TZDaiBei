@@ -105,6 +105,8 @@
 		261FEF4823740DCA00121781 /* TZChooseProvinceAndCityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 261FEF4723740DCA00121781 /* TZChooseProvinceAndCityTableView.m */; };
 		2624C8F1239636D600DC0490 /* AHSendProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2624C8F0239636D600DC0490 /* AHSendProgressView.m */; };
 		2624C8F42396418900DC0490 /* PHImageManager+CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2624C8F32396418900DC0490 /* PHImageManager+CTAssetsPickerController.m */; };
+		262C277323B1E7010077D5AB /* TZApplyCreditCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C277223B1E7010077D5AB /* TZApplyCreditCardVC.m */; };
+		262C277623B2038A0077D5AB /* TZApplyCreditCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C277523B2038A0077D5AB /* TZApplyCreditCardModel.m */; };
 		262D5D56236D853D00C9429F /* TZProductLinebackBankHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D5D55236D853D00C9429F /* TZProductLinebackBankHeadView.m */; };
 		262D5D5A236D855700C9429F /* TZProductLinebackBankHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262D5D59236D855700C9429F /* TZProductLinebackBankHeadView.xib */; };
 		263C95DA239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C95D8239246EB004D56E9 /* TZMyFutureMoneyDetailNameCell.m */; };
@@ -127,6 +129,8 @@
 		264E1813239A4E9A00136D53 /* AdPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 264E1812239A4E9A00136D53 /* AdPageView.m */; };
 		2658904D23A8C83F0074CA30 /* TZApplyCreditCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2658904B23A8C83F0074CA30 /* TZApplyCreditCardCell.m */; };
 		2658904E23A8C83F0074CA30 /* TZApplyCreditCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2658904C23A8C83F0074CA30 /* TZApplyCreditCardCell.xib */; };
+		265BA90923B5F89B00C1A8F7 /* TZProductScreenConditionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 265BA90623B5F89A00C1A8F7 /* TZProductScreenConditionItemView.m */; };
+		265BA90A23B5F89B00C1A8F7 /* TZProductScreenConditionItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265BA90723B5F89A00C1A8F7 /* TZProductScreenConditionItemView.xib */; };
 		26621797237D388100DC3A9F /* TZProductLinebackBankDevelopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */; };
 		26621799237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */; };
 		26659F2523743CC4008854C2 /* TZConditionMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26659F2423743CC4008854C2 /* TZConditionMoneyView.m */; };
@@ -745,6 +749,10 @@
 		2624C8F0239636D600DC0490 /* AHSendProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHSendProgressView.m; sourceTree = "<group>"; };
 		2624C8F22396418900DC0490 /* PHImageManager+CTAssetsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHImageManager+CTAssetsPickerController.h"; sourceTree = "<group>"; };
 		2624C8F32396418900DC0490 /* PHImageManager+CTAssetsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHImageManager+CTAssetsPickerController.m"; sourceTree = "<group>"; };
+		262C277123B1E7010077D5AB /* TZApplyCreditCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZApplyCreditCardVC.h; sourceTree = "<group>"; };
+		262C277223B1E7010077D5AB /* TZApplyCreditCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZApplyCreditCardVC.m; sourceTree = "<group>"; };
+		262C277423B2038A0077D5AB /* TZApplyCreditCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZApplyCreditCardModel.h; sourceTree = "<group>"; };
+		262C277523B2038A0077D5AB /* TZApplyCreditCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZApplyCreditCardModel.m; sourceTree = "<group>"; };
 		262D5D54236D853D00C9429F /* TZProductLinebackBankHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankHeadView.h; sourceTree = "<group>"; };
 		262D5D55236D853D00C9429F /* TZProductLinebackBankHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankHeadView.m; sourceTree = "<group>"; };
 		262D5D59236D855700C9429F /* TZProductLinebackBankHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankHeadView.xib; sourceTree = "<group>"; };
@@ -782,6 +790,9 @@
 		2658904A23A8C83F0074CA30 /* TZApplyCreditCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZApplyCreditCardCell.h; sourceTree = "<group>"; };
 		2658904B23A8C83F0074CA30 /* TZApplyCreditCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZApplyCreditCardCell.m; sourceTree = "<group>"; };
 		2658904C23A8C83F0074CA30 /* TZApplyCreditCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZApplyCreditCardCell.xib; sourceTree = "<group>"; };
+		265BA90623B5F89A00C1A8F7 /* TZProductScreenConditionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZProductScreenConditionItemView.m; sourceTree = "<group>"; };
+		265BA90723B5F89A00C1A8F7 /* TZProductScreenConditionItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZProductScreenConditionItemView.xib; sourceTree = "<group>"; };
+		265BA90823B5F89A00C1A8F7 /* TZProductScreenConditionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProductScreenConditionItemView.h; sourceTree = "<group>"; };
 		26621795237D388100DC3A9F /* TZProductLinebackBankDevelopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankDevelopView.h; sourceTree = "<group>"; };
 		26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankDevelopView.m; sourceTree = "<group>"; };
 		26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankDevelopView.xib; sourceTree = "<group>"; };
@@ -1523,6 +1534,9 @@
 				261FEF0F237159EC00121781 /* TZProductScreenConditionItemCell.h */,
 				261FEF10237159EC00121781 /* TZProductScreenConditionItemCell.m */,
 				261FEF11237159EC00121781 /* TZProductScreenConditionItemCell.xib */,
+				265BA90823B5F89A00C1A8F7 /* TZProductScreenConditionItemView.h */,
+				265BA90623B5F89A00C1A8F7 /* TZProductScreenConditionItemView.m */,
+				265BA90723B5F89A00C1A8F7 /* TZProductScreenConditionItemView.xib */,
 			);
 			path = leverThirty;
 			sourceTree = "<group>";
@@ -1649,6 +1663,8 @@
 				261FEF152371716D00121781 /* TZProductScreenConditionModel.m */,
 				261FEF3B2373B95100121781 /* TZProductScreenConditionProvinceModel.h */,
 				261FEF3C2373B95100121781 /* TZProductScreenConditionProvinceModel.m */,
+				262C277423B2038A0077D5AB /* TZApplyCreditCardModel.h */,
+				262C277523B2038A0077D5AB /* TZApplyCreditCardModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2543,6 +2559,8 @@
 				E99AFF132320EEA600C663EA /* preciseRecommendationWebVC.m */,
 				2676DA16236917BE00FDAAC2 /* TZHomePageVC.h */,
 				2676DA17236917BE00FDAAC2 /* TZHomePageVC.m */,
+				262C277123B1E7010077D5AB /* TZApplyCreditCardVC.h */,
+				262C277223B1E7010077D5AB /* TZApplyCreditCardVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2722,6 +2740,7 @@
 				26D31BFE239611A700839FCE /* ACActionSheet.bundle in Resources */,
 				0A2042DB22A754300055E2E0 /* 2.jpg in Resources */,
 				26E7AD24236C5BCD00264E87 /* TZProductToolsCell.xib in Resources */,
+				265BA90A23B5F89B00C1A8F7 /* TZProductScreenConditionItemView.xib in Resources */,
 				261FEF292372696100121781 /* PR_filter_choice_top@2x.png in Resources */,
 				2658904E23A8C83F0074CA30 /* TZApplyCreditCardCell.xib in Resources */,
 				5F323AA2205F582500995197 /* LaunchScreen.storyboard in Resources */,
@@ -2870,6 +2889,7 @@
 				5F48DFD7206A34F900982B1F /* BufferedNavigationController.m in Sources */,
 				0AE7706C207B59280049EDE5 /* BankAPI.m in Sources */,
 				9CE7345722CF77E40057AC96 /* RandomMerchantAlertView.swift in Sources */,
+				262C277623B2038A0077D5AB /* TZApplyCreditCardModel.m in Sources */,
 				26E7C411236ADF55007EF5D4 /* TZMyProfileVC.m in Sources */,
 				5F314D722073668E00DF6B49 /* MessageCenterModel.m in Sources */,
 				2676DA152368106F00FDAAC2 /* UITableView+NATools.m in Sources */,
@@ -2938,6 +2958,7 @@
 				26E7AD23236C5BCD00264E87 /* TZProductToolsCell.m in Sources */,
 				9CFCB11122CCD3E600DCBF54 /* UIColor+Extension.swift in Sources */,
 				5F323A9A205F582500995197 /* ViewController.m in Sources */,
+				265BA90923B5F89B00C1A8F7 /* TZProductScreenConditionItemView.m in Sources */,
 				5F358639206F636B00857708 /* PayPasswordView.m in Sources */,
 				E99AFF1A2320F61200C663EA /* TwoButtonAlertView.swift in Sources */,
 				9CFCB12022CE276600DCBF54 /* ProductItemSearchHeader.swift in Sources */,
@@ -3088,6 +3109,7 @@
 				261FEF432373EDB600121781 /* QZSortHeaderView.m in Sources */,
 				2658904D23A8C83F0074CA30 /* TZApplyCreditCardCell.m in Sources */,
 				9CFCB10022CCCE6900DCBF54 /* TDAlertCommonView.swift in Sources */,
+				262C277323B1E7010077D5AB /* TZApplyCreditCardVC.m in Sources */,
 				5F323B9B205FC62B00995197 /* UIFactory.m in Sources */,
 				5F9EE7C220623D17004013E2 /* HomePageModel.m in Sources */,
 				9CFCB10422CCCE6900DCBF54 /* TDAlertViewController.swift in Sources */,

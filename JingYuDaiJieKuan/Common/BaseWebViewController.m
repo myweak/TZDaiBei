@@ -34,7 +34,6 @@
 
 -(void)backToSuperView
 {
-    [[[TZShowAlertView alloc] initWithAlerTitle:nil Content:self.url buttonArray:@[@"1"] blueButtonIndex:0 alertButtonBlock:nil] show];
     
     if ([self.webView canGoBack]) {
         [self.webView goBack];

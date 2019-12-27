@@ -147,7 +147,9 @@
             }        }];
         if (![TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
             [model.offlineProductBanks enumerateObjectsUsingBlock:^(TZProductListModel *itmeModel, NSUInteger idx, BOOL * _Nonnull stop) {
-                [array addObject:itmeModel];
+                if (idx <3) {
+                    [array addObject:itmeModel];
+                }
             }];
         }
         if (array.count == 0) {
@@ -439,7 +441,7 @@
         cell.mainTitleLabel.text = KHot_title;
         cell.backBtnTapAcionBlock = ^{
             @strongify(self)
-            [self pushToTZProductCenterVCWithPage:0];
+            [self pushToTZProductCenterVCWithPage:1];
         };
         cell.backgroundColor = [UIColor clearColor];
         return cell;

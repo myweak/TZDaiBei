@@ -78,3 +78,8 @@ UIKIT_EXTERN NSString *const API_checkProduct_path;
 /** 用户贷款列表信息 */
 UIKIT_EXTERN NSString *const API_offlineAmountInfo_path;
 
+/** 获取信用卡模块信息 */
+UIKIT_EXTERN NSString *const API_getCreditCardList_path;
+
+/** 线下热门产品*/
+UIKIT_EXTERN NSString *const API_getOfflineRecommend_path;

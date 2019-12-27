@@ -97,7 +97,7 @@ SINGLETON_FOR_HEADER(AdBannerModel)
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) NSInteger sort;
-@property (nonatomic, copy) NSString *referType; // 1:没有地址 跳本地UI； 2:表示 web地址
+@property (nonatomic, copy) NSString *referType; // 1申请贷款； 2:表示 web地址 , 3 行用卡
 
 @end
 

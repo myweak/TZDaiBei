@@ -11,6 +11,8 @@
 #import "TZProductPageModel.h"
 #import "TZProductScreenConditionModel.h"
 #import "TZProductScreenConditionProvinceModel.h"
+#import "TZApplyCreditCardModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProductItemViewModel : NSObject
@@ -93,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 新闻数量统计
 +(void)homeLastAllPath:(NSString *)path
-                params:(NSMutableDictionary *)params
+                params:(NSDictionary *)params
                 target:(id)target
                success:(void (^)(TZProductPageModel *model))success
                failure:(void (^)(NSError *error))failure;

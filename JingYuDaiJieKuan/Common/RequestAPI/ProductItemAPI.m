@@ -43,6 +43,9 @@ NSString *const THTML_essentialInfo_api = @"/static/agreement/essentialInfo";
 
 /** 线上极速贷款 数据 {pageNo} */ //全部新品接口-查询所有的
 NSString *const API_homeLastAll_path = @"home/last/all/mch/";
+/** 获取信用卡模块信息 */
+NSString *const API_getCreditCardList_path = @"offline/product/getCreditCardList";
+
 
 
 /** 征信页面修复资料填写 */
@@ -59,6 +62,9 @@ NSString *const HTML_personalAccess_api = @"static/agreement/personalAccess";
  }
  */
 NSString *const API_getOfflineInfo_path = @"/offline/getOfflineInfo";
+
+/** 线下热门产品*/
+NSString *const API_getOfflineRecommend_path = @"/offline/getOfflineRecommend";
 
 /** 获取一级城市接口*/
 NSString *const API_getFirstTierCities_path = @"/offline/city/getFirstTierCities";

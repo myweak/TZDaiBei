@@ -34,11 +34,25 @@ NS_ASSUME_NONNULL_BEGIN
  @param     buttonArrays 确定按钮数组
  @param     alertButtonBlock  点击回调事件
  */
-- (instancetype) initWithAlerTitle:(NSString *)title
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
                            Content:(NSString *)content
                        buttonArray:(NSArray *)buttonArrays
                    blueButtonIndex:(NSInteger) buttonIndex
                   alertButtonBlock:(ButtonActonBlock)alertButtonBlock;
+
+/*!
+@brief     初始化视图  - View弹窗
+
+@param     title       标题
+@param     contentView     内容View
+@param     buttonArrays 确定按钮数组
+@param     alertButtonBlock  点击回调事件
+*/
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
+                       ContentView:(UIView *)contentView
+                       buttonArray:(NSArray *)buttonArrays
+                   blueButtonIndex:(NSInteger) buttonIndex
+                  alertButtonBlock:(nullable ButtonActonBlock)alertButtonBlock;
 
 - (void)show;
 - (void)disMiss;

@@ -67,6 +67,7 @@
     
     
     [ProductItemViewModel homeLastAllPath:API_saveProductClick_path params:params target:self success:^(TZProductPageModel * _Nonnull model) {
+        @strongify(self)
         [self postCheckProductUrlWithDict:params];
     } failure:^(NSError * _Nonnull error) {
         [self postCheckProductUrlWithDict:params];
@@ -134,6 +135,21 @@
     return self.dataArr.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 44;
+}
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200, 44)];
+    label.text= @"产品列表";
+    label.font = kFontSize14;
+    label.textColor = CP_ColorMBlack;
+    [view addSubview:label];
+    return view;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     @weakify(self)
     TZProductLineFrontItemCell *cell = [tableView dequeueReusableCellWithIdentifier:TZProductLineFrontItemCell_ID forIndexPath:indexPath];
@@ -170,7 +186,7 @@
 #pragma mark -UI
 - (UITableView *)m_tableView{
     if (!_m_tableView) {//UITableViewStyleGrouped
-        _m_tableView = InsertTableView(nil, CGRectMake(0, 0, kScreenWidth, CGRectGetHeight(self.view.frame)), self, self, UITableViewStylePlain, UITableViewCellSeparatorStyleSingleLine);
+        _m_tableView = InsertTableView(nil, CGRectMake(0, 0, kScreenWidth, CGRectGetHeight(self.view.frame)), self, self, UITableViewStyleGrouped, UITableViewCellSeparatorStyleSingleLine);
         _m_tableView.height = self.view.height;
         _m_tableView.rowHeight = UITableViewAutomaticDimension;
         _m_tableView.estimatedRowHeight = 120;

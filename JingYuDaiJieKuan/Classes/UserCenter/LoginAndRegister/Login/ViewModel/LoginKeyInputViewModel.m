@@ -22,7 +22,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [LoginModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(LoginModel *model) {
         success(model);
@@ -44,7 +44,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [LoginModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(LoginModel *model) {
         success(model);
@@ -65,7 +65,7 @@
     HttpPropertyEntity *entity = [HttpPropertyEntity new];
     entity.responseObject = [LoginBannerModel class];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:params];
-    [param setObject:[kUserMessageManager getUserToken]?:@"" forKey:@"token"];
+    [param setObject:aUser.token?:@"" forKey:@"token"];
     
     [manage postWithPath:path params:param isNotEncryption:NO customClass:entity success:^(LoginBannerModel *model) {
         success(model);

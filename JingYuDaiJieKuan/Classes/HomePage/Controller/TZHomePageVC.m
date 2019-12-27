@@ -15,7 +15,9 @@
 #import "CMTPaoMaView.h"   // 跑马灯
 #import "AdWebViewController.h"
 #import "TZProductCenterVC.h" // 产品中心
-#import "TZShowAlertView.h"
+#import "TZApplyCreditCardVC.h"
+
+
 @interface TZHomePageVC ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (strong ,nonatomic) UITableView *m_tableView;
@@ -209,6 +211,10 @@
 
         TZHomeResultViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TZHomeResultViewCellID forIndexPath:indexPath];
         if (self.m_HomeintervalDays != nil) {
+            if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+                self.m_HomeintervalDays.operateTime = @"0万";
+                self.m_HomeintervalDays.turnoverNumber = 0;
+            }
             cell.playTimetLabel.text = [NSString stringWithFormat:@"累计交易金额 %@",self.m_HomeintervalDays.operateTime] ;
             cell.playCountLabel.text = [NSString stringWithFormat:@"累计交易 %ld笔",(long)self.m_HomeintervalDays.turnoverNumber] ;
         }
@@ -224,9 +230,14 @@
         TZBannerNavigationModel *model = self.m_HomeBodyModel.bannerNavigation[indexPath.row];
         if (model.referType.integerValue == 1) {
             TZProductCenterVC *centerVc = [TZProductCenterVC new];
-            centerVc.pageIndex = 0;
+            centerVc.pageIndex = 1;
             [self.navigationController pushViewController:centerVc animated:YES];
-        }else{
+        }else if(model.referType.integerValue == 3) {
+            TZApplyCreditCardVC *apply = [TZApplyCreditCardVC new];
+            apply.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:apply animated:YES];
+            
+        }else if(model.referType.integerValue == 2) {
             if ([model.url containsString:HTML_creditRepair_api] || [model.title containsString:@"征信"]) {
                 NSString *phone = aUser.mobile;
                 
@@ -307,7 +318,11 @@
     //拿到跑马灯需要的文字列表
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [self.m_PaoMaDengModel.list enumerateObjectsUsingBlock:^(HomeNoticeModel * model, NSUInteger idx, BOOL * _Nonnull stop) {
-        [array addObject:[NSString stringWithFormat:@"%@",model.message]];
+        if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+            [array addObject:[NSString stringWithFormat:@"欢迎使用%@APP！",[NSString getMyApplicationName]]];
+        }else{
+            [array addObject:[NSString stringWithFormat:@"%@",model.message]];
+        }
     }];
     [self.m_paoMaView removeFromSuperview];
     if (array.count != 0){

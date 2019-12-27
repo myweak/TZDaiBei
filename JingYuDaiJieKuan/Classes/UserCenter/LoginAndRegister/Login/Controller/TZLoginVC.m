@@ -53,16 +53,29 @@
 
 @implementation TZLoginVC
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSString *keyStr = @"保存用户隐私弹框";
+    if (![TZUserDefaults getBoolValueInUDWithKey:keyStr]) {
+        [TZUserDefaults saveBoolValueInUD:YES forKey:keyStr];
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,customerPrivacyPolicy];
+        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, iPH(350))];
+        [webView loadRequest:
+         [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+        [[[TZShowAlertView alloc] initWithAlerTitle:nil ContentView:webView buttonArray:@[@"同意并继续"] blueButtonIndex:0 alertButtonBlock:nil] show];
+    }
+    
+}
 
 - (void)viewDidLoad {
-    
+    [super viewDidLoad];
 
-    
+   
+
     [self setFd_interactivePopDisabled:YES];
     self.protocolRange = NSMakeRange(7, 6);
     self.policyProtocolRange = NSMakeRange(14, 6);
     
-    [super viewDidLoad];
     msgMaxlength = 6;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationItem.title = @"登录";

@@ -26,7 +26,7 @@
 
 
 
-- (instancetype) initWithAlerTitle:(NSString *)title
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
                            Content:(NSString *)content
                        buttonArray:(NSArray *)buttonArrays
                    blueButtonIndex:(NSInteger) buttonIndex
@@ -112,6 +112,89 @@
     }
     return self;
 }
+
+
+
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
+                           ContentView:(UIView *)contentView
+                       buttonArray:(NSArray *)buttonArrays
+                   blueButtonIndex:(NSInteger) buttonIndex
+                  alertButtonBlock:(nullable ButtonActonBlock)alertButtonBlock{
+    
+    if (self == [super init]) {
+        self.buttonActonBlock = [alertButtonBlock copy];
+        self.buttonArrays = [buttonArrays copy];
+        self.frame = [[UIScreen mainScreen] bounds];
+        self.backgroundColor = KAlphaViewBgColor;
+        
+        self.titleLabel.text   = title;
+
+        if (checkStrEmty(title)) {
+            self.titleLabel.size = CGSizeZero;
+        }
+        
+        contentView.width = self.alertView.width;
+//        self.titleLabel.width = self.alertView.width;
+        
+        // 按钮布局
+        UIView *buttonViewBg = [UIView new];
+        buttonViewBg.userInteractionEnabled = YES;
+        buttonViewBg.backgroundColor = [UIColor clearColor];
+        CGFloat buttonViewBg_y = checkStrEmty(title) ? 20:20;
+        buttonViewBg.frame = CGRectMake(0, contentView.bottom+buttonViewBg_y, self.alertView.width,(buttonArrays.count>=3 ? Kbutton_H *buttonArrays.count:Kbutton_H));
+        buttonViewBg.clipsToBounds =YES;
+        
+        CGFloat Kbutton_W =  buttonViewBg.width /buttonArrays.count;
+        for (int i =0; i<buttonArrays.count; i++) {
+            
+            UIButton *button = [[UIButton alloc] init];
+            
+            if (buttonArrays.count >=3) {
+                [button setFrame:CGRectMake(0, i*(Kbutton_H), self.alertView.width, Kbutton_H)];
+            }else{
+                [button setFrame:CGRectMake(i*Kbutton_W, 0, Kbutton_W, Kbutton_H)];
+            }
+            
+            [button setBackgroundColor:[UIColor clearColor]];
+            [button setTitle:buttonArrays[i] forState:UIControlStateNormal];
+            [button.titleLabel setFont:kFontSize17];
+            [button setTag:i];
+//            button.layer.cornerRadius = 5.0f;
+            button.userInteractionEnabled =YES;
+            [button addTarget:self action:@selector(buttonClickedAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+            UIColor *titleColor = nil;
+            if (i == buttonIndex) {
+                titleColor = [UIColor whiteColor] ;
+                button.backgroundColor = Bg_Btn_Colorblue;
+            } else {
+                button.backgroundColor = [UIColor whiteColor];
+                titleColor =  CP_ColorMBlack ;
+            }
+            [button setTitleColor:titleColor forState:UIControlStateNormal];
+            [button setTitleColor:titleColor forState:UIControlStateHighlighted];
+            
+            // 加线
+            [button addLine_top];
+            // 中间线条
+            if (buttonArrays.count > 1 && (i<buttonArrays.count-1) && buttonArrays.count < 3) {
+                [button addLine_right];
+            }
+            
+            [buttonViewBg addSubview:button];
+        }
+        
+        [self.alertView addSubview:buttonViewBg];
+        self.alertView.height = buttonViewBg.bottom;
+        [self.alertView addSubview:self.titleLabel];
+        [self.alertView addSubview:contentView];
+
+        [self addSubview:self.alertView];
+        
+    }
+    return self;
+}
+
 
 
 - (instancetype) initWithAlerTitle:(nullable NSString *)title
@@ -246,9 +329,11 @@
      @weakify(self);
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        @strongify(self)
-
-        [[UIViewController visibleViewController].tabBarController.view addSubview:self];
-
+    UIView *view = [UIViewController visibleViewController].tabBarController.view;
+    [(view ?:kAppDelegate.window) addSubview:self];
+    
+    self.alertView.center = CGPointMake(kScreenWidth/2.0f, (kScreenHeight- kNavBarH)/2.0f);
+    
     self.alpha = 0;
         self.alertView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.01, 0.1);
         

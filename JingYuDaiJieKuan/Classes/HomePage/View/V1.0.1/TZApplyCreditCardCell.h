@@ -5,8 +5,10 @@
 //  Created by TianZe on 2019/12/17.
 //  Copyright © 2019 Jincaishen. All rights reserved.
 //
+static NSString * const TZApplyCreditCardCell_ID = @"TZApplyCreditCardCell_ID";
 
 #import <UIKit/UIKit.h>
+#import "TZApplyCreditCardModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *tagLabelD;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabelE;
 @property (nonatomic, copy) void (^backTapBtnActionBlock)(UIButton *btn);
+
+@property (nonatomic, strong) TZApplyCreditCardListModel *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

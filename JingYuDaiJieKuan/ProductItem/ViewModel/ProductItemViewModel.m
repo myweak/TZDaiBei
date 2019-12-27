@@ -220,7 +220,7 @@
 }
 
 +(void)homeLastAllPath:(NSString *)path
-                   params:(NSMutableDictionary *)params
+                   params:(NSDictionary *)params
                    target:(id)target
                   success:(void (^)(TZProductPageModel *model))success
                   failure:(void (^)(NSError *error))failure{
