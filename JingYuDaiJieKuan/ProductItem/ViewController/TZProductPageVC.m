@@ -29,6 +29,7 @@
 #import "TZProductCenterVC.h" // 产品中心
 #import "TZProductNewPageVC.h" // 新闻 VC
 #import "TZProductScreenConditionVC.h" // 全部贷款
+#import "TZApplyCreditCardVC.h" // 信用卡列表
 
 @interface TZProductPageVC ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,UIScrollViewDelegate>
 
@@ -399,13 +400,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     id titleV = [self.dataViewArr objectAtIndex:indexPath.row];
-    if ([titleV isEqualToString:KSpeed_cell]) {
-        return 80;
-    }else if ([titleV isEqualToString:KHot_title] ||
+    if ([titleV isEqualToString:KHot_title] ||
               [titleV isEqualToString:KTool_title] ||
               [titleV isEqualToString:KNews_title]
               ) {
         return 44;
+    }else if ([titleV isEqualToString:KSpeed_cell]) {
+        return 174;
     }else if ([titleV isEqualToString:KHot_cell]) {
         return self.qualityView.height;
     }else if ([titleV isEqualToString:KTool_cell]) {
@@ -432,6 +433,11 @@
         TZProductPToPCell *cell = [tableView dequeueReusableCellWithIdentifier:TZProductPToPCell_ID forIndexPath:indexPath];
         cell.backBtnTapAcionBlock = ^(NSInteger index) {
             @strongify(self)
+            if(index == 2){ // 信用卡
+                TZApplyCreditCardVC *apply = [TZApplyCreditCardVC new];
+                [self.navigationController pushViewController:apply animated:YES];
+                return ;
+            }
             [self pushToTZProductCenterVCWithPage:index];
         };
         return cell;
@@ -441,7 +447,8 @@
         cell.mainTitleLabel.text = KHot_title;
         cell.backBtnTapAcionBlock = ^{
             @strongify(self)
-            [self pushToTZProductCenterVCWithPage:1];
+            //进入线下银行
+            [self pushToTZProductCenterVCWithPage:0];
         };
         cell.backgroundColor = [UIColor clearColor];
         return cell;

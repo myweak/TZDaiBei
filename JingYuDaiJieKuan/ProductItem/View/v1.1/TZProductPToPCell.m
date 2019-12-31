@@ -8,6 +8,10 @@
 
 #import "TZProductPToPCell.h"
 
+@interface TZProductPToPCell ()
+
+@end
+
 @implementation TZProductPToPCell
 
 - (void)awakeFromNib {
@@ -21,6 +25,10 @@
 
 - (IBAction)rightTapAcion:(id)sender {
     !self.backBtnTapAcionBlock ?: self.backBtnTapAcionBlock(1);
+
+}
+- (IBAction)rightBottomTapAcion:(id)sender {
+    !self.backBtnTapAcionBlock ?: self.backBtnTapAcionBlock(2);
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

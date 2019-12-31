@@ -11,8 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TZProductLineFrontVC : SuperVC
-@property (nonatomic, strong) NSMutableArray *dataArr;
+// 告知页面窗口切换到当前页面
+- (void)notifyMoveToVC;
 
 @end
+
 
 NS_ASSUME_NONNULL_END

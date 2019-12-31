@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray *topSegmentBtnArr;
 @property (nonatomic, strong) NSArray *pageChildVCArr;
 @property (nonatomic, strong) UIView *sliderBg;
+@property (nonatomic, strong) UIViewController *currentPageVC;// 当前Vc
 @end
 
 @implementation TZProductCenterVC
@@ -37,37 +38,11 @@
     [self addChilPageVC];
 }
 - (void)bindSignal{
-    [self showUserMessageView];
-    self.scrollView.contentOffset = CGPointMake(kScreenWidth *self.pageIndex, 0);
+    
+    UIButton *topBtn = [self.topSegmentBtnArr objectAtIndex:self.pageIndex];
+    [self topSegmentedBtnAction:topBtn];
 }
 
-// 提示骚扰弹框
-- (void)showUserMessageView{
-    UIViewController *vc = [self.pageChildVCArr objectAtIndex:1];
-    if ([vc isKindOfClass:[TZProductLineFrontVC class]]) {
-        TZProductLineFrontVC *vcc = (TZProductLineFrontVC *)vc;
-        if (vcc.dataArr.count == 1) {
-            return;
-        }
-    }
-    
-    NSString *phone = aUser.mobile;
-    
-    NSString *idKey = [NSString stringWithFormat:@"message_%@",phone];
-    BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
-    // 1/5概率判断
-    BOOL numb =  (arc4random() % 5)== 4;
-    
-    // 神经体验
-    //    hadSave = YES;
-    //    numb = YES;
-    
-    if ((!hadSave || numb) && self.pageIndex == 0) {
-        [[[TZShowAlertView alloc] initWithAlerTitle:@"温馨提示" Content:@"建议申请5个以上产品，成功率提升95%！" buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {
-            [TZUserDefaults saveBoolValueInUD:YES forKey:idKey];
-        }] show];
-    }
-}
 
 - (void)addChilPageVC{
     
@@ -98,20 +73,22 @@
 #pragma  mark - 顶部Segmented按钮选择
 - (void)topSegmentedBtnAction:(UIButton *)btn{
     self.pageIndex = btn.tag;
+    self.currentPageVC = [self.pageChildVCArr objectAtIndex:self.pageIndex];
     if (btn != self.cureentTopSegmentBtn) {
         btn.selected = YES;
         self.cureentTopSegmentBtn.selected = NO;
         self.cureentTopSegmentBtn = btn;
         self.scrollView.contentOffset = CGPointMake(kScreenWidth *self.pageIndex, 0);
-        [self setsliderViewOffsetX:KSlider_space+self.pageIndex *(kScreenWidth- 30-KSlider_space*2)/2.0f];
+        [self setsliderViewOffsetX:KSlider_space+self.pageIndex *(kScreenWidth- 30-KSlider_space*2)/2.0f animations:YES];
+        if ([self.currentPageVC isKindOfClass:[TZProductLineFrontVC class]]) {// 线上
+            [(TZProductLineFrontVC *)self.currentPageVC notifyMoveToVC];
+        }
+    }
+    if (![self.currentPageVC isKindOfClass:[TZProductLinebackBankVC class]]) {
+        TZProductLinebackBankVC *backVc = [self.pageChildVCArr objectAtIndex:0];
+        [backVc resignTextFieldFirstResponder];
         
     }
-    UIViewController *vc = [self.pageChildVCArr objectAtIndex:0];
-    if ([vc isKindOfClass:[TZProductLinebackBankVC class]]) {
-        [(TZProductLinebackBankVC *)vc resignTextFieldFirstResponder];
-        return;
-    }
-    [self showUserMessageView];
 }
 
 - (void)addTopSegmentedBtnViewWithIndex:(NSInteger) index{
@@ -171,20 +148,7 @@
     
     
     self.topSegmentBtnArr = @[leftBtn,rightBtn];
-    
-    
-    if (index == 0) {
-        leftBtn.selected = YES;
-        rightBtn.selected = NO;
-        [self setsliderViewOffsetX:KSlider_space animations:NO];
-        self.cureentTopSegmentBtn = leftBtn;
-        
-    }else{
-        leftBtn.selected = NO;
-        rightBtn.selected = YES;
-        [self setsliderViewOffsetX:KSlider_space+(kScreenWidth-30-2*KSlider_space)/2.0 animations:NO];
-        self.cureentTopSegmentBtn = rightBtn;
-    }
+    self.cureentTopSegmentBtn = leftBtn;
     
 }
 - (void)setsliderViewOffsetX:(CGFloat)offset_x{

@@ -64,6 +64,10 @@
         view.model = model;
         [self addSubview:view];
         self.height = view.bottom;
+        
+        // line
+        [self addLine:CGRectMake(15, self.height-0.5, kScreenWidth-30, 0.5)];
+        
         [view handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
             @strongify(self)
             !self.backItemTapAction ? :self.backItemTapAction(model);

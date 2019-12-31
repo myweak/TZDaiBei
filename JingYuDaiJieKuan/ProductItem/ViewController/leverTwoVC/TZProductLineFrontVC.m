@@ -12,6 +12,8 @@
 @interface TZProductLineFrontVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong ,nonatomic) UITableView *m_tableView;
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+
 @end
 
 @implementation TZProductLineFrontVC
@@ -184,6 +186,7 @@
 
 
 #pragma mark -UI
+
 - (UITableView *)m_tableView{
     if (!_m_tableView) {//UITableViewStyleGrouped
         _m_tableView = InsertTableView(nil, CGRectMake(0, 0, kScreenWidth, CGRectGetHeight(self.view.frame)), self, self, UITableViewStyleGrouped, UITableViewCellSeparatorStyleSingleLine);
@@ -203,6 +206,36 @@
         _m_tableView.separatorInset = UIEdgeInsetsMake(0, 16, 0, 16);
     }
     return _m_tableView;
+}
+
+// 告知页面窗口切换到当前页面
+- (void)notifyMoveToVC{
+    @weakify(self)
+    [RACScheduler.mainThreadScheduler afterDelay:0.25 schedule:^{
+        @strongify(self)
+       [self showUserMessageView];
+    }];
+}
+
+// 提示骚扰弹框
+- (void)showUserMessageView{
+    
+    NSString *phone = aUser.mobile;
+    
+    NSString *idKey = [NSString stringWithFormat:@"message_%@",phone];
+    BOOL hadSave = [TZUserDefaults getBoolValueInUDWithKey:idKey];
+    // 1/5概率判断
+    BOOL numb =  (arc4random() % 5)== 4;
+    
+    // 神经体验
+//        hadSave = YES;
+//        numb = YES;
+    
+    if ((!hadSave || numb) && self.dataArr.count != 0) {
+        [[[TZShowAlertView alloc] initWithAlerTitle:@"温馨提示" Content:@"建议申请5个以上产品，成功率提升95%！" buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {
+            [TZUserDefaults saveBoolValueInUD:YES forKey:idKey];
+        }] show];
+    }
 }
 
 #pragma mark - push VC

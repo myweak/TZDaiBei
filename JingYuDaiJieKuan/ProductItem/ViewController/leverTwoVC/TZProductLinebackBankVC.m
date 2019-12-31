@@ -47,10 +47,24 @@
 }
 
 - (void)initWithUI{
+    @weakify(self)
     [self.view addSubview:self.m_tableView];
 }
 - (void)bindSignal{
     @weakify(self)
+    [self.headView handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
+        @strongify(self)
+        if (loc.x<235 || loc.y<100) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self)
+                if (self.headView.moneyTextField.isFirstResponder) {
+                    [self.headView.moneyTextField resignFirstResponder];
+                }else{
+                    [self.headView.moneyTextField becomeFirstResponder];
+                }
+            });
+        }
+    }];
     self.m_tableView.tableHeaderView = self.headView;
     [self.m_tableView registerNibString:NSStringFromClass([TZUserEditChooseCell class]) cellIndentifier:TZUserEditChooseCell_ID];
 

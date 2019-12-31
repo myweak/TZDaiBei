@@ -15,7 +15,7 @@
 #import "CMTPaoMaView.h"   // 跑马灯
 #import "AdWebViewController.h"
 #import "TZProductCenterVC.h" // 产品中心
-#import "TZApplyCreditCardVC.h"
+#import "TZApplyCreditCardVC.h" // 信用卡列表
 
 
 @interface TZHomePageVC ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
