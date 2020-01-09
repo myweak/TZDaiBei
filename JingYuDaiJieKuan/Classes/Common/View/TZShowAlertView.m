@@ -24,7 +24,16 @@
 @end
 @implementation TZShowAlertView
 
-
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
+                          contentW:(CGFloat)contentW
+         Content:(NSString *)content
+     buttonArray:(NSArray *)buttonArrays
+ blueButtonIndex:(NSInteger) buttonIndex
+                  alertButtonBlock:(ButtonActonBlock)alertButtonBlock{
+    self.alertView.width = contentW;
+    self = [self initWithAlerTitle:title Content:content buttonArray:buttonArrays blueButtonIndex:buttonIndex alertButtonBlock:alertButtonBlock];
+    return self;
+}
 
 - (instancetype) initWithAlerTitle:(nullable NSString *)title
                            Content:(NSString *)content

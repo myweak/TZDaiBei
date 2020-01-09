@@ -146,13 +146,11 @@
             if (idx <3) {
                 [array addObject:itmeModel];
             }        }];
-        if (![TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
-            [model.offlineProductBanks enumerateObjectsUsingBlock:^(TZProductListModel *itmeModel, NSUInteger idx, BOOL * _Nonnull stop) {
-                if (idx <3) {
-                    [array addObject:itmeModel];
-                }
-            }];
-        }
+        [model.offlineProductBanks enumerateObjectsUsingBlock:^(TZProductListModel *itmeModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (idx <3) {
+                [array addObject:itmeModel];
+            }
+        }];
         if (array.count == 0) {
             if ([self.dataViewArr containsObject:KHot_title]) {
                 [self.dataViewArr removeObject:KHot_title];
@@ -227,7 +225,7 @@
     if (!_qualityView) {
         _qualityView  = InsertView(nil, CGRectMake(0, 0, kScreenWidth, 0), [UIColor clearColor]);
     }
-    
+    self.qualityView.height = 0;
     NSInteger macCount = 6; // 最多显示
     
     CGFloat item_LR = 15.0f;
@@ -359,28 +357,6 @@
     }else{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
-    //    if (scrollView == self.m_tableView) {
-    //        CGFloat offset_y = scrollView.contentOffset.y;
-    //        if (offset_y < -KHeaderView_H) {
-    //            CGFloat width = self.headView.width;
-    //            CGFloat height = self.headView.height;
-    //           height = ABS(offset_y);
-    //            CGFloat f = ABS(offset_y)/height;
-    //            self.headView.frame = CGRectMake((width *f - width)/2, height - ABS(offset_y), width *f, ABS(offset_y));
-    ////            self.headView.top = height - ABS(offset_y);
-    ////            self.headView.height = ABS(offset_y);
-    //        }
-    //    }
-    //    //获取偏移量
-    //    CGPoint offset = scrollView.contentOffset;
-    //    //判断是否改变
-    //    if (offset.y < 0) {
-    //        CGRect rect = self.m_tableView.tableHeaderView.frame;
-    //        //我们只需要改变图片的y值和高度即可
-    //        rect.origin.y = offset.y;
-    //        rect.size.height = KHeaderView_H - offset.y;
-    //        self.m_tableView.tableHeaderView.frame = rect;
-    //    }
 }
 
 
@@ -401,9 +377,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     id titleV = [self.dataViewArr objectAtIndex:indexPath.row];
     if ([titleV isEqualToString:KHot_title] ||
-              [titleV isEqualToString:KTool_title] ||
-              [titleV isEqualToString:KNews_title]
-              ) {
+        [titleV isEqualToString:KTool_title] ||
+        [titleV isEqualToString:KNews_title]
+        ) {
         return 44;
     }else if ([titleV isEqualToString:KSpeed_cell]) {
         return 174;
@@ -591,4 +567,5 @@
     targetVC.title = title;
     [self.navigationController pushViewController:targetVC animated:YES];
 }
+
 @end

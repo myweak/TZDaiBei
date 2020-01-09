@@ -135,18 +135,19 @@ void UncaughtExceptionHandler(NSException *exception){
         if ((status == ReachableViaWWAN) || (status == kReachableVia2G) || (status == kReachableVia3G) || (status == kReachableVia4G) || (status == ReachableViaWiFi)) {
             [self applicationStart];
             //版本更新 模拟数据
-            AppUpdateModel *model = [AppUpdateModel new];
-            model.appTitle = @"温馨提示";
-            model.appDesc = @"有新版本更新了";
-            model.appV = @"V1.1.0";
-            model.dialogRepeat = 1;
-            model.upgradeWay = 1;
-            model.url = @"http://www.daibei.net.cn:8005/static/upload/uploadApp";
+//            AppUpdateModel *model = [AppUpdateModel new];
+//            model.appTitle = @"温馨提示";
+//            model.appDesc = @"有新版本更新了";
+//            model.appV = @"V1.1.0";
+//            model.dialogRepeat = 1;
+//            model.upgradeWay = 1;
+//            model.url = @"http://www.daibei.net.cn:8005/static/upload/uploadApp";
 //            [self setUpdateApp:model];
             //版本更新 接口
             [self checkAppUpdate];
         } else {
             NSLog(@"没网");
+            [self applicationStart];
         }
         
         [[NSRunLoop currentRunLoop] run];

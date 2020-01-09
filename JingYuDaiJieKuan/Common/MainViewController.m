@@ -35,7 +35,6 @@
     
     [[UITabBar appearance] setBackgroundColor:[UIColor whiteColor]];
     
-    
 }
 
 -(void)initWithVC :(NSArray *)list

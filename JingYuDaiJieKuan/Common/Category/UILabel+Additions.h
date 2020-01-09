@@ -5,6 +5,7 @@
 //  Created by 飞礼科技 on 2017/12/25.
 //  Copyright © 2017年 Nathan Ou. All rights reserved.
 //
+typedef void (^LabelTapActonBlock)(NSInteger index);
 
 #import <UIKit/UIKit.h>
 
@@ -39,7 +40,10 @@
 @property (nonatomic,copy)NSString *keywords;
 @property (nonatomic,strong)UIFont *keywordsFont;
 @property (nonatomic,strong)UIColor *keywordsColor;
-
+//
+@property (nonatomic,strong)NSArray *keywords_arr;
+@property (nonatomic,strong)NSArray *keywordsFont_arr;
+@property (nonatomic,strong)NSArray *keywordsColor_arr;
 /**
  *  下划线
  */

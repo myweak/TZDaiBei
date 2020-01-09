@@ -34,7 +34,7 @@
     [self.navigationBar setBackgroundColor:[UIColor whiteColor]];
     self.navigationBar.barTintColor = [UIColor whiteColor];
     
-    [self.navigationBar setBackgroundImage:[[UIImage alloc]init]forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(kScreenWidth, kNavBarH)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:[UIImage new]];
     
 }

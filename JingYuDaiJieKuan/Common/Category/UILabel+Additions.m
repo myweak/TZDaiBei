@@ -100,6 +100,35 @@
     objc_setAssociatedObject(self, @selector(headSpace), @(headSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+
+
+//
+
+-(NSArray*)keywords_arr{
+    return objc_getAssociatedObject(self, _cmd);
+}
+-(void)setKeywords_arr:(NSArray *)keywords_arr{
+    objc_setAssociatedObject(self, @selector(keywords_arr), keywords_arr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSArray *)keywordsFont_arr{
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+-(void)setKeywordsFont_arr:(NSArray *)keywordsFont_arr{
+    objc_setAssociatedObject(self, @selector(keywordsFont_arr), keywordsFont_arr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+-(NSArray *)keywordsColor_arr{
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+-(void)setKeywordsColor_arr:(NSArray *)keywordsColor_arr{
+    objc_setAssociatedObject(self, @selector(keywordsColor_arr), keywordsColor_arr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
 /**
  *  根据最大宽度计算label宽，高
  *
@@ -108,30 +137,30 @@
  *  @return rect
  */
 - (CGRect)getLableHeightWithMaxWidth:(CGFloat)maxWidth{
-    
+    self.userInteractionEnabled = YES;
     if (self.text.length == 0) {
         return CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, 0);
     }
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:self.text];
     [attributedString addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0,self.text.length)];
-    
+
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-    
+
     // 行间距
     if(self.lineSpace > 0){
         [paragraphStyle setLineSpacing:self.lineSpace];
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,self.text.length)];
     }
-    
+
     // 字间距
     if(self.characterSpace > 0){
-        
+
         NSNumber *number =  [NSNumber numberWithFloat:self.characterSpace];
         [attributedString addAttribute:(id)kCTKernAttributeName value:number range:NSMakeRange(0,[attributedString length]-1)];
-        
+
     }
-    
+
     // 首行缩进字符
     if(self.headSpace > 0){
         CGFloat emptylen = (self.font.pointSize + self.characterSpace) * self.headSpace;
@@ -139,11 +168,32 @@
         [paragraphStyle setFirstLineHeadIndent:emptylen]; //首行缩进
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,self.text.length)];
     }
+
     
     
-    //关键字
-    if (self.keywords) {
+    //关键字 数组
+    if (self.keywords_arr.count >0) {
+        
+        for (int i=0;i<self.keywords_arr.count;i++) {
+            
+            NSRange itemsRange = [self.text rangeOfString:self.keywords_arr[i]];
+            
+            if (self.keywordsFont_arr.count >i) {
+                [attributedString addAttribute:NSFontAttributeName value:self.keywordsFont_arr[i] range:itemsRange];
+            }
+            
+            if (self.keywordsColor_arr.count >i) {
+                [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor_arr[i] range:itemsRange];
+            }
+            //点击事件
+            [attributedString yy_setTextHighlightRange:itemsRange color:self.keywordsColor_arr[i] backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+                NSLog(@"点击--->%@",self.keywords_arr[i]);
+            }];
+        }
+        
+    }else if (self.keywords) {//关键字
         NSRange itemRange = [self.text rangeOfString:self.keywords];
+
         if (self.keywordsFont) {
             [attributedString addAttribute:NSFontAttributeName value:self.keywordsFont range:itemRange];
             
@@ -151,9 +201,12 @@
         
         if (self.keywordsColor) {
             [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor range:itemRange];
-            
         }
+        [attributedString yy_setTextHighlightRange:itemRange color:self.keywordsColor backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+                   NSLog(@"点击--->%@",self.keywords);
+        }];
     }
+    
     
     //下划线
     if (self.underlineStr) {
@@ -162,19 +215,19 @@
         UIColor *color = self.underlineColor ? self.underlineColor:(self.keywordsColor?self.keywordsColor:self.textColor);
         [attributedString addAttribute:NSUnderlineColorAttributeName value:color range:itemRange];
     }
-    
+
     //段落后面的间距
     if(self.paragraphSpacing > 0){
         [paragraphStyle setParagraphSpacing:self.paragraphSpacing];
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,self.text.length)];
     }
     
-    self.attributedText = attributedString;
-    
     CGRect rect = [attributedString boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
     rect.origin.x = self.frame.origin.x;
     rect.origin.y = self.frame.origin.y;
     
+    self.attributedText = attributedString;
+
     // 限制 行数
     if (self.KNumberLine !=0) {
         //  内容
@@ -186,7 +239,7 @@
             rect = frame;
         }
     }
-    
+
     return rect;
 }
 - (void)setAttributedString:(NSString *)string font:(UIFont *)font fontRange:(NSRange)fontRange color:(UIColor *)color colorRange:(NSRange)colorRange{
@@ -218,7 +271,7 @@
 }
 
 - (void)changeAligLeftAndRight{
-   CGRect rect = [self getLableHeightWithMaxWidth:self.width];
+    CGRect rect = [self getLableHeightWithMaxWidth:self.width];
     CGFloat margin = (self.width -rect.size.width)/(self.text.length -1);
     self.characterSpace = margin;
     [self reloadUIConfig];

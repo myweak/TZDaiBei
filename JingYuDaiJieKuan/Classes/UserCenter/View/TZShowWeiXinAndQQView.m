@@ -40,7 +40,7 @@
     if (type == TZShowWeiXinAndQQViewType_weiXin) {
         self.appImageView.layer.cornerRadius = 12.0f;
         self.numberLabel.text = [NSString stringWithFormat:@"微信公众号：%@",KCompany_weixin_num];
-        self.contentLabel.text = @"1.点击“复制”按钮复制官方微信号 \n2.打开微信App，并点击搜索框粘贴搜索 \n3.选择点击“帒呗”，并关注公众号即可";
+        self.contentLabel.text = @"1.点击“复制”按钮复制官方微信号 \n2.打开微信App，并点击搜索框粘贴搜索 \n3.选择点击，并关注公众号即可";
         
     }else  if (type == TZShowWeiXinAndQQViewType_QQ) {
         self.appImageView.layer.cornerRadius = 30.0f;

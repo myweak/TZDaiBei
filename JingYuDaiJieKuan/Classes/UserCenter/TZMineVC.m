@@ -148,10 +148,10 @@
             cell.companyTimeLabel.text = @"热线服务时间：9:00-18:00";
             
         }else  if ([title isEqualToString: @"官方微信"]) {
-            cell.rightSubLabel.text = @"帒呗官方微信";
+            cell.rightSubLabel.text = @"官方微信";
             
         }else  if ([title isEqualToString: @"官方QQ"]) {
-            cell.rightSubLabel.text = @"帒呗官方QQ";
+            cell.rightSubLabel.text = @"官方QQ";
             
         }else  if ([title isEqualToString: @"版本信息"]) {
             cell.rightSubLabel.text = [NSString stringWithFormat:@"%@版",kApp_Version];

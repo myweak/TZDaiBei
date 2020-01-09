@@ -9,6 +9,7 @@
 #import "TZProductPToPCell.h"
 
 @interface TZProductPToPCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *linshiImageView;
 
 @end
 
@@ -17,6 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.linshiImageView.hidden = ![TZUserDefaults getBoolValueInUDWithKey:KCheck_app];
 }
 
 - (IBAction)leftTapAcion:(id)sender {
@@ -28,6 +30,9 @@
 
 }
 - (IBAction)rightBottomTapAcion:(id)sender {
+    if ([TZUserDefaults getBoolValueInUDWithKey:KCheck_app]) {
+        return;
+    }
     !self.backBtnTapAcionBlock ?: self.backBtnTapAcionBlock(2);
 
 }

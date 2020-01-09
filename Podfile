@@ -18,6 +18,7 @@ pod 'SAMKeychain'
 pod 'YYCache', '~> 1.0.4'
 pod 'YYWebImage'
 pod 'YYModel'
+pod 'YYText'
 
 pod 'JSBadgeView', '~> 1.4.1'
 pod 'DZNEmptyDataSet'

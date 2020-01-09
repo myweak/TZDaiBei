@@ -15,12 +15,12 @@
 #import "JingYuDaiJieKuan-Swift.h"
 #import "HomePageViewModel.h"
 #import "SensorsAnalyticsSDK.h"
-
+#import <YYLabel.h>
 @interface TZLoginVC ()<UITextFieldDelegate>{
     NSInteger msgMaxlength;
     UIButton *_btnRegisterWebBtn; // *协议
     UIButton *_btnPrivayWebBtn;  // *隐私
-
+    
 }
 
 
@@ -55,23 +55,35 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSString *keyStr = @"保存用户隐私弹框";
+    NSString *keyStr = @"隐私保护政策说明";
+    NSString *contentStr = @"欢迎使用帒呗！我们将通过《用户注册协议》和《隐私保护政策》帮助您了解我们收集、使用和存储个人信息的情况。我们将忠实履行协议条款，为您提供更优质的服务体验。";
     if (![TZUserDefaults getBoolValueInUDWithKey:keyStr]) {
         [TZUserDefaults saveBoolValueInUD:YES forKey:keyStr];
-        NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,customerPrivacyPolicy];
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, iPH(350))];
-        [webView loadRequest:
-         [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
-        [[[TZShowAlertView alloc] initWithAlerTitle:nil ContentView:webView buttonArray:@[@"同意并继续"] blueButtonIndex:0 alertButtonBlock:nil] show];
+        TZShowAlertView *alert = [[TZShowAlertView alloc] initWithAlerTitle:keyStr contentW:300 Content:contentStr buttonArray:@[@"我知道了"] blueButtonIndex:0 alertButtonBlock:^(NSInteger buttonIndex) {
+            
+        }];
+        alert.contentLabel.keywords_arr = @[@"《用户注册协议》",@"《隐私保护政策》"];
+        alert.contentLabel.keywordsColor_arr = @[Bg_Btn_Colorblue,Bg_Btn_Colorblue];
+        [alert.contentLabel reloadUIConfig];
+        [alert show];
+        [alert.contentLabel handleTap:^(CGPoint loc, UIGestureRecognizer *tapGesture) {
+            NSLog(@"%f-%f\n",loc.x,loc.y);
+            if ((loc.x>205 &&loc.y<18) || (loc.x<40 &&(loc.y>18 && loc.y<35)) ) {
+                NSLog(@"《用户注册协议》");
+                [alert disMiss];
+                [self pushUserPtocolUrlWebVC];
+            }else if ((loc.x>28 && loc.x<190) &&(loc.y>18 && loc.y<35)){
+                NSLog(@"《隐私保护政策》");
+                [alert disMiss];
+                [self pushUserPiracyrlWebVC];
+            }
+        }];
     }
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-   
-
+    
     [self setFd_interactivePopDisabled:YES];
     self.protocolRange = NSMakeRange(7, 6);
     self.policyProtocolRange = NSMakeRange(14, 6);
@@ -83,7 +95,6 @@
     
     [self initView];
     
-    [self userLoginBanner];
     
     [self addNavigationBackButton];
 }
@@ -111,7 +122,7 @@
     // 账号
     [self.mainContentView addSubview:self.bgPhoneView];
     [self.bgPhoneView addSubview:self.m_iphoneField];
-
+    
     [self.bgPhoneView addSubview:self.phoneImageView];
     
     // 密码
@@ -121,14 +132,14 @@
     
     [self.bgPasswordView addSubview:self.countDownButton];
     ViewRadius(self.countDownButton, AutoGetHeight(3));
-
+    
     ViewRadius(self.m_nextBtn, AutoGetHeight(20));
-
     
     self.countDownButton.m_layer.hidden = YES;
     
-//    [self.mainContentView addSubview:self.protocolLbl];
+    //    [self.mainContentView addSubview:self.protocolLbl];
     [self.mainContentView addSubview:self.m_nextBtn];
+    
     [self makeConstraints];
     
     NSLog(@"%lf", CGRectGetMaxY(self.protocolLbl.frame));
@@ -149,18 +160,18 @@
     UIButton * btnA = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectA, 1, R_ImageName(@"longin_selcet_n"), nil, nil, NO, @" 查阅并同意", UIEdgeInsetsZero, kFontSize10, kBtnGrayColor, self, @selector(btnClickAction:));
     
     CGRect rectB = CGRectMake(19, 36, 11, 11);
-
-      UIButton * btnB = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectB, 2, R_ImageName(@"longin_selcet_n"), nil, nil, NO, @" 查阅并同意", UIEdgeInsetsZero, kFontSize10, kBtnGrayColor, self, @selector(btnClickAction:));
- 
+    
+    UIButton * btnB = InsertImageButtonWithSelectedImageAndTitle(viewBg, rectB, 2, R_ImageName(@"longin_selcet_n"), nil, nil, NO, @" 查阅并同意", UIEdgeInsetsZero, kFontSize10, kBtnGrayColor, self, @selector(btnClickAction:));
+    
     [btnA setImage:R_ImageName(@"longin_selcet_y") forState:UIControlStateSelected];
     [btnB setImage:R_ImageName(@"longin_selcet_y") forState:UIControlStateSelected];
-
-   
+    
+    
     [btnA sizeToFit];
     [btnB sizeToFit];
     
     NSString *phone = [kUserMessageManager getMessageManagerForObjectWithKey:USER_MOBILE];
-
+    
     BOOL btnSelect = [phone isEqualToString:self.m_iphoneField.text];
     
     CGRect rectAA = CGRectMake(btnA.right, 0, 150, 11);
@@ -178,8 +189,8 @@
     btnAA.frame = CGRectMake(btnA.right,btnA.top, btnAA.width, btn_H);
     btnB.frame = CGRectMake(19, btnA.bottom, btnB.width, btn_H);
     btnBB.frame = CGRectMake(btnB.right, btnB.top, btnBB.width, btn_H);
-
-
+    
+    
     _btnRegisterWebBtn =btnA;
     _btnPrivayWebBtn = btnB;
     _btnRegisterWebBtn.selected = btnSelect;
@@ -187,8 +198,6 @@
     
     // 提示信息
     InsertLabel(viewBg, CGRectMake(btnB.left, btnB.bottom+10, kScreenWidth- btnB.left *2, 12), NSTextAlignmentLeft, @"*温馨提示：不协助学生办理贷款业务", kFontSize16, KText_ColorRed, YES);
-    
-    
 }
 
 - (void)btnClickAction:(UIButton *)btn{
@@ -199,27 +208,16 @@
             break;
         case 11: // 协议
         {
-            NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,userServiceProtocol];
-            BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
-            targetVC.url = urlStr;
-            targetVC.title = @"注册协议";
-            targetVC.bottomBtnTitleStr = @"我知道了";
-            [self.navigationController pushViewController:targetVC animated:YES];
-    }
+            [self pushUserPtocolUrlWebVC];
+        }
             break;
         case 2: // 协议中 ☑️
             btn.selected = !btn.selected;
-
+            
             break;
         case 22: // 客户隐私 协议
         {
-            NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,customerPrivacyPolicy];
-
-            BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
-            targetVC.url = urlStr;
-            targetVC.title = @"客户隐私协议保护政策";
-            targetVC.bottomBtnTitleStr = @"我知道了";
-            [self.navigationController pushViewController:targetVC animated:YES];
+            [self pushUserPiracyrlWebVC];
         }
             break;
         default:
@@ -228,8 +226,25 @@
     
     
 }
-
-
+// 用户协议
+- (void)pushUserPtocolUrlWebVC{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,userServiceProtocol];
+    BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
+    targetVC.url = urlStr;
+    targetVC.title = @"注册协议";
+    targetVC.bottomBtnTitleStr = @"我知道了";
+    [self.navigationController pushViewController:targetVC animated:YES];
+}
+// 隐私政策
+- (void)pushUserPiracyrlWebVC{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",WAP_PHONEURL,customerPrivacyPolicy];
+    
+    BaseWebViewController *targetVC = [[BaseWebViewController alloc]init];
+    targetVC.url = urlStr;
+    targetVC.title = @"客户隐私协议保护政策";
+    targetVC.bottomBtnTitleStr = @"我知道了";
+    [self.navigationController pushViewController:targetVC animated:YES];
+}
 
 - (void)addPhoneTextFieldView{
     
@@ -247,7 +262,7 @@
     
     self.topImageViewBg.frame = CGRectMake(0, 0, kScreenWidth, 8);
     
-
+    
     // 手机
     self.bgPhoneView.frame = CGRectMake(23, 29, kScreenWidth - 23*2, 40);
     self.m_iphoneField.frame = CGRectMake(56, 10, self.bgPhoneView.width-56, self.bgPhoneView.height);
@@ -258,20 +273,20 @@
     self.bgPasswordView.frame = CGRectMake(23, self.bgPhoneView.bottom+15, kScreenWidth - 23*2, 40);
     self.passwordImageView.frame = CGRectMake(0, 10, 17, 19);
     self.m_passwordField.frame =CGRectMake(56, 10, self.bgPasswordView.width-self.countDownButton.width-56-100, 33);
-
+    
     self.countDownButton.frame = CGRectMake(self.bgPasswordView.width -82, 6, 82, 27);
     self.countDownButton.backgroundColor = UIColorRGB(57,186,232);
     
     self.m_passwordField.centerY = self.bgPasswordView.height/2.0f;
-
-  
+    
+    
     
     self.protocolLbl.frame = CGRectMake(10, self.bgPasswordView.bottom +36, 200, 20);
     self.m_nextBtn.frame = CGRectMake(50, self.bgPasswordView.bottom +146, kScreenWidth-100, 54);
     
     [self.bgPasswordView addLine_bottom];
     [self.bgPhoneView addLine_bottom];
-
+    
     
 }
 /**
@@ -283,11 +298,7 @@
     return [[UIDevice currentDevice] model];
 }
 
-//获取背景图接口
-- (void)userLoginBanner{
-    kSelfWeak;
-    
-}
+
 
 //user/login 用户登录接口
 - (void)userLoginData
@@ -311,7 +322,7 @@
     [self.m_iphoneField resignFirstResponder];
     [self.m_passwordField resignFirstResponder];
     
- 
+    
     [LoginKeyInputViewModel userLoginPath:userLogin params:params target:self success:^(LoginModel *model) {
         [SVProgressHUD dismiss];
         if (model.code == 200) {
@@ -320,7 +331,7 @@
             //登录的埋点
             [SensorsAnalyticsSDKHelper trackLoginWithDistinctId:model.userId];
             
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 MainViewController *mainVC = [[MainViewController alloc]init];
                 [mainVC initWithVC: nil];
@@ -328,7 +339,7 @@
                 kAppDelegate.window.backgroundColor    = [UIColor whiteColor];
                 [kAppDelegate.window makeKeyAndVisible];
             });
-               
+            
         }else{
             [[ZXAlertView shareView] showMessage:model.msg?:@""];
         }
@@ -344,7 +355,7 @@
     [params setValue:self.m_iphoneField.text forKey:@"mobile"];
     [params setValue:@"10" forKey:@"type"];
     [LoginKeyInputViewModel smsSendCodePath:smsSendCode params:params target:self success:^(LoginModel *model) {
-
+        
         if (model.code != 200) {
             [self stop];
         }

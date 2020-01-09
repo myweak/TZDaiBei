@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,strong) UILabel  * contentLabel;    // 内容
 
 @property (nonatomic, copy) ButtonActonBlock buttonActonBlock;
+
 @property (nonatomic, assign) BOOL isShowAnimate; // 是否显示动画 ， 默认NO
 /**
  *  点击背景消失； 默认NO：不消失
@@ -56,6 +57,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)show;
 - (void)disMiss;
+
+- (instancetype) initWithAlerTitle:(nullable NSString *)title
+                         contentW:(CGFloat)contentW
+        Content:(NSString *)content
+    buttonArray:(NSArray *)buttonArrays
+blueButtonIndex:(NSInteger) buttonIndex
+                  alertButtonBlock:(ButtonActonBlock)alertButtonBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

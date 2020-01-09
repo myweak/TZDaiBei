@@ -121,7 +121,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 @strongify(self)
                 self.m_cycleScrollView.imageURLStringsGroup = array;
-            });        } else {
+            });
+            
+        } else {
                 [[ZXAlertView shareView] showMessage:model.msg?:@""];
                 [[TZShowAlertView new] showNotNetWorkViewWithBlock:^{
                     @strongify(self)

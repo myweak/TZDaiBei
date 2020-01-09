@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, TZShowWeiXinAndQQViewType)
     
 };
 
-#define KCompany_weixin_num @"gh_6015de870fed"
+#define KCompany_weixin_num @"b73631"
 #define KCompany_qq_num     @"3113205309"
 
 #import "TZXibNibView.h"

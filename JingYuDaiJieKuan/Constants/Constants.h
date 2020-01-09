@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import "LnitialAPI.h"
 #import "ProductItemAPI.h"
 #import "CommonAPI.h"
-
+#import "YYText.h"
 #import "HomeAPI.h"
 #import "HomeAPIParameter.h"
 
@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 
 /***************************环境切换****************************/
 ///是否线上1为线上,0为测试
-#define isTrueEnvironment 0
+#define isTrueEnvironment 1
 ///app 模板id  1为橙色模板,2为蓝色模板
 #define kTemplateId 1
 /***************************环境切换****************************/
@@ -181,7 +181,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #define VERSION_URL @"1.0.0"
 #define WAP_URL @"http://192.168.28.99:9013/report/2017/index.html"
 
-//#define WAP_PHONEURL   @"http://192.168.1.135:8005/" //本地地址
+//#define WAP_PHONEURL   @"http://192.168.1.134:8005/" //本地地址
 #define WAP_PHONEURL   SERVER_URL
 
 #endif
