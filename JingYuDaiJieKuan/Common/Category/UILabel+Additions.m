@@ -182,9 +182,9 @@
                 [attributedString addAttribute:NSFontAttributeName value:self.keywordsFont_arr[i] range:itemsRange];
             }
             
-            if (self.keywordsColor_arr.count >i) {
-                [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor_arr[i] range:itemsRange];
-            }
+//            if (self.keywordsColor_arr.count >i) {
+//                [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor_arr[i] range:itemsRange];
+//            }
             //点击事件
             [attributedString yy_setTextHighlightRange:itemsRange color:self.keywordsColor_arr[i] backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
                 NSLog(@"点击--->%@",self.keywords_arr[i]);

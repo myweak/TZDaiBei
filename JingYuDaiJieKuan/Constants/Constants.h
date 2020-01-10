@@ -75,6 +75,8 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import <objc/runtime.h>
 #import "TZShowAlertView.h"
 #import "TZUserDefaults.h"
+#import "YYLabel+tool.h"
+
 
 /***************************模块接口****************************/
 #import "HttpManager.h"
@@ -89,7 +91,6 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import "LnitialAPI.h"
 #import "ProductItemAPI.h"
 #import "CommonAPI.h"
-#import "YYText.h"
 #import "HomeAPI.h"
 #import "HomeAPIParameter.h"
 
@@ -110,6 +111,7 @@ typedef NS_ENUM(NSInteger,InvestRefundType) {
 #import "UITextView+FHTextView.h"
 #import "ACActionSheet.h"
 #import "NAAssetsManager.h"
+#import <YYText.h>
 
 
 /// Dlog

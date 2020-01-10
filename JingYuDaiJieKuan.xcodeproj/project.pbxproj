@@ -145,6 +145,7 @@
 		2676DA0F236802C500FDAAC2 /* TZHomeResultViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2676DA0D236802C500FDAAC2 /* TZHomeResultViewCell.xib */; };
 		2676DA152368106F00FDAAC2 /* UITableView+NATools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676DA142368106F00FDAAC2 /* UITableView+NATools.m */; };
 		2676DA18236917BE00FDAAC2 /* TZHomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676DA17236917BE00FDAAC2 /* TZHomePageVC.m */; };
+		26A05A9D23C726DC003C273A /* YYLabel+tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A05A9C23C726DC003C273A /* YYLabel+tool.m */; };
 		26A4EA5523696EFF002A6AA6 /* TZLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EA5323696EFF002A6AA6 /* TZLoginVC.m */; };
 		26A4EA5623696EFF002A6AA6 /* TZLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A4EA5423696EFF002A6AA6 /* TZLoginVC.xib */; };
 		26B5E6722391197C00C45FD4 /* TZMineHeaderCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E6712391197C00C45FD4 /* TZMineHeaderCardView.m */; };
@@ -815,6 +816,8 @@
 		2676DA142368106F00FDAAC2 /* UITableView+NATools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+NATools.m"; sourceTree = "<group>"; };
 		2676DA16236917BE00FDAAC2 /* TZHomePageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZHomePageVC.h; sourceTree = "<group>"; };
 		2676DA17236917BE00FDAAC2 /* TZHomePageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZHomePageVC.m; sourceTree = "<group>"; };
+		26A05A9B23C726DC003C273A /* YYLabel+tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+tool.h"; sourceTree = "<group>"; };
+		26A05A9C23C726DC003C273A /* YYLabel+tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+tool.m"; sourceTree = "<group>"; };
 		26A4EA5223696EFF002A6AA6 /* TZLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZLoginVC.h; sourceTree = "<group>"; };
 		26A4EA5323696EFF002A6AA6 /* TZLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZLoginVC.m; sourceTree = "<group>"; };
 		26A4EA5423696EFF002A6AA6 /* TZLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZLoginVC.xib; sourceTree = "<group>"; };
@@ -2128,6 +2131,8 @@
 				5F33A6332060E981006CCA9D /* UIViewController+Extend.m */,
 				2601F4AE236C2933005607DA /* UITableViewCell+NATools.h */,
 				2601F4AD236C2932005607DA /* UITableViewCell+NATools.m */,
+				26A05A9B23C726DC003C273A /* YYLabel+tool.h */,
+				26A05A9C23C726DC003C273A /* YYLabel+tool.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -3123,6 +3128,7 @@
 				9CE7345B22D326570057AC96 /* NewFeatureVC.m in Sources */,
 				0AD4D23A206F782500D4D399 /* NSString+PJR.m in Sources */,
 				0A0479AE22A5101E005E157D /* HomeFourEarningsModel.m in Sources */,
+				26A05A9D23C726DC003C273A /* YYLabel+tool.m in Sources */,
 				2624C8F42396418900DC0490 /* PHImageManager+CTAssetsPickerController.m in Sources */,
 				0AD4D21B206E3E1A00D4D399 /* UserCenterAPI.m in Sources */,
 				5F48DFD4206A2C8600982B1F /* JYDNavigationVC.m in Sources */,
@@ -3519,7 +3525,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "JingYuDaiJieKuan/JingYuDaiJieKuan-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "JingYuDaiJieKuan-Swift.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3559,7 +3565,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JingYuDaiJieKuan/JingYuDaiJieKuan-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "JingYuDaiJieKuan-Swift.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
