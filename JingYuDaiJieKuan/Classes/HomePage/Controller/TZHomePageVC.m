@@ -32,6 +32,7 @@
 
 @property (strong ,nonatomic) homeIntervalDaysModel *m_HomeintervalDays; // 底部交易统计
 
+@property (nonatomic, assign) BOOL isHeader_refesh; // 下拉刷新 YES；
 
 
 @end
@@ -44,7 +45,7 @@
     [self initWithUI];
     [self setNavBar];
     [self bindSignal];
-    [self refreshData];
+    [self postUrlData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -59,15 +60,19 @@
     
 }
 
-- (void)refreshData{
+- (void)postUrlData{
     [self urlHomeBannerData];
     [self urlHomeMessageNoticeData];
     [self urlIntervalDays];
-    
+}
+
+- (void)refreshData{
+    self.isHeader_refesh = YES;
+    [self postUrlData];
 }
 
 - (void)bindSignal{
-    self.m_cycleScrollView.placeholderImage = Kimage_placeholder;
+//    self.m_cycleScrollView.placeholderImage = Kimage_placeholder;
 }
 
 
@@ -107,7 +112,7 @@
 // 首页 横幅接口:bannerInfo ,主题列表:bannerNavigation
 - (void)urlHomeBannerData{
     @weakify(self);
-    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
     [HomePageViewModel homeBannerPath:homeBanner params:nil target:self success:^(HomePageModel *model) {
         @strongify(self)
         if (model.code == 200) {
@@ -127,14 +132,21 @@
                 [[ZXAlertView shareView] showMessage:model.msg?:@""];
                 [[TZShowAlertView new] showNotNetWorkViewWithBlock:^{
                     @strongify(self)
+                    [SVProgressHUD dismiss];
                     [self refreshData];
                 }];
-            }
+        }
         [self.m_tableView.mj_header endRefreshing];
         [self.m_tableView reloadData];
+        
+        [RACScheduler.mainThreadScheduler afterDelay: self.isHeader_refesh ? 0:2.0 schedule:^{
+            [SVProgressHUD dismiss];
+        }];
+
     } failure:^(NSError *error) {
         [[TZShowAlertView new] showNotNetWorkViewWithBlock:^{
             @strongify(self)
+            [SVProgressHUD dismiss];
             [self refreshData];
         }];
         showMessage(kloadfailedNotNetwork);

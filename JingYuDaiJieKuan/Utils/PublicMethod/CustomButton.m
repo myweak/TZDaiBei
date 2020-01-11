@@ -76,11 +76,9 @@
         }
         if (effective == YES) {
             self.backgroundColor=UIColorHex(@"#39bae8");
-            self.userInteractionEnabled = YES;
         }
         else{
             self.backgroundColor=UIColorHex(@"#dddddd");
-            self.userInteractionEnabled = NO;
         }
         ViewRadius(self, kiP6WidthRace(3));
         self.titleLabel.font = KFont(18);
@@ -92,10 +90,8 @@
     _effective = effective;
     if (_effective) {
         self.backgroundColor=UIColorHex(@"#39bae8");
-        self.userInteractionEnabled = YES;
     }else{
         self.backgroundColor=UIColorHex(@"#dddddd");
-        self.userInteractionEnabled = NO;
     }
 }
 
