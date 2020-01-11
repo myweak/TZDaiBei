@@ -532,7 +532,7 @@
         _m_cycleScrollView.infiniteLoop = YES;
         _m_cycleScrollView.autoScroll = YES;
         _m_cycleScrollView.showPageControl = YES;
-        _m_cycleScrollView.placeholderImage = Kimage_placeholder;
+//        _m_cycleScrollView.placeholderImage = Kimage_placeholder;
     }
     return _m_cycleScrollView;
 }

@@ -411,6 +411,15 @@
 
 - (void)nextStepBtn
 {
+
+    if ([self.m_iphoneField.text length] != 11){
+        [[ZXAlertView shareView] showMessage:@"请输入正确的手机号码"];
+        return;
+    }else if([self.m_passwordField.text length] < 4){
+        [[ZXAlertView shareView] showMessage:@"请输入正确的验证码"];
+        return;
+    }
+    
     if (!_btnRegisterWebBtn.selected) {
         [[ZXAlertView shareView] showMessage:@"请同意注册协议"];
         return;

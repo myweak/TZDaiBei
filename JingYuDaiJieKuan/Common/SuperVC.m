@@ -17,7 +17,6 @@
 
 - (void)dealloc
 {
-    [SVProgressHUD dismiss];
         DLog(@"%@释放了",NSStringFromClass([self class]));
         [[NSNotificationCenter defaultCenter] removeObserver:self];
   
