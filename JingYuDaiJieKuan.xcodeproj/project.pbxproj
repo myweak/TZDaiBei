@@ -159,6 +159,16 @@
 		26D31BFE239611A700839FCE /* ACActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26D31BFC239611A600839FCE /* ACActionSheet.bundle */; };
 		26D31BFF239611A700839FCE /* ACActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D31BFD239611A600839FCE /* ACActionSheet.m */; };
 		26D31C03239612A800839FCE /* NAAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D31C01239612A800839FCE /* NAAssetsManager.m */; };
+		26E4712C23CAB33A005FCCCC /* TZProductLineFrontDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4712B23CAB33A005FCCCC /* TZProductLineFrontDetailVC.m */; };
+		26E4713023CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4712E23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.m */; };
+		26E4713123CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E4712F23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.xib */; };
+		26E4713523CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4713323CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.m */; };
+		26E4713623CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E4713423CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.xib */; };
+		26E4713A23CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4713823CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.m */; };
+		26E4713B23CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E4713923CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.xib */; };
+		26E4713E23CC68B1005FCCCC /* TZProductBottomMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4713D23CC68B1005FCCCC /* TZProductBottomMenuView.m */; };
+		26E4714023CC68C9005FCCCC /* TZProductBottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E4713F23CC68C9005FCCCC /* TZProductBottomMenuView.xib */; };
+		26E4714323CD4E54005FCCCC /* TZProductLinebackBankDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4714223CD4E53005FCCCC /* TZProductLinebackBankDetailVC.m */; };
 		26E76140236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E7613F236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m */; };
 		26E76142236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E76141236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib */; };
 		26E76145236FB860003CCA28 /* TZProductLinebackBankFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E76144236FB860003CCA28 /* TZProductLinebackBankFlowView.m */; };
@@ -840,6 +850,22 @@
 		26D31BFD239611A600839FCE /* ACActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACActionSheet.m; sourceTree = "<group>"; };
 		26D31C01239612A800839FCE /* NAAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAssetsManager.m; sourceTree = "<group>"; };
 		26D31C02239612A800839FCE /* NAAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAssetsManager.h; sourceTree = "<group>"; };
+		26E4712A23CAB33A005FCCCC /* TZProductLineFrontDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLineFrontDetailVC.h; sourceTree = "<group>"; };
+		26E4712B23CAB33A005FCCCC /* TZProductLineFrontDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLineFrontDetailVC.m; sourceTree = "<group>"; };
+		26E4712D23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLineFrontDetailPostMoneyNumbCell.h; sourceTree = "<group>"; };
+		26E4712E23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLineFrontDetailPostMoneyNumbCell.m; sourceTree = "<group>"; };
+		26E4712F23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLineFrontDetailPostMoneyNumbCell.xib; sourceTree = "<group>"; };
+		26E4713223CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLineFrontDetailSurplusCell.h; sourceTree = "<group>"; };
+		26E4713323CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLineFrontDetailSurplusCell.m; sourceTree = "<group>"; };
+		26E4713423CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLineFrontDetailSurplusCell.xib; sourceTree = "<group>"; };
+		26E4713723CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLineFrontDetailFlowCell.h; sourceTree = "<group>"; };
+		26E4713823CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLineFrontDetailFlowCell.m; sourceTree = "<group>"; };
+		26E4713923CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLineFrontDetailFlowCell.xib; sourceTree = "<group>"; };
+		26E4713C23CC68B1005FCCCC /* TZProductBottomMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductBottomMenuView.h; sourceTree = "<group>"; };
+		26E4713D23CC68B1005FCCCC /* TZProductBottomMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductBottomMenuView.m; sourceTree = "<group>"; };
+		26E4713F23CC68C9005FCCCC /* TZProductBottomMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductBottomMenuView.xib; sourceTree = "<group>"; };
+		26E4714123CD4E53005FCCCC /* TZProductLinebackBankDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankDetailVC.h; sourceTree = "<group>"; };
+		26E4714223CD4E53005FCCCC /* TZProductLinebackBankDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankDetailVC.m; sourceTree = "<group>"; };
 		26E7613E236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZProductLinebackBankSpeedItemView.h; sourceTree = "<group>"; };
 		26E7613F236FB630003CCA28 /* TZProductLinebackBankSpeedItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZProductLinebackBankSpeedItemView.m; sourceTree = "<group>"; };
 		26E76141236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZProductLinebackBankSpeedItemView.xib; sourceTree = "<group>"; };
@@ -1603,6 +1629,9 @@
 				266792AD2375978300D7D2E5 /* TZNotNetworkView.h */,
 				266792AE2375978300D7D2E5 /* TZNotNetworkView.m */,
 				266792B02375978F00D7D2E5 /* TZNotNetworkView.xib */,
+				26E4713C23CC68B1005FCCCC /* TZProductBottomMenuView.h */,
+				26E4713D23CC68B1005FCCCC /* TZProductBottomMenuView.m */,
+				26E4713F23CC68C9005FCCCC /* TZProductBottomMenuView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1683,6 +1712,10 @@
 				26E7AD4B236D839000264E87 /* TZProductLinebackBankVC.m */,
 				261FEF072370092700121781 /* TZProductNewPageVC.h */,
 				261FEF082370092700121781 /* TZProductNewPageVC.m */,
+				26E4712A23CAB33A005FCCCC /* TZProductLineFrontDetailVC.h */,
+				26E4712B23CAB33A005FCCCC /* TZProductLineFrontDetailVC.m */,
+				26E4714123CD4E53005FCCCC /* TZProductLinebackBankDetailVC.h */,
+				26E4714223CD4E53005FCCCC /* TZProductLinebackBankDetailVC.m */,
 			);
 			path = leverTwoVC;
 			sourceTree = "<group>";
@@ -1705,6 +1738,15 @@
 				26621795237D388100DC3A9F /* TZProductLinebackBankDevelopView.h */,
 				26621796237D388100DC3A9F /* TZProductLinebackBankDevelopView.m */,
 				26621798237D388900DC3A9F /* TZProductLinebackBankDevelopView.xib */,
+				26E4712D23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.h */,
+				26E4712E23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.m */,
+				26E4712F23CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.xib */,
+				26E4713223CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.h */,
+				26E4713323CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.m */,
+				26E4713423CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.xib */,
+				26E4713723CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.h */,
+				26E4713823CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.m */,
+				26E4713923CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.xib */,
 			);
 			path = leverTwoView;
 			sourceTree = "<group>";
@@ -2741,6 +2783,7 @@
 			files = (
 				262D5D5A236D855700C9429F /* TZProductLinebackBankHeadView.xib in Resources */,
 				0A2042D422A754300055E2E0 /* 12.jpg in Resources */,
+				26E4714023CC68C9005FCCCC /* TZProductBottomMenuView.xib in Resources */,
 				0A2042D222A754300055E2E0 /* 8.jpg in Resources */,
 				26D31BFE239611A700839FCE /* ACActionSheet.bundle in Resources */,
 				0A2042DB22A754300055E2E0 /* 2.jpg in Resources */,
@@ -2751,6 +2794,7 @@
 				5F323AA2205F582500995197 /* LaunchScreen.storyboard in Resources */,
 				26E76142236FB63D003CCA28 /* TZProductLinebackBankSpeedItemView.xib in Resources */,
 				E9F1399E230D4B5C00BC5AB6 /* JuZidaiAsset.xcassets in Resources */,
+				26E4713623CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.xib in Resources */,
 				0A2042DA22A754300055E2E0 /* 6.jpg in Resources */,
 				0A2042D522A754300055E2E0 /* 11.jpg in Resources */,
 				5F323B5A205F9D1800995197 /* DeviceList.plist in Resources */,
@@ -2770,6 +2814,7 @@
 				0A2042DD22A754300055E2E0 /* 1.jpg in Resources */,
 				26E7C41F236BE0D0007EF5D4 /* TZUserEditChooseCell.xib in Resources */,
 				261FEF372373AA1400121781 /* tz_cho_sel@2x.png in Resources */,
+				26E4713B23CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.xib in Resources */,
 				0A2042D722A754300055E2E0 /* 4.jpg in Resources */,
 				0A2042DC22A754300055E2E0 /* 3.jpg in Resources */,
 				263C95E023924705004D56E9 /* TZMyFutureMoneyDetailContentCell.xib in Resources */,
@@ -2778,6 +2823,7 @@
 				261FEF13237159EC00121781 /* TZProductScreenConditionItemCell.xib in Resources */,
 				26659F2723743CCB008854C2 /* TZConditionMoneyView.xib in Resources */,
 				0A3392FE20909FC600ED6C94 /* payCursor_icon.gif in Resources */,
+				26E4713123CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.xib in Resources */,
 				2641AFA0236A6B8300209C06 /* TZShowWeiXinAndQQView.xib in Resources */,
 				261FEF452373EE0A00121781 /* QZSortHeaderView.xib in Resources */,
 				261FEF332373A99400121781 /* tz_cho_nor@3x.png in Resources */,
@@ -2947,6 +2993,7 @@
 				0A0479B722A512D5005E157D /* HomeAPIParameter.m in Sources */,
 				9CFCB11722CD95DC00DCBF54 /* CommonAPI.m in Sources */,
 				263C95DF23924705004D56E9 /* TZMyFutureMoneyDetailContentCell.m in Sources */,
+				26E4713023CAB55C005FCCCC /* TZProductLineFrontDetailPostMoneyNumbCell.m in Sources */,
 				263C95E423924771004D56E9 /* TZMyFutureMoneyDetailCommentCell.m in Sources */,
 				5F33A6342060E981006CCA9D /* UIViewController+Extend.m in Sources */,
 				26FB9170237A63F6002B9D3A /* MZKeyboardDetectManager.m in Sources */,
@@ -2961,6 +3008,7 @@
 				5F323B67205F9E9A00995197 /* CWBAFNHelper.m in Sources */,
 				0A1070BF22C750C700614549 /* STListFilterHeadView.m in Sources */,
 				26E7AD23236C5BCD00264E87 /* TZProductToolsCell.m in Sources */,
+				26E4712C23CAB33A005FCCCC /* TZProductLineFrontDetailVC.m in Sources */,
 				9CFCB11122CCD3E600DCBF54 /* UIColor+Extension.swift in Sources */,
 				5F323A9A205F582500995197 /* ViewController.m in Sources */,
 				265BA90923B5F89B00C1A8F7 /* TZProductScreenConditionItemView.m in Sources */,
@@ -3076,6 +3124,7 @@
 				261FEF4823740DCA00121781 /* TZChooseProvinceAndCityTableView.m in Sources */,
 				5F3724952064A9E500F3FDDA /* TAPageControl.m in Sources */,
 				0A1070BE22C750C700614549 /* STListFilterView.m in Sources */,
+				26E4713E23CC68B1005FCCCC /* TZProductBottomMenuView.m in Sources */,
 				5F323B80205FA31A00995197 /* UIInitMethod.m in Sources */,
 				2641AFA5236A6C4100209C06 /* TZXibNibView.m in Sources */,
 				5F2B9B3C2063934700524617 /* BaseUrlVC.m in Sources */,
@@ -3091,6 +3140,7 @@
 				E9A099C62301912600F7F002 /* LoginVC.m in Sources */,
 				26E7AD27236C633C00264E87 /* TZProductQualityItemView.m in Sources */,
 				9CFCB11422CD8C8E00DCBF54 /* AdvertisementCollectionCell.swift in Sources */,
+				26E4713A23CC00E9005FCCCC /* TZProductLineFrontDetailFlowCell.m in Sources */,
 				5F323B3A205F8BB400995197 /* NSDictionary+RequestEncoding.m in Sources */,
 				5F3724942064A9E500F3FDDA /* TADotView.m in Sources */,
 				26E7C414236BCA2B007EF5D4 /* TZEditUserTextFiedldVC.m in Sources */,
@@ -3131,6 +3181,8 @@
 				26A05A9D23C726DC003C273A /* YYLabel+tool.m in Sources */,
 				2624C8F42396418900DC0490 /* PHImageManager+CTAssetsPickerController.m in Sources */,
 				0AD4D21B206E3E1A00D4D399 /* UserCenterAPI.m in Sources */,
+				26E4713523CB0D31005FCCCC /* TZProductLineFrontDetailSurplusCell.m in Sources */,
+				26E4714323CD4E54005FCCCC /* TZProductLinebackBankDetailVC.m in Sources */,
 				5F48DFD4206A2C8600982B1F /* JYDNavigationVC.m in Sources */,
 				E916DF7D2319307B00D6DAA5 /* HomeMchHistory+CoreDataProperties.m in Sources */,
 				5F323B3F205F8BB500995197 /* UIImageView+CornerRadius.m in Sources */,
